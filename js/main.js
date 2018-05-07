@@ -1,3 +1,4 @@
+//Define game settings
 var config = {
     type: Phaser.AUTO,
     width: 1316,
@@ -12,5 +13,6 @@ var config = {
     scene: demo
 };
 
+//Setup game
 var game = new Phaser.Game(config);
 
