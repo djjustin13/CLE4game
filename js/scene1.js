@@ -36,6 +36,8 @@ scene1.create = function ()
 
     scene1.physics.add.collider(player, platforms);
 
+    this.cameras.main.startFollow(player);
+
      // Setting up controls for the character
     cursors = this.input.keyboard.createCursorKeys();
 
