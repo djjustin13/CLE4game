@@ -64,6 +64,18 @@ var MyGame;
             return _super !== null && _super.apply(this, arguments) || this;
         }
         Level1.prototype.create = function () {
+            this.background = this.add.sprite(0, 0, 'level1');
+            this.background.width = this.game.width;
+            this.background.height = this.game.height;
+            var platforms = this.add.group();
+            platforms.enableBody = true;
+            this.ground = platforms.create(0, this.world.height - 64, 'ground');
+            this.ground.body.immovable = true;
+            this.ground.scale.setTo(2, 2);
+            this.ledge = platforms.create(400, 400, 'ground');
+            this.ledge.body.immovable = true;
+            this.ledge = platforms.create(-150, 250, 'ground');
+            this.ledge.body.immovable = true;
             console.log("level started");
         };
         return Level1;
@@ -90,6 +102,42 @@ var MyGame;
 })(MyGame || (MyGame = {}));
 var MyGame;
 (function (MyGame) {
+    var Player = (function (_super) {
+        __extends(Player, _super);
+        function Player(game, x, y) {
+            var _this = _super.call(this, game, x, y, '', 0) || this;
+            _this.game.physics.arcade.enableBody(_this);
+            _this.anchor.setTo();
+            _this.animations.add('', [], true);
+            game.add.existing(_this);
+            return _this;
+        }
+        Player.prototype.update = function () {
+            this.body.velocity.x = 0;
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+                this.body.velocity.x = -150;
+                this.animations.play('');
+                if (this.scale.x == 1) {
+                    this.scale.x = -1;
+                }
+            }
+            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+                this.body.velocity.x = 150;
+                this.animations.play('');
+                if (this.scale.x == -1) {
+                    this.scale.x = 1;
+                }
+            }
+            else {
+                this.animations.frame = 0;
+            }
+        };
+        return Player;
+    }(Phaser.Sprite));
+    MyGame.Player = Player;
+})(MyGame || (MyGame = {}));
+var MyGame;
+(function (MyGame) {
     var Preloader = (function (_super) {
         __extends(Preloader, _super);
         function Preloader() {
@@ -98,6 +146,8 @@ var MyGame;
             return _this;
         }
         Preloader.prototype.preload = function () {
+            this.load.image('level1', 'assets/bg.jpg');
+            this.load.image('ground', 'assets/platform.png');
         };
         Preloader.prototype.create = function () {
             console.log("preload state..");

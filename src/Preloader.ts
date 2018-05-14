@@ -9,6 +9,8 @@ module MyGame {
 		preload() {
 
 			//Load all sprites
+			this.load.image('level1', 'assets/bg.jpg');
+			this.load.image('ground', 'assets/platform.png');
 
 		}
 
