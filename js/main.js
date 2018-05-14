@@ -1,8 +1,8 @@
 //Define game settings
 var config = {
     type: Phaser.AUTO,
-    width: 1316,
-    height: 800,
+    width: 800,
+    height: 600,
     physics: {
       default: 'arcade',
       arcade: {
@@ -10,9 +10,11 @@ var config = {
           debug: false
       }
     },
-    scene: demo
+    scene: scene1
 };
 
 //Setup game
 var game = new Phaser.Game(config);
+
+game.world.resize(6000, 600);
 
