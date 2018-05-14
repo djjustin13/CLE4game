@@ -16,5 +16,3 @@ var config = {
 //Setup game
 var game = new Phaser.Game(config);
 
-game.world.resize(6000, 600);
-

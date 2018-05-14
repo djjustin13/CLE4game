@@ -32,11 +32,12 @@ scene1.create = function ()
 
     //Bounce factor added to the character
     player.setBounce(0.2);
-    player.setCollideWorldBounds(true);
+    // player.setCollideWorldBounds(true);
 
     scene1.physics.add.collider(player, platforms);
 
     this.cameras.main.startFollow(player);
+    this.cameras.main.setBounds(0, 0, 60000, 800);
 
      // Setting up controls for the character
     cursors = this.input.keyboard.createCursorKeys();
