@@ -43,7 +43,7 @@ module MyGame {
                 }
             }
             else {
-                this.animations.frame = 4;
+                this.animations.stop()
             }
 
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP) && this.body.touching.down){
