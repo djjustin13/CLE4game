@@ -266,7 +266,7 @@ var MyGame;
             this.load.image('level1', 'assets/bg.jpg');
             this.load.image('bgTile', 'assets/bgTile.jpg');
             this.load.image('ground', 'assets/platform.png');
-            this.load.image('item', 'assets/artPiece.png');
+            this.load.image('artPiece', 'assets/artPiece.png');
             this.load.image('platformTile', 'assets/platformTile');
             this.load.image('eye', 'assets/eye.png');
             this.load.spritesheet('dude', 'assets/dude.png', 32, 48, 9);
