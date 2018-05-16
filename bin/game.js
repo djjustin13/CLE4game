@@ -95,8 +95,6 @@ var MyGame;
             this.ledge.body.immovable = true;
             this.objects = this.add.group();
             this.objects.create(600, this.world.height - 80, 'item');
-            this.player = new MyGame.Player(this.game, 130, 284);
-            this.game.physics.arcade.enable(this.player);
             this.enemy = this.add.group();
             this.enemy.enableBody = true;
             this.enemy = this.enemy.create(260, 360, 'eye');

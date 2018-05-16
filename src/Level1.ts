@@ -30,9 +30,6 @@ module MyGame {
 
 			this.objects = this.add.group()
 			this.objects.create(600 ,this.world.height-80, 'item')
-
-			this.player = new Player(this.game, 130, 284)
-			this.game.physics.arcade.enable(this.player)
 			// Creation of Enemies
 			this.enemy = this.add.group()
 			this.enemy.enableBody = true
