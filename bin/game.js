@@ -97,11 +97,19 @@ var MyGame;
             this.objects.create(600, this.world.height - 80, 'item');
             this.player = new MyGame.Player(this.game, 130, 284);
             this.game.physics.arcade.enable(this.player);
+            this.enemy = this.add.group();
+            this.enemy.enableBody = true;
+            this.enemy = this.enemy.create(260, 360, 'eye');
+            this.game.physics.arcade.enable(this.enemy);
+            this.player = new MyGame.Player(this.game, 130, 284);
+            this.game.physics.arcade.enable(this.player);
             this.game.camera.follow(this.player);
             console.log("level started");
         };
         Level1.prototype.update = function () {
             this.physics.arcade.collide(this.player, this.platforms);
+            this.physics.arcade.collide(this.player, this.platforms);
+            this.physics.arcade.collide(this.player, this.enemy);
         };
         return Level1;
     }(Phaser.State));
@@ -183,6 +191,7 @@ var MyGame;
             this.load.image('ground', 'assets/platform.png');
             this.load.image('item', 'assets/artPiece.png');
             this.load.image('platformTile', 'assets/platformTile');
+            this.load.image('eye', 'assets/eye.png');
             this.load.spritesheet('dude', 'assets/dude.png', 32, 48, 9);
         };
         Preloader.prototype.create = function () {
