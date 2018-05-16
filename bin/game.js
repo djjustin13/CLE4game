@@ -61,7 +61,7 @@ var MyGame;
     var Game = (function (_super) {
         __extends(Game, _super);
         function Game() {
-            var _this = _super.call(this, window.innerWidth - 100, 600, Phaser.AUTO, 'content', null) || this;
+            var _this = _super.call(this, 1020, 600, Phaser.AUTO, 'content', null) || this;
             _this.state.add('Boot', MyGame.Boot, false);
             _this.state.add('Preloader', MyGame.Preloader, false);
             _this.state.add('MainMenu', MyGame.MainMenu, false);
@@ -123,8 +123,15 @@ var MyGame;
             return _super !== null && _super.apply(this, arguments) || this;
         }
         MainMenu.prototype.create = function () {
+            var _this = this;
+            this.background = this.add.sprite(0, 0, 'startBackground');
+            var title = this.add.sprite(this.world.centerX, 50, 'title');
+            title.anchor.setTo(0.5, 0);
+            var button = this.add.sprite(this.world.centerX, this.world.centerY, 'startButton');
+            button.anchor.setTo(0.5, 0);
+            button.inputEnabled = true;
+            button.events.onInputDown.add(function () { return _this.startGame(); });
             console.log("menu state");
-            this.startGame();
         };
         MainMenu.prototype.startGame = function () {
             this.game.state.start('Level1', true, false);
@@ -187,6 +194,9 @@ var MyGame;
             return _this;
         }
         Preloader.prototype.preload = function () {
+            this.load.image('startBackground', 'assets/startBackground.jpg');
+            this.load.image('startButton', 'assets/startButton.png');
+            this.load.image('title', 'assets/title.png');
             this.load.image('level1', 'assets/bg.jpg');
             this.load.image('bgTile', 'assets/bgTile.jpg');
             this.load.image('ground', 'assets/platform.png');

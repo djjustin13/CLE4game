@@ -4,7 +4,7 @@ module MyGame {
 
 		constructor() {
 
-			super(window.innerWidth-100, 600, Phaser.AUTO, 'content', null);
+			super(1020, 600, Phaser.AUTO, 'content', null);
 
 			this.state.add('Boot', Boot, false);
 			this.state.add('Preloader', Preloader, false);

@@ -7,7 +7,12 @@ module MyGame {
 		ready: boolean = false;
 
 		preload() {
-			//Load all sprites
+			//Load menu items
+			this.load.image('startBackground', 'assets/startBackground.jpg')
+			this.load.image('startButton', 'assets/startButton.png')
+			this.load.image('title', 'assets/title.png')
+
+			//Load items
 			this.load.image('level1', 'assets/bg.jpg')
 			this.load.image('bgTile', 'assets/bgTile.jpg')
 			this.load.image('ground', 'assets/platform.png')
