@@ -45,13 +45,24 @@ module MyGame {
 			this.game.physics.arcade.enable(this.player);
 
 			this.game.camera.follow(this.player)
-			console.log("level started")
+			
+
+			
 		}
 
 		update(){
+
 			this.physics.arcade.collide(this.player, this.platforms)
 			this.physics.arcade.collide(this.player, this.ground)
 			this.physics.arcade.collide(this.player, this.enemy)
+
+			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
+				this.resetLevel()
+			}
+		}
+
+		resetLevel(){
+			this.game.state.start('Level1', true, false);
 		}
 	}
 

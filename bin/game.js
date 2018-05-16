@@ -104,12 +104,17 @@ var MyGame;
             this.player = new MyGame.Player(this.game, 30, 284);
             this.game.physics.arcade.enable(this.player);
             this.game.camera.follow(this.player);
-            console.log("level started");
         };
         Level1.prototype.update = function () {
             this.physics.arcade.collide(this.player, this.platforms);
             this.physics.arcade.collide(this.player, this.ground);
             this.physics.arcade.collide(this.player, this.enemy);
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)) {
+                this.resetLevel();
+            }
+        };
+        Level1.prototype.resetLevel = function () {
+            this.game.state.start('Level1', true, false);
         };
         return Level1;
     }(Phaser.State));
