@@ -1,4 +1,5 @@
 module myGame {
+
     export class Enemy extends Phaser.Sprite {
         
         constructor(game: Phaser.Game, x: number, y: number) {
@@ -6,6 +7,7 @@ module myGame {
             super(game, x, y, 'enemy', 0); // Name
 
             this.game.physics.arcade.enableBody(this)
+            this.body.collideWorldBounds=true;
 
             this.anchor.setTo(0.5, 0);
 
@@ -15,11 +17,10 @@ module myGame {
             game.add.existing(this);
         }
 
-        update(){
-            
-            // this.body.velocity.x = 0;
-            // this.body.bounce.y = 0.2;
-            // this.body.gravity.y = 300;
+        update(){            
+            this.body.velocity.x = 0;
+            this.body.bounce.y = 0.2;
+            this.body.gravity.y = 300;
         }
     }
 }
