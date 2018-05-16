@@ -24,7 +24,7 @@ module MyGame {
             this.body.gravity.y = 300;
 
 
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.A) || this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
 
                 this.body.velocity.x = -150
                 this.animations.play('left')
@@ -33,7 +33,7 @@ module MyGame {
                     this.scale.x = -1
                 }
             }
-            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D) || this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
 
                 this.body.velocity.x = 150;
                 this.animations.play('right')
@@ -45,9 +45,9 @@ module MyGame {
             else {
                 this.animations.stop()
             }
-
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP) && this.body.touching.down){
-                this.body.velocity.y = -350
+            
+            if ((this.game.input.keyboard.isDown(Phaser.Keyboard.W) || this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) && this.body.touching.down){
+                this.body.velocity.y = -225
             }
 
         }
