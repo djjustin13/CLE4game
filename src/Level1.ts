@@ -6,12 +6,18 @@ module MyGame {
 		ledge: Phaser.Sprite
 		player: MyGame.Player
 		platforms: Phaser.Group
+<<<<<<< HEAD
 		objects: Phaser.Group
+=======
+		enemy: Phaser.Group
+
+>>>>>>> b57af236d57585df350ae3996d2c728cec760469
 
 		create() {
 			this.game.world.setBounds(0, 0, 6000, 600);
 			this.background = this.add.tileSprite(0, 0, this.world.width, 600, 'bgTile')
 
+			// Creation of platforms: ground, platforms, ledges e.d.
 			this.platforms = this.add.group()
 			this.platforms.enableBody = true
 
@@ -25,18 +31,36 @@ module MyGame {
 			this.ledge = this.platforms.create(-150, 250, 'ground')
 			this.ledge.body.immovable = true
 
+<<<<<<< HEAD
 			this.objects = this.add.group()
 			this.objects.create(600 ,this.world.height-80, 'item')
 
 			this.player = new Player(this.game, 130, 284)
 			this.game.physics.arcade.enable(this.player)
+=======
+			// Creation of Enemies
+			this.enemy = this.add.group()
+			this.enemy.enableBody = true
+
+			this.enemy = this.enemy.create(260, 360, 'eye');
+			this.game.physics.arcade.enable(this.enemy);
+
+			// Creation of the player
+			this.player = new Player(this.game, 130, 284);
+			this.game.physics.arcade.enable(this.player);
+>>>>>>> b57af236d57585df350ae3996d2c728cec760469
 
 			this.game.camera.follow(this.player)
 			console.log("level started")
 		}
 
 		update(){
+<<<<<<< HEAD
 			this.physics.arcade.collide(this.player, this.platforms)
+=======
+			this.physics.arcade.collide(this.player, this.platforms);
+			this.physics.arcade.collide(this.player, this.enemy);
+>>>>>>> b57af236d57585df350ae3996d2c728cec760469
 		}
 	}
 

@@ -39,6 +39,23 @@ var MyGame;
     }(Phaser.State));
     MyGame.Boot = Boot;
 })(MyGame || (MyGame = {}));
+var myGame;
+(function (myGame) {
+    var Enemy = (function (_super) {
+        __extends(Enemy, _super);
+        function Enemy(game, x, y) {
+            var _this = _super.call(this, game, x, y, 'enemy', 0) || this;
+            _this.game.physics.arcade.enableBody(_this);
+            _this.anchor.setTo(0.5, 0);
+            game.add.existing(_this);
+            return _this;
+        }
+        Enemy.prototype.update = function () {
+        };
+        return Enemy;
+    }(Phaser.Sprite));
+    myGame.Enemy = Enemy;
+})(myGame || (myGame = {}));
 var MyGame;
 (function (MyGame) {
     var Game = (function (_super) {
@@ -126,14 +143,14 @@ var MyGame;
             this.body.velocity.x = 0;
             this.body.bounce.y = 0.2;
             this.body.gravity.y = 400;
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.A) || this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
                 this.body.velocity.x = -150;
                 this.animations.play('left');
                 if (this.scale.x == 1) {
                     this.scale.x = -1;
                 }
             }
-            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D) || this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
                 this.body.velocity.x = 150;
                 this.animations.play('right');
                 if (this.scale.x == -1) {
@@ -143,8 +160,8 @@ var MyGame;
             else {
                 this.animations.stop();
             }
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP) && this.body.touching.down) {
-                this.body.velocity.y = -350;
+            if ((this.game.input.keyboard.isDown(Phaser.Keyboard.W) || this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) && this.body.touching.down) {
+                this.body.velocity.y = -225;
             }
         };
         return Player;
