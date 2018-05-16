@@ -8,6 +8,28 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var myGame;
+(function (myGame) {
+    var ArtPiece = (function (_super) {
+        __extends(ArtPiece, _super);
+        function ArtPiece(game, x, y) {
+            var _this = _super.call(this, game, x, y, 'artPiece', 0) || this;
+            _this.game.physics.arcade.enableBody(_this);
+            _this.body.collideWorldBounds = true;
+            _this.anchor.setTo(0.5, 0);
+            game.add.existing(_this);
+            return _this;
+        }
+        ArtPiece.prototype.update = function () {
+            this.body.velocity.y = -225;
+            this.body.velocity.x = 0;
+            this.body.bounce.y = 1.0;
+            this.body.gravity.y = 400;
+        };
+        return ArtPiece;
+    }(Phaser.Sprite));
+    myGame.ArtPiece = ArtPiece;
+})(myGame || (myGame = {}));
 var MyGame;
 (function (MyGame) {
     var Boot = (function (_super) {
@@ -46,11 +68,15 @@ var myGame;
         function Enemy(game, x, y) {
             var _this = _super.call(this, game, x, y, 'enemy', 0) || this;
             _this.game.physics.arcade.enableBody(_this);
+            _this.body.collideWorldBounds = true;
             _this.anchor.setTo(0.5, 0);
             game.add.existing(_this);
             return _this;
         }
         Enemy.prototype.update = function () {
+            this.body.velocity.x = 0;
+            this.body.bounce.y = 0.2;
+            this.body.gravity.y = 300;
         };
         return Enemy;
     }(Phaser.Sprite));
