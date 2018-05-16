@@ -4,9 +4,10 @@ module MyGame {
 
         constructor(game: Phaser.Game, x: number, y: number) {
 
-            super(game, x, y, 'dude', 0); // Name
+            super(game, x, y, 'dude', 0);
 
             this.game.physics.arcade.enableBody(this)
+            this.body.collideWorldBounds=true;
 
             this.anchor.setTo(0.5, 0);
 
@@ -18,10 +19,9 @@ module MyGame {
         }
 
         update() {
-            
-            this.body.velocity.x = 0;
-            this.body.bounce.y = 0.2;
-            this.body.gravity.y = 300;
+            this.body.velocity.x = 0
+            this.body.bounce.y = 0.2
+            this.body.gravity.y = 400
 
 
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {

@@ -44,7 +44,7 @@ var MyGame;
     var Game = (function (_super) {
         __extends(Game, _super);
         function Game() {
-            var _this = _super.call(this, 800, 600, Phaser.AUTO, 'content', null) || this;
+            var _this = _super.call(this, window.innerWidth - 100, 600, Phaser.AUTO, 'content', null) || this;
             _this.state.add('Boot', MyGame.Boot, false);
             _this.state.add('Preloader', MyGame.Preloader, false);
             _this.state.add('MainMenu', MyGame.MainMenu, false);
@@ -65,18 +65,19 @@ var MyGame;
         }
         Level1.prototype.create = function () {
             this.game.world.setBounds(0, 0, 6000, 600);
-            this.background = this.add.sprite(0, 0, 'level1');
-            this.background.width = this.game.width;
-            this.background.height = this.game.height;
+            this.background = this.add.tileSprite(0, 0, this.world.width, 600, 'bgTile');
             this.platforms = this.add.group();
             this.platforms.enableBody = true;
-            this.ground = this.platforms.create(0, this.world.height - 64, 'ground');
+            this.ground = this.platforms.create(0, this.world.height - 32, 'ground');
             this.ground.body.immovable = true;
-            this.ground.scale.setTo(2, 2);
+            this.ground.width = this.world.height;
+            this.ground.scale.x = 100;
             this.ledge = this.platforms.create(400, 400, 'ground');
             this.ledge.body.immovable = true;
             this.ledge = this.platforms.create(-150, 250, 'ground');
             this.ledge.body.immovable = true;
+            this.objects = this.add.group();
+            this.objects.create(600, this.world.height - 80, 'item');
             this.player = new MyGame.Player(this.game, 130, 284);
             this.game.physics.arcade.enable(this.player);
             this.game.camera.follow(this.player);
@@ -114,6 +115,7 @@ var MyGame;
         function Player(game, x, y) {
             var _this = _super.call(this, game, x, y, 'dude', 0) || this;
             _this.game.physics.arcade.enableBody(_this);
+            _this.body.collideWorldBounds = true;
             _this.anchor.setTo(0.5, 0);
             _this.animations.add('right', [5, 6, 7, 8], 10, true);
             _this.animations.add('left', [5, 6, 7, 8], 10, true);
@@ -123,7 +125,7 @@ var MyGame;
         Player.prototype.update = function () {
             this.body.velocity.x = 0;
             this.body.bounce.y = 0.2;
-            this.body.gravity.y = 300;
+            this.body.gravity.y = 400;
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
                 this.body.velocity.x = -150;
                 this.animations.play('left');
@@ -160,7 +162,10 @@ var MyGame;
         }
         Preloader.prototype.preload = function () {
             this.load.image('level1', 'assets/bg.jpg');
+            this.load.image('bgTile', 'assets/bgTile.jpg');
             this.load.image('ground', 'assets/platform.png');
+            this.load.image('item', 'assets/artPiece.png');
+            this.load.image('platformTile', 'assets/platformTile');
             this.load.spritesheet('dude', 'assets/dude.png', 32, 48, 9);
         };
         Preloader.prototype.create = function () {
