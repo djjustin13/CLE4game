@@ -3,7 +3,7 @@ module MyGame {
 	export class Game extends Phaser.Game {
 
 		constructor() {
-
+			
 			super(1020, 600, Phaser.AUTO, 'content', null);
 
 			this.state.add('Boot', Boot, false);

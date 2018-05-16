@@ -11,6 +11,7 @@ module MyGame{
             super(game, x, y, 'dude', 0);
 
             this.game.physics.arcade.enableBody(this)
+            this.body.collideWorldBounds=true;
 
             this.anchor.setTo(0.5, 0);
 
