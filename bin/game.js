@@ -153,10 +153,8 @@ var MyGame;
                 this.artPiece.create(250 + 100 * i, this.world.height - 90, 'artPiece');
             }
             this.game.physics.arcade.enable(this.artPiece);
-            this.enemy = this.add.group();
-            this.enemy.enableBody = true;
-            this.enemy = this.enemy.create(260, 360, 'eye');
-            this.game.physics.arcade.enable(this.enemy);
+            this.enemys = this.add.group();
+            var e = this.enemys.add(new MyGame.Enemy(this.game, 300, 200));
             this.player = new MyGame.Player(this.game, 130, 284);
             this.game.camera.follow(this.player);
         };
@@ -164,7 +162,9 @@ var MyGame;
             var _this = this;
             this.physics.arcade.collide(this.player, this.platforms);
             this.physics.arcade.collide(this.player, this.ground);
-            this.physics.arcade.collide(this.player, this.enemy);
+            this.physics.arcade.collide(this.player, this.enemys);
+            this.physics.arcade.collide(this.enemys, this.platforms);
+            this.physics.arcade.collide(this.enemys, this.ground);
             this.physics.arcade.collide(this.platforms, this.artPiece);
             this.physics.arcade.overlap(this.player, this.artPiece, function () { return _this.collectArtPiece(); });
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)) {
