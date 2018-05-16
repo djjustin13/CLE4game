@@ -2,7 +2,7 @@ module MyGame {
 
 	export class Level1 extends Phaser.State {
 		background: Phaser.TileSprite
-		ground: Phaser.Sprite
+		ground: Phaser.TileSprite
 		ledge: Phaser.Sprite
 		player: MyGame.Player
 		platforms: Phaser.Group
@@ -12,17 +12,18 @@ module MyGame {
 
 		create() {
 			let h = this.game.world.height
-			this.game.world.setBounds(0, 0, 6000, 600);
+			this.game.world.setBounds(0, 0, 6000, 600)
 			this.background = this.add.tileSprite(0, 0, this.world.width, 600, 'bgTile')
 
 			// Creation of platforms: ground, platforms, ledges e.d.
-			this.platforms = this.add.group()
+			this.platforms = this.game.add.physicsGroup()
 			this.platforms.enableBody = true
-
-			this.ground = this.platforms.create(0, h - 32, 'ground')
-			this.ground.body.immovable = true
-			this.ground.width = this.world.height
-			this.ground.scale.x = 100
+			
+			this.ground = this.add.tileSprite(0, h-32, this.world.width, 32, 'platformTile')
+			this.game.physics.arcade.enableBody(this.ground)
+			this.ground.body.collideWorldBounds = true;
+			this.ground.body.immovable = true;
+			this.ground.body.allowGravity = false;
 
 			this.ledge = this.platforms.create(400, h-120, 'ground')
 			this.ledge.body.immovable = true
@@ -49,8 +50,8 @@ module MyGame {
 
 		update(){
 			this.physics.arcade.collide(this.player, this.platforms)
-			this.physics.arcade.collide(this.player, this.platforms);
-			this.physics.arcade.collide(this.player, this.enemy);
+			this.physics.arcade.collide(this.player, this.ground)
+			this.physics.arcade.collide(this.player, this.enemy)
 		}
 	}
 

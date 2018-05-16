@@ -13,6 +13,7 @@ module MyGame {
 
             this.animations.add('right', [5, 6, 7, 8], 10, true)
             this.animations.add('left', [5, 6, 7, 8], 10, true)
+            this.animations.frame = 5
 
             game.add.existing(this);
 
