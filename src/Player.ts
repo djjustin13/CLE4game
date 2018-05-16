@@ -21,7 +21,7 @@ module MyGame {
         update() {
             this.body.velocity.x = 0
             this.body.bounce.y = 0.2
-            this.body.gravity.y = 400
+            this.body.gravity.y = 350
 
 
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.A) || this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
@@ -47,7 +47,7 @@ module MyGame {
             }
             
             if ((this.game.input.keyboard.isDown(Phaser.Keyboard.W) || this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) && this.body.touching.down){
-                this.body.velocity.y = -225
+                this.body.velocity.y = -250
             }
 
         }

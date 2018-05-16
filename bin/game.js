@@ -81,25 +81,26 @@ var MyGame;
             return _super !== null && _super.apply(this, arguments) || this;
         }
         Level1.prototype.create = function () {
+            var h = this.game.world.height;
             this.game.world.setBounds(0, 0, 6000, 600);
             this.background = this.add.tileSprite(0, 0, this.world.width, 600, 'bgTile');
             this.platforms = this.add.group();
             this.platforms.enableBody = true;
-            this.ground = this.platforms.create(0, this.world.height - 32, 'ground');
+            this.ground = this.platforms.create(0, h - 32, 'ground');
             this.ground.body.immovable = true;
             this.ground.width = this.world.height;
             this.ground.scale.x = 100;
-            this.ledge = this.platforms.create(400, 400, 'ground');
+            this.ledge = this.platforms.create(400, h - 120, 'ground');
             this.ledge.body.immovable = true;
-            this.ledge = this.platforms.create(-150, 250, 'ground');
+            this.ledge = this.platforms.create(0, 400, 'ground');
             this.ledge.body.immovable = true;
             this.objects = this.add.group();
-            this.objects.create(600, this.world.height - 80, 'item');
+            this.objects.create(600, h - 80, 'item');
             this.enemy = this.add.group();
             this.enemy.enableBody = true;
             this.enemy = this.enemy.create(260, 360, 'eye');
             this.game.physics.arcade.enable(this.enemy);
-            this.player = new MyGame.Player(this.game, 130, 284);
+            this.player = new MyGame.Player(this.game, 30, 284);
             this.game.physics.arcade.enable(this.player);
             this.game.camera.follow(this.player);
             console.log("level started");
@@ -148,7 +149,7 @@ var MyGame;
         Player.prototype.update = function () {
             this.body.velocity.x = 0;
             this.body.bounce.y = 0.2;
-            this.body.gravity.y = 400;
+            this.body.gravity.y = 350;
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.A) || this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
                 this.body.velocity.x = -150;
                 this.animations.play('left');
@@ -167,7 +168,7 @@ var MyGame;
                 this.animations.stop();
             }
             if ((this.game.input.keyboard.isDown(Phaser.Keyboard.W) || this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) && this.body.touching.down) {
-                this.body.velocity.y = -225;
+                this.body.velocity.y = -250;
             }
         };
         return Player;
