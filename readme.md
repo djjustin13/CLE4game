@@ -1,4 +1,4 @@
-# Artistieke `Kat`astrophe
+# Artistieke **Kat**astrophe
 ### CLE4 educatieve game
 
 ## Omschrijving: 
