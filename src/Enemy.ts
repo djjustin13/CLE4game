@@ -1,12 +1,4 @@
-<<<<<<< HEAD
 module MyGame{
-=======
-module myGame {
-
-    export class Enemy extends Phaser.Sprite {
-        
-        constructor(game: Phaser.Game, x: number, y: number) {
->>>>>>> e205f4cfe17d69bddb9d45e0230b394f95612d48
 
     export class Enemy extends Phaser.Sprite{
 
@@ -34,7 +26,6 @@ module myGame {
             this.body.velocity.x = 100;
         }
 
-<<<<<<< HEAD
         update(){
             this.body.bounce.y = 0.0;
             this.body.gravity.y = 300;
@@ -62,12 +53,6 @@ module myGame {
 
                     break;
             }
-=======
-        update(){            
-            this.body.velocity.x = 0;
-            this.body.bounce.y = 0.2;
-            this.body.gravity.y = 300;
->>>>>>> e205f4cfe17d69bddb9d45e0230b394f95612d48
         }
     }
 }

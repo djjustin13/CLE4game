@@ -61,27 +61,53 @@ var MyGame;
     }(Phaser.State));
     MyGame.Boot = Boot;
 })(MyGame || (MyGame = {}));
-var myGame;
-(function (myGame) {
+var MyGame;
+(function (MyGame) {
     var Enemy = (function (_super) {
         __extends(Enemy, _super);
         function Enemy(game, x, y) {
-            var _this = _super.call(this, game, x, y, 'enemy', 0) || this;
+            var _this = _super.call(this, game, x, y, 'dude', 0) || this;
             _this.game.physics.arcade.enableBody(_this);
             _this.body.collideWorldBounds = true;
             _this.anchor.setTo(0.5, 0);
+            _this.animations.add('right', [5, 6, 7, 8], 10, true);
+            _this.animations.add('left', [5, 6, 7, 8], 10, true);
             game.add.existing(_this);
+            _this.enemyState = 0;
+            _this.timer = 0;
+            _this.facing = 1;
+            _this.body.velocity.x = 100;
             return _this;
         }
         Enemy.prototype.update = function () {
-            this.body.velocity.x = 0;
-            this.body.bounce.y = 0.2;
+            this.body.bounce.y = 0.0;
             this.body.gravity.y = 300;
+            this.scale.x = this.facing;
+            switch (this.enemyState) {
+                case 0:
+                    this.timer++;
+                    if (this.timer > 100) {
+                        this.timer = 0;
+                        if (this.facing == 1) {
+                            this.facing = -1;
+                            this.body.velocity.x = -100;
+                            this.animations.stop();
+                            this.animations.play('left');
+                        }
+                        else {
+                            this.facing = 1;
+                            this.body.velocity.x = 100;
+                            this.animations.stop();
+                            this.animations.play('right');
+                        }
+                    }
+                    break;
+            }
         };
         return Enemy;
     }(Phaser.Sprite));
-    myGame.Enemy = Enemy;
-})(myGame || (myGame = {}));
+    MyGame.Enemy = Enemy;
+})(MyGame || (MyGame = {}));
 var MyGame;
 (function (MyGame) {
     var Game = (function (_super) {
