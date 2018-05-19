@@ -6,7 +6,7 @@ module MyGame {
 		ledge: Phaser.Sprite
 		player: MyGame.Player
 		platforms: Phaser.Group
-		artPiece: Phaser.Group
+		artPieces: Phaser.Group
 		enemys: Phaser.Group
 
 
@@ -31,13 +31,11 @@ module MyGame {
 			this.ledge.body.immovable = true
 
 			// Creation of Puzzle pieces
-			this.artPiece = this.add.group()
-			this.artPiece.enableBody = true
+			this.artPieces = this.add.group()
+			this.artPieces.enableBody = true
 			for (var i = 0; i < 4; i++) {
-				this.artPiece.create(250+100*i, this.world.height-90, 'artPiece')
+				let artPiece = this.artPieces.add(new ArtPiece(this.game, 250*i+1, 100))
 			}
-			this.game.physics.arcade.enable(this.artPiece);
-
 
 			// Creation of Enemies
 			this.enemys = this.add.group()
@@ -54,9 +52,9 @@ module MyGame {
 			this.physics.arcade.collide(this.player, this.enemys)
 			this.physics.arcade.collide(this.enemys, this.platforms)
 			this.physics.arcade.collide(this.enemys, this.ground)
-			this.physics.arcade.collide(this.platforms, this.artPiece)
-			this.physics.arcade.overlap(this.player, this.artPiece, () => this.collectArtPiece())
-
+			this.physics.arcade.collide(this.platforms, this.artPieces)
+			this.physics.arcade.collide(this.ground, this.artPieces)
+			this.physics.arcade.overlap(this.player, this.artPieces, this.collectArtPiece, null, this);
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
 				this.resetLevel()
 			}
@@ -67,8 +65,8 @@ module MyGame {
 			this.game.state.start('Level1', true, false);
 		}
 
-		collectArtPiece(){
-			this.artPiece.kill();
+		collectArtPiece(player:Player, artPiece:ArtPiece){
+			artPiece.kill()
 		}
 	}
 

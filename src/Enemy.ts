@@ -43,7 +43,7 @@ module MyGame{
                             this.animations.play('left');
                         }
                         //if(this.facing == 0){
-                            else{
+                        else{
                             this.facing = 1;
                             this.body.velocity.x = 100;
                             this.animations.stop();

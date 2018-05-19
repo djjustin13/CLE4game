@@ -1,4 +1,4 @@
-module myGame {
+module MyGame {
 
     export class ArtPiece extends Phaser.Sprite {
 
@@ -15,10 +15,8 @@ module myGame {
         }
 
         update() {
-            this.body.velocity.y = -225
-            this.body.velocity.x = 0
-            this.body.bounce.y = 1.0
-            this.body.gravity.y = 400
+            this.body.bounce.y = 0.0;
+            this.body.gravity.y = 600;
         }
     }
 }

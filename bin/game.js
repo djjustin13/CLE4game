@@ -8,8 +8,8 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var myGame;
-(function (myGame) {
+var MyGame;
+(function (MyGame) {
     var ArtPiece = (function (_super) {
         __extends(ArtPiece, _super);
         function ArtPiece(game, x, y) {
@@ -21,15 +21,13 @@ var myGame;
             return _this;
         }
         ArtPiece.prototype.update = function () {
-            this.body.velocity.y = -225;
-            this.body.velocity.x = 0;
-            this.body.bounce.y = 1.0;
-            this.body.gravity.y = 400;
+            this.body.bounce.y = 0.0;
+            this.body.gravity.y = 600;
         };
         return ArtPiece;
     }(Phaser.Sprite));
-    myGame.ArtPiece = ArtPiece;
-})(myGame || (myGame = {}));
+    MyGame.ArtPiece = ArtPiece;
+})(MyGame || (MyGame = {}));
 var MyGame;
 (function (MyGame) {
     var Boot = (function (_super) {
@@ -147,26 +145,25 @@ var MyGame;
             this.ledge.body.immovable = true;
             this.ledge = this.platforms.create(0, 400, 'ground');
             this.ledge.body.immovable = true;
-            this.artPiece = this.add.group();
-            this.artPiece.enableBody = true;
+            this.artPieces = this.add.group();
+            this.artPieces.enableBody = true;
             for (var i = 0; i < 4; i++) {
-                this.artPiece.create(250 + 100 * i, this.world.height - 90, 'artPiece');
+                var artPiece = this.artPieces.add(new MyGame.ArtPiece(this.game, 250 * i + 1, 100));
             }
-            this.game.physics.arcade.enable(this.artPiece);
             this.enemys = this.add.group();
             var e = this.enemys.add(new MyGame.Enemy(this.game, 300, 200));
             this.player = new MyGame.Player(this.game, 130, 284);
             this.game.camera.follow(this.player);
         };
         Level1.prototype.update = function () {
-            var _this = this;
             this.physics.arcade.collide(this.player, this.platforms);
             this.physics.arcade.collide(this.player, this.ground);
             this.physics.arcade.collide(this.player, this.enemys);
             this.physics.arcade.collide(this.enemys, this.platforms);
             this.physics.arcade.collide(this.enemys, this.ground);
-            this.physics.arcade.collide(this.platforms, this.artPiece);
-            this.physics.arcade.overlap(this.player, this.artPiece, function () { return _this.collectArtPiece(); });
+            this.physics.arcade.collide(this.platforms, this.artPieces);
+            this.physics.arcade.collide(this.ground, this.artPieces);
+            this.physics.arcade.overlap(this.player, this.artPieces, this.collectArtPiece, null, this);
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)) {
                 this.resetLevel();
             }
@@ -174,8 +171,8 @@ var MyGame;
         Level1.prototype.resetLevel = function () {
             this.game.state.start('Level1', true, false);
         };
-        Level1.prototype.collectArtPiece = function () {
-            this.artPiece.kill();
+        Level1.prototype.collectArtPiece = function (player, artPiece) {
+            artPiece.kill();
         };
         return Level1;
     }(Phaser.State));
