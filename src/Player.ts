@@ -1,10 +1,14 @@
 module MyGame {
 
     export class Player extends Phaser.Sprite {
+        private startX:number
+        private startY:number
 
         constructor(game: Phaser.Game, x: number, y: number) {
-
             super(game, x, y, 'dude', 0);
+
+            this.startX = x
+            this.startY = y
 
             this.game.physics.arcade.enableBody(this)
             this.body.collideWorldBounds=true;
@@ -51,6 +55,11 @@ module MyGame {
                 this.body.velocity.y = -250
             }
 
+        }
+
+        spawn(){
+            this.x = this.startX
+            this.y = this.startY
         }
 
     }

@@ -49,7 +49,7 @@ module MyGame {
 		update(){
 			this.physics.arcade.collide(this.player, this.platforms)
 			this.physics.arcade.collide(this.player, this.ground)
-			this.physics.arcade.collide(this.player, this.enemys)
+			this.physics.arcade.overlap(this.player, this.enemys, () => this.player.spawn(), null, this);
 			this.physics.arcade.collide(this.enemys, this.platforms)
 			this.physics.arcade.collide(this.enemys, this.ground)
 			this.physics.arcade.collide(this.platforms, this.artPieces)

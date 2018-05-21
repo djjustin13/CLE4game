@@ -156,9 +156,10 @@ var MyGame;
             this.game.camera.follow(this.player);
         };
         Level1.prototype.update = function () {
+            var _this = this;
             this.physics.arcade.collide(this.player, this.platforms);
             this.physics.arcade.collide(this.player, this.ground);
-            this.physics.arcade.collide(this.player, this.enemys);
+            this.physics.arcade.overlap(this.player, this.enemys, function () { return _this.player.spawn(); }, null, this);
             this.physics.arcade.collide(this.enemys, this.platforms);
             this.physics.arcade.collide(this.enemys, this.ground);
             this.physics.arcade.collide(this.platforms, this.artPieces);
@@ -209,6 +210,8 @@ var MyGame;
         __extends(Player, _super);
         function Player(game, x, y) {
             var _this = _super.call(this, game, x, y, 'dude', 0) || this;
+            _this.startX = x;
+            _this.startY = y;
             _this.game.physics.arcade.enableBody(_this);
             _this.body.collideWorldBounds = true;
             _this.anchor.setTo(0.5, 0);
@@ -242,6 +245,10 @@ var MyGame;
             if ((this.game.input.keyboard.isDown(Phaser.Keyboard.W) || this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) && this.body.touching.down) {
                 this.body.velocity.y = -250;
             }
+        };
+        Player.prototype.spawn = function () {
+            this.x = this.startX;
+            this.y = this.startY;
         };
         return Player;
     }(Phaser.Sprite));
