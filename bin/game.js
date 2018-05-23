@@ -203,13 +203,20 @@ var MyGame;
         MainMenu.prototype.create = function () {
             var _this = this;
             this.background = this.add.sprite(0, 0, 'startBackground');
-            var title = this.add.sprite(this.world.centerX, 50, 'title');
-            title.anchor.setTo(0.5, 0);
-            var button = this.add.sprite(this.world.centerX, this.world.centerY, 'startButton');
-            button.anchor.setTo(0.5, 0);
-            button.inputEnabled = true;
-            button.events.onInputDown.add(function () { return _this.startGame(); });
+            this.button = this.add.sprite(this.world.centerX + 40, this.world.centerY - 130, 'startButton');
+            this.button.anchor.setTo(0.5, 0);
+            this.button.inputEnabled = true;
+            this.button.input.useHandCursor = true;
+            this.button.events.onInputDown.add(function () { return _this.startGame(); });
+            this.button.events.onInputOver.add(function () { return _this.hover(); });
+            this.button.events.onInputOut.add(function () { return _this.hoverOut(); });
             console.log("menu state");
+        };
+        MainMenu.prototype.hover = function () {
+            this.button.scale.setTo(1.05, 1.05);
+        };
+        MainMenu.prototype.hoverOut = function () {
+            this.button.scale.setTo(1, 1);
         };
         MainMenu.prototype.startGame = function () {
             this.game.state.start('Level1', true, false);
@@ -280,9 +287,7 @@ var MyGame;
         Preloader.prototype.preload = function () {
             this.load.image('startBackground', 'assets/startBackground.jpg');
             this.load.image('startButton', 'assets/startButton.png');
-            this.load.image('title', 'assets/title.png');
-            this.load.image('level1', 'assets/bg.jpg');
-            this.load.image('bgTile', 'assets/bgTile.jpg');
+            this.load.image('bgTile', 'assets/bgTile.png');
             this.load.image('ground', 'assets/platform.png');
             this.load.image('artPiece', 'assets/artPiece.png');
             this.load.image('platformTile', 'assets/platformTile.png');
@@ -303,6 +308,7 @@ var MyGame;
         __extends(EnemyEye, _super);
         function EnemyEye(game, x, y) {
             var _this = _super.call(this, game, x, y, 'eye', 0) || this;
+            _this.speed = 4;
             _this.game.physics.arcade.enableBody(_this);
             _this.body.collideWorldBounds = true;
             _this.anchor.setTo(0.5, 0);
@@ -347,24 +353,22 @@ var MyGame;
                     var pieceX = this.followX;
                     var pieceY = this.followY;
                     if (eyeX > pieceX) {
-                        this.body.position.x--;
+                        this.body.position.x -= this.speed;
                         console.log("left");
                     }
                     if (eyeY > pieceY) {
-                        this.body.position.y--;
+                        this.body.position.y -= this.speed;
                         console.log("up");
                     }
                     if (eyeX < pieceX) {
-                        this.body.position.x++;
+                        this.body.position.x += this.speed;
                         console.log("right");
                     }
                     if (eyeY < pieceY) {
-                        this.body.position.y++;
+                        this.body.position.x += this.speed;
                         console.log("down");
                     }
-                    if (eyeX - pieceX)
-                         <= 10 && (eyeX - pieceX) >= -10 && (eyeY - pieceY) <= 10 && (eyeY - pieceY) >= -10;
-                    {
+                    if ((eyeX - pieceX) < 10 && (eyeX - pieceX) > -10 && (eyeY - pieceY) < 10 && (eyeY - pieceY) > -10) {
                         this.enemyState = 0;
                         console.log("mine now");
                     }
