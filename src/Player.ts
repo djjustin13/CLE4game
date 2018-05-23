@@ -3,6 +3,7 @@ module MyGame {
     export class Player extends Phaser.Sprite {
         private startX:number
         private startY:number
+        private lifes:number = 9
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'dude', 0);
@@ -20,14 +21,12 @@ module MyGame {
             this.animations.frame = 5
 
             game.add.existing(this);
-
         }
 
         update() {
             this.body.velocity.x = 0
             this.body.bounce.y = 0.2
             this.body.gravity.y = 350
-
 
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.A) || this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
 
@@ -55,13 +54,20 @@ module MyGame {
                 this.body.velocity.y = -250
             }
 
+            if (this.lifes <= 0) {
+                this.gameOver();
+            }
         }
 
         spawn(){
             this.x = this.startX
             this.y = this.startY
+            this.lifes -= 1
+            console.log(this.lifes)
         }
 
+        gameOver() {
+            this.game.state.start('GameOver', true, false);
+        }
     }
-
 }
