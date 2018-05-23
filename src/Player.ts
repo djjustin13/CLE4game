@@ -63,7 +63,7 @@ module MyGame {
             this.x = this.startX
             this.y = this.startY
             this.lifes -= 1
-            console.log(this.lifes)
+            console.log(this.lifes + ' life(s) remaining..')
         }
 
         gameOver() {
