@@ -77,7 +77,6 @@ module MyGame{
                 break;
 
                 case 1: // Following
-                    console.log("follow")
 
                     let eyeX = this.body.position.x;
                     let eyeY = this.body.position.y;
@@ -98,16 +97,16 @@ module MyGame{
                     }
                     if (((eyeX-pieceX) < 10 && (eyeX-pieceX) > -10) && ((eyeY-pieceY) < 10 && (eyeY-pieceY) > -10)) {
                         this.enemyState = 0;
-                        console.log("mine now");
+                        console.log("eye arrived on location");
                     }
                 break;    
             }
         }
         follow(x:number, y:number){
             this.enemyState = 1;
-            console.log("state 1");
             this.followX = x
             this.followY = y
+            console.log("started following");
         }
     }
 }
