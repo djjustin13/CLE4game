@@ -8,6 +8,9 @@ module MyGame{
 
         followX:number
         followY:number
+
+        speed:number = 4
+
         constructor(game: Phaser.Game, x: number, y: number){
             
             super(game, x, y, 'eye', 0);
@@ -67,22 +70,22 @@ module MyGame{
                     let pieceY = this.followY;
 
                     if (eyeX > pieceX) {
-                        this.body.position.x--
+                        this.body.position.x-=this.speed
                         console.log("left")
                     }
                     if (eyeY > pieceY) {
-                        this.body.position.y--
+                        this.body.position.y-=this.speed
                         console.log("up")
                     }
                     if (eyeX < pieceX) {
-                        this.body.position.x++
+                        this.body.position.x+=this.speed
                         console.log("right");
                     }
                     if (eyeY < pieceY) {
-                        this.body.position.y++
+                        this.body.position.x+=this.speed
                         console.log("down")
                     }
-                    if (eyeX-pieceX) <= 10 && (eyeX-pieceX) >= -10 && (eyeY-pieceY) <= 10 && (eyeY-pieceY) >= -10 {
+                    if ((eyeX-pieceX) < 10 && (eyeX-pieceX) > -10 && (eyeY-pieceY) < 10 && (eyeY-pieceY) > -10) {
                         this.enemyState = 0;
                         console.log("mine now");
                     }
