@@ -11,6 +11,7 @@ module MyGame {
 		eye: MyGame.EnemyEye
 		timerSec:number = 0
 		timerMin:number = 0
+		endTile: Phaser.Sprite
 
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
@@ -54,6 +55,9 @@ module MyGame {
 			this.player = new Player(this.game, 130, 284);
 			this.game.camera.follow(this.player)
 
+			// Creation of end-tile
+			this.endTile = new EndTile(this.game, 1000, 550);
+
 			// Creation on UI
 			let ui:Phaser.Sprite = this.add.sprite(this.game.width, 0, 'uiBase');
 			ui.anchor.setTo(1, 0)
@@ -84,13 +88,13 @@ module MyGame {
 			this.physics.arcade.collide(this.platforms, this.artPieces)
 			this.physics.arcade.collide(this.ground, this.artPieces)
 			this.physics.arcade.overlap(this.player, this.artPieces, this.collectArtPiece, null, this);
+			this.physics.arcade.overlap(this.player, this.endTile, this.completeLevelCheck, null, this);
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
 				this.resetLevel()
 			}
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.completeLevel()
 			}
-
 		}
 
 		updateTimer(){
@@ -121,8 +125,17 @@ module MyGame {
 			this.game.state.start('Level1', true, false);
 		}
 
+		completeLevelCheck(){
+			if (this.artPieceScore == 4) {
+				this.completeLevel()
+				console.log("level complete, such amaze")
+			} else {
+				console.log("needs more pieces")
+			}
+		}
+
 		completeLevel(){
-			this.game.state.start('MainMenu', true, false);
+			this.game.state.start('LevelComplete', true, false);
 		}
 	
 		collectArtPiece(player:Player, artPiece:ArtPiece){
@@ -133,5 +146,4 @@ module MyGame {
 			
 		}
 	}
-
 } 
