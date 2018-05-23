@@ -9,6 +9,7 @@ module MyGame {
 		artPieces: Phaser.Group
 		enemys: Phaser.Group
 		eye: MyGame.EnemyEye
+		spike: MyGame.Spikes
 		timerSec:number = 0
 		timerMin:number = 0
 		endTile: Phaser.Sprite
@@ -37,6 +38,8 @@ module MyGame {
 			this.ledge.body.immovable = true
 			this.ledge = this.platforms.create(0, 400, 'ground')
 			this.ledge.body.immovable = true
+			
+			this.spike = new Spikes(this.game, 200, 200);
 
 			// Creation of Puzzle pieces
 			this.artPieces = this.add.group()
