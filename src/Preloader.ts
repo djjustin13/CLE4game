@@ -18,6 +18,8 @@ module MyGame {
 			this.load.image('platformTile', 'assets/platformTile.png')
 			this.load.image('eye', 'assets/eye.png')
 			this.load.spritesheet('dude', 'assets/dude.png', 32, 48, 9);
+
+			this.load.image('uiBase', 'assets/uiBase.png')
 			this.load.image('pedestal', 'assets/pedestal.png')
 
 			// Load level completion
