@@ -53,6 +53,7 @@ module MyGame {
 
 			// Creation of text
 			this.artPieceScoreDisplay = this.game.add.text(16, 16, '0/4');
+			this.artPieceScoreDisplay.x = this.game.width - 100
 		}
 
 		update(){
