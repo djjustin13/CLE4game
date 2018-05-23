@@ -3,7 +3,7 @@ module MyGame {
     export class Player extends Phaser.Sprite {
         private startX:number
         private startY:number
-        private lifes:number = 9
+        public lives:number = 9
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'dude', 0);
@@ -54,7 +54,7 @@ module MyGame {
                 this.body.velocity.y = -250
             }
 
-            if (this.lifes <= 0) {
+            if (this.lives <= 0) {
                 this.gameOver();
             }
         }
@@ -62,8 +62,8 @@ module MyGame {
         spawn(){
             this.x = this.startX
             this.y = this.startY
-            this.lifes -= 1
-            console.log(this.lifes + ' life(s) remaining..')
+            this.lives -= 1
+            console.log(this.lives)
         }
 
         gameOver() {
