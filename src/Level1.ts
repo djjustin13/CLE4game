@@ -143,7 +143,6 @@ module MyGame {
 			this.eye.follow(player.position.x, player.position.y)
 			this.artPieceScore += 1;
 			this.artPieceScoreDisplay.text = this.artPieceScore + '/4';
-			
 		}
 	}
 } 
