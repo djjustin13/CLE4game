@@ -128,7 +128,9 @@ var MyGame;
     var Level1 = (function (_super) {
         __extends(Level1, _super);
         function Level1() {
-            return _super !== null && _super.apply(this, arguments) || this;
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.artPieceScore = 0;
+            return _this;
         }
         Level1.prototype.create = function () {
             var h = this.game.world.height;
@@ -152,10 +154,10 @@ var MyGame;
             }
             this.enemys = this.add.group();
             var e = this.enemys.add(new MyGame.Enemy(this.game, 300, 200));
-            this.eye = this.add.group();
-            var eye = this.eye.add(new MyGame.EnemyEye(this.game, 400, 400));
+            this.eye = new MyGame.EnemyEye(this.game, 400, 400);
             this.player = new MyGame.Player(this.game, 130, 284);
             this.game.camera.follow(this.player);
+            this.artPieceScoreDisplay = this.game.add.text(16, 16, '0/4');
         };
         Level1.prototype.update = function () {
             var _this = this;
@@ -171,12 +173,21 @@ var MyGame;
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)) {
                 this.resetLevel();
             }
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)) {
+                this.completeLevel();
+            }
         };
         Level1.prototype.resetLevel = function () {
             this.game.state.start('Level1', true, false);
         };
+        Level1.prototype.completeLevel = function () {
+            this.game.state.start('MainMenu', true, false);
+        };
         Level1.prototype.collectArtPiece = function (player, artPiece) {
             artPiece.kill();
+            this.eye.follow(player.position.x, player.position.y);
+            this.artPieceScore += 1;
+            this.artPieceScoreDisplay.text = this.artPieceScore + '/4';
         };
         return Level1;
     }(Phaser.State));
@@ -300,7 +311,7 @@ var MyGame;
             _this.timer = 0;
             _this.facing = 1;
             _this.body.velocity.x = 0;
-            _this.body.velocity.y = -50;
+            _this.body.velocity.y = -25;
             return _this;
         }
         EnemyEye.prototype.update = function () {
@@ -315,22 +326,56 @@ var MyGame;
                         this.body.velocity.x = -25;
                     }
                     else if ((this.timer > 400) && (this.timer < 600)) {
-                        this.body.velocity.y = 50;
-                        this.body.velocity.x = 50;
+                        this.body.velocity.y = 25;
+                        this.body.velocity.x = 25;
                         this.facing == -1;
                     }
                     else if ((this.timer > 600) && (this.timer < 800)) {
                         this.body.velocity.y = 0;
-                        this.body.velocity.x = -50;
+                        this.body.velocity.x = -25;
                     }
                     else if (this.timer > 800) {
-                        this.body.velocity.y = -50;
+                        this.body.velocity.y = -25;
                         this.body.velocity.x = 25;
                         this.facing == 1;
                         this.timer = 0;
                     }
                     break;
+                case 1:
+                    var eyeX = this.body.position.x;
+                    var eyeY = this.body.position.y;
+                    var pieceX = this.followX;
+                    var pieceY = this.followY;
+                    if (eyeX > pieceX) {
+                        this.body.position.x--;
+                        console.log("left");
+                    }
+                    if (eyeY > pieceY) {
+                        this.body.position.y--;
+                        console.log("up");
+                    }
+                    if (eyeX < pieceX) {
+                        this.body.position.x++;
+                        console.log("right");
+                    }
+                    if (eyeY < pieceY) {
+                        this.body.position.y++;
+                        console.log("down");
+                    }
+                    if (eyeX - pieceX)
+                         <= 10 && (eyeX - pieceX) >= -10 && (eyeY - pieceY) <= 10 && (eyeY - pieceY) >= -10;
+                    {
+                        this.enemyState = 0;
+                        console.log("mine now");
+                    }
+                    break;
             }
+        };
+        EnemyEye.prototype.follow = function (x, y) {
+            this.enemyState = 1;
+            console.log("state 1");
+            this.followX = x;
+            this.followY = y;
         };
         return EnemyEye;
     }(Phaser.Sprite));

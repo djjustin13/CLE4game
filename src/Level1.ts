@@ -8,8 +8,10 @@ module MyGame {
 		platforms: Phaser.Group
 		artPieces: Phaser.Group
 		enemys: Phaser.Group
-		eye: Phaser.Group
+		eye: MyGame.EnemyEye
 
+		artPieceScore: number = 0
+		artPieceScoreDisplay: any
 
 		create() {
 			let h = this.game.world.height
@@ -40,15 +42,17 @@ module MyGame {
 
 			// Creation of Enemies
 			this.enemys = this.add.group()
-			let e = this.enemys.add(new Enemy(this.game, 300, 200))
+			let e = this.enemys.add(new Enemy(this.game, 300, 200));
 
 			// Creation of Eyes
-			this.eye = this.add.group()
-			let eye = this.eye.add(new EnemyEye(this.game, 400, 400))
+			this.eye = new EnemyEye(this.game, 400, 400);
 
 			// Creation of the player
 			this.player = new Player(this.game, 130, 284);
 			this.game.camera.follow(this.player)
+
+			// Creation of text
+			this.artPieceScoreDisplay = this.game.add.text(16, 16, '0/4');
 		}
 
 		update(){
@@ -64,6 +68,9 @@ module MyGame {
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
 				this.resetLevel()
 			}
+			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
+				this.completeLevel()
+			}
 
 		}
 		
@@ -71,8 +78,16 @@ module MyGame {
 			this.game.state.start('Level1', true, false);
 		}
 
+		completeLevel(){
+			this.game.state.start('MainMenu', true, false);
+		}
+	
 		collectArtPiece(player:Player, artPiece:ArtPiece){
 			artPiece.kill()
+			this.eye.follow(player.position.x, player.position.y)
+			this.artPieceScore += 1;
+			this.artPieceScoreDisplay.text = this.artPieceScore + '/4';
+			
 		}
 	}
 
