@@ -9,9 +9,12 @@ module MyGame {
 		artPieces: Phaser.Group
 		enemys: Phaser.Group
 		eye: MyGame.EnemyEye
+		timerSec:number = 0
+		timerMin:number = 0
 
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
+		timerDisplay: any
 
 		create() {
 			let h = this.game.world.height
@@ -51,9 +54,24 @@ module MyGame {
 			this.player = new Player(this.game, 130, 284);
 			this.game.camera.follow(this.player)
 
+			// Creation on UI
+			let ui:Phaser.Sprite = this.add.sprite(this.game.width, 0, 'uiBase');
+			ui.anchor.setTo(1, 0)
+			ui.fixedToCamera = true;
+
 			// Creation of text
-			this.artPieceScoreDisplay = this.game.add.text(16, 16, '0/4');
-			this.artPieceScoreDisplay.x = this.game.width - 100
+			let style = { font: "20px Arial", fill: "#ffffff" };
+
+			this.artPieceScoreDisplay = this.game.add.text(16, 16, '0/4', style);
+			this.artPieceScoreDisplay.x = this.game.width - 300
+			this.artPieceScoreDisplay.fixedToCamera = true;
+
+			this.timerDisplay = this.game.add.text(16, 16, "00:00", style);
+			this.timerDisplay.x = this.game.width - 210
+			this.timerDisplay.fixedToCamera = true;
+
+
+			this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
 		}
 
 		update(){
@@ -73,6 +91,30 @@ module MyGame {
 				this.completeLevel()
 			}
 
+		}
+
+		updateTimer(){
+			let secText:string = ""
+			let minText:string = ""
+			this.timerSec++
+			if (this.timerSec == 60){
+				this.timerSec = 0
+				this.timerMin++
+			}
+			if(this.timerSec < 10){
+				secText = "0"+this.timerSec
+			}else{
+				secText = String(this.timerSec)
+			}
+
+			if(this.timerMin < 10){
+				minText = "0"+this.timerMin
+			}
+			else{
+				minText = String(this.timerMin)
+			}
+			let timerText:string = minText+":"+secText
+			this.timerDisplay.text = timerText;
 		}
 		
 		resetLevel(){
