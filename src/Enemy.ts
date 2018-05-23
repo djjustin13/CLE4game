@@ -50,8 +50,7 @@ module MyGame{
                             this.animations.play('right');
                         }
                     }
-
-                    break;
+                break;
             }
         }
     }

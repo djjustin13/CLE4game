@@ -24,7 +24,8 @@ module MyGame {
 
 		create() {
 			console.log("preload state..")
-			this.game.state.start('MainMenu');
+			this.game.state.start(
+			'MainMenu');
 		}
 	}
 }
