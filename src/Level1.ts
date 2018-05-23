@@ -16,6 +16,7 @@ module MyGame {
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
 		timerDisplay: any
+		livesDisplay: any
 
 		create() {
 			let h = this.game.world.height
@@ -74,6 +75,10 @@ module MyGame {
 			this.timerDisplay.x = this.game.width - 210
 			this.timerDisplay.fixedToCamera = true;
 
+			this.livesDisplay = this.game.add.text(16, 16, String(this.player.lives), style);
+			this.livesDisplay.x = this.game.width - 90
+			this.livesDisplay.fixedToCamera = true;
+		
 
 			this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
 		}
@@ -89,6 +94,9 @@ module MyGame {
 			this.physics.arcade.collide(this.ground, this.artPieces)
 			this.physics.arcade.overlap(this.player, this.artPieces, this.collectArtPiece, null, this);
 			this.physics.arcade.overlap(this.player, this.endTile, this.completeLevelCheck, null, this);
+
+			this.livesDisplay.text = String(this.player.lives)
+
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
 				this.resetLevel()
 			}
