@@ -18,7 +18,7 @@ module MyGame{
             this.game.physics.arcade.enableBody(this)
             this.body.collideWorldBounds=true;
 
-            this.anchor.setTo(0.5, 0);
+            this.anchor.setTo(0.5, 0.5);
 
             // this.animations.add('right', [5, 6, 7, 8], 10, true)
             // this.animations.add('left', [5, 6, 7, 8], 10, true)
@@ -29,7 +29,7 @@ module MyGame{
             this.timer = 0;
             this.facing = 1;
             this.body.velocity.x = 0;
-            this.body.velocity.y = -25;
+            this.body.velocity.y = 0;
         }
 
         update(){
@@ -41,25 +41,38 @@ module MyGame{
 
                 case 0: // Idle
                     this.timer++;
-                    if ((this.timer > 200) && (this.timer < 400)){
+                    if (this.timer < 200) {
                         this.body.velocity.y = 0;
-                        this.body.velocity.x = -25;
-                    } else if ((this.timer > 400) && (this.timer < 600)){
-                        this.body.velocity.y = 25;
-                        this.body.velocity.x = 25;
+                        this.body.velocity.x = -40;
+
                         this.facing == -1;
+
+                    } else if ((this.timer > 200) && (this.timer < 400)){
+                        this.body.velocity.y = 40;
+                        this.body.velocity.x = 40;
+
                         // this.animations.stop();
                         // this.animations.play('left');
-                    } else if ((this.timer > 600) && (this.timer < 800)){
-                        this.body.velocity.y = 0;
-                        this.body.velocity.x = -25;
-                    } else if (this.timer > 800){
-                        this.body.velocity.y = -25;
-                        this.body.velocity.x = 25;
+
                         this.facing == 1;
-                        this.timer = 0;
+
+                    } else if ((this.timer > 400) && (this.timer < 600)){
+                        this.body.velocity.y = 0;
+                        this.body.velocity.x = -40;
+
+                        this.facing == -1;
+
+                    } else if ((this.timer > 600) && (this.timer < 800)){
+                        this.body.velocity.y = -40;
+                        this.body.velocity.x = 40;
+
                         // this.animations.stop();
                         // this.animations.play('right');
+
+                        this.facing == 1;
+
+                    } else if (this.timer >= 800) {
+                        this.timer = 0;
                     }
                 break;
 
@@ -72,16 +85,16 @@ module MyGame{
                     let pieceY = this.followY;
 
                     if (eyeX > pieceX) {
-                        this.body.position.x--
+                        this.body.position.x-=this.speed
                     }
                     if (eyeY > pieceY) {
-                        this.body.position.y--
+                        this.body.position.y-=this.speed
                     }
                     if (eyeX < pieceX) {
-                        this.body.position.x++
+                        this.body.position.x+=this.speed
                     }
                     if (eyeY < pieceY) {
-                        this.body.position.y++
+                        this.body.position.y+=this.speed
                     }
                     if (((eyeX-pieceX) < 10 && (eyeX-pieceX) > -10) && ((eyeY-pieceY) < 10 && (eyeY-pieceY) > -10)) {
                         this.enemyState = 0;
