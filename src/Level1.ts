@@ -8,6 +8,7 @@ module MyGame {
 		platforms: Phaser.Group
 		artPieces: Phaser.Group
 		enemys: Phaser.Group
+		eye: Phaser.Group
 
 
 		create() {
@@ -41,6 +42,10 @@ module MyGame {
 			this.enemys = this.add.group()
 			let e = this.enemys.add(new Enemy(this.game, 300, 200))
 
+			// Creation of Eyes
+			this.eye = this.add.group()
+			let eye = this.eye.add(new EnemyEye(this.game, 400, 400))
+
 			// Creation of the player
 			this.player = new Player(this.game, 130, 284);
 			this.game.camera.follow(this.player)
@@ -50,6 +55,7 @@ module MyGame {
 			this.physics.arcade.collide(this.player, this.platforms)
 			this.physics.arcade.collide(this.player, this.ground)
 			this.physics.arcade.overlap(this.player, this.enemys, () => this.player.spawn(), null, this);
+			this.physics.arcade.overlap(this.player, this.eye, () => this.player.spawn(), null, this);
 			this.physics.arcade.collide(this.enemys, this.platforms)
 			this.physics.arcade.collide(this.enemys, this.ground)
 			this.physics.arcade.collide(this.platforms, this.artPieces)

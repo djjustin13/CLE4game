@@ -152,6 +152,8 @@ var MyGame;
             }
             this.enemys = this.add.group();
             var e = this.enemys.add(new MyGame.Enemy(this.game, 300, 200));
+            this.eye = this.add.group();
+            var eye = this.eye.add(new MyGame.EnemyEye(this.game, 400, 400));
             this.player = new MyGame.Player(this.game, 130, 284);
             this.game.camera.follow(this.player);
         };
@@ -160,6 +162,7 @@ var MyGame;
             this.physics.arcade.collide(this.player, this.platforms);
             this.physics.arcade.collide(this.player, this.ground);
             this.physics.arcade.overlap(this.player, this.enemys, function () { return _this.player.spawn(); }, null, this);
+            this.physics.arcade.overlap(this.player, this.eye, function () { return _this.player.spawn(); }, null, this);
             this.physics.arcade.collide(this.enemys, this.platforms);
             this.physics.arcade.collide(this.enemys, this.ground);
             this.physics.arcade.collide(this.platforms, this.artPieces);
@@ -287,5 +290,55 @@ var MyGame;
         return Preloader;
     }(Phaser.State));
     MyGame.Preloader = Preloader;
+})(MyGame || (MyGame = {}));
+var MyGame;
+(function (MyGame) {
+    var EnemyEye = (function (_super) {
+        __extends(EnemyEye, _super);
+        function EnemyEye(game, x, y) {
+            var _this = _super.call(this, game, x, y, 'eye', 0) || this;
+            _this.game.physics.arcade.enableBody(_this);
+            _this.body.collideWorldBounds = true;
+            _this.anchor.setTo(0.5, 0);
+            game.add.existing(_this);
+            _this.enemyState = 0;
+            _this.timer = 0;
+            _this.facing = 1;
+            _this.body.velocity.x = 0;
+            _this.body.velocity.y = -50;
+            return _this;
+        }
+        EnemyEye.prototype.update = function () {
+            this.body.bounce.y = 0.0;
+            this.body.gravity.y = 0.0;
+            this.scale.x = this.facing;
+            switch (this.enemyState) {
+                case 0:
+                    this.timer++;
+                    if ((this.timer > 200) && (this.timer < 400)) {
+                        this.body.velocity.y = 0;
+                        this.body.velocity.x = -25;
+                    }
+                    else if ((this.timer > 400) && (this.timer < 600)) {
+                        this.body.velocity.y = 50;
+                        this.body.velocity.x = 50;
+                        this.facing == -1;
+                    }
+                    else if ((this.timer > 600) && (this.timer < 800)) {
+                        this.body.velocity.y = 0;
+                        this.body.velocity.x = -50;
+                    }
+                    else if (this.timer > 800) {
+                        this.body.velocity.y = -50;
+                        this.body.velocity.x = 25;
+                        this.facing == 1;
+                        this.timer = 0;
+                    }
+                    break;
+            }
+        };
+        return EnemyEye;
+    }(Phaser.Sprite));
+    MyGame.EnemyEye = EnemyEye;
 })(MyGame || (MyGame = {}));
 //# sourceMappingURL=game.js.map
