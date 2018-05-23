@@ -2,24 +2,32 @@ module MyGame {
 
 	export class MainMenu extends Phaser.State {
 
-		background: Phaser.Sprite;
+		background: Phaser.Sprite
+		button: Phaser.Sprite
 		
 
 		create() {
 			
 			this.background = this.add.sprite(0, 0, 'startBackground');
-			let title = this.add.sprite(this.world.centerX, 50, 'title')
-			title.anchor.setTo(0.5, 0)
-			let button = this.add.sprite(this.world.centerX, this.world.centerY, 'startButton')
-			button.anchor.setTo(0.5, 0)
+			this.button = this.add.sprite(this.world.centerX+40, this.world.centerY-130, 'startButton')
+			this.button.anchor.setTo(0.5, 0)
 
-			button.inputEnabled = true;
+			this.button.inputEnabled = true
+			this.button.input.useHandCursor = true;
 
-			button.events.onInputDown.add(() => this.startGame());
+			this.button.events.onInputDown.add(() => this.startGame())
+			this.button.events.onInputOver.add(() => this.hover())
+			this.button.events.onInputOut.add(() => this.hoverOut())
 
-			//trigger with something..
 			console.log("menu state")
-			// this.startGame()
+		}
+
+		hover(){
+			this.button.scale.setTo(1.05, 1.05)
+		}
+
+		hoverOut(){
+			this.button.scale.setTo(1, 1)
 		}
 
 		startGame() {

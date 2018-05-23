@@ -189,13 +189,20 @@ var MyGame;
         MainMenu.prototype.create = function () {
             var _this = this;
             this.background = this.add.sprite(0, 0, 'startBackground');
-            var title = this.add.sprite(this.world.centerX, 50, 'title');
-            title.anchor.setTo(0.5, 0);
-            var button = this.add.sprite(this.world.centerX, this.world.centerY, 'startButton');
-            button.anchor.setTo(0.5, 0);
-            button.inputEnabled = true;
-            button.events.onInputDown.add(function () { return _this.startGame(); });
+            this.button = this.add.sprite(this.world.centerX + 40, this.world.centerY - 130, 'startButton');
+            this.button.anchor.setTo(0.5, 0);
+            this.button.inputEnabled = true;
+            this.button.input.useHandCursor = true;
+            this.button.events.onInputDown.add(function () { return _this.startGame(); });
+            this.button.events.onInputOver.add(function () { return _this.hover(); });
+            this.button.events.onInputOut.add(function () { return _this.hoverOut(); });
             console.log("menu state");
+        };
+        MainMenu.prototype.hover = function () {
+            this.button.scale.setTo(1.05, 1.05);
+        };
+        MainMenu.prototype.hoverOut = function () {
+            this.button.scale.setTo(1, 1);
         };
         MainMenu.prototype.startGame = function () {
             this.game.state.start('Level1', true, false);
@@ -266,12 +273,10 @@ var MyGame;
         Preloader.prototype.preload = function () {
             this.load.image('startBackground', 'assets/startBackground.jpg');
             this.load.image('startButton', 'assets/startButton.png');
-            this.load.image('title', 'assets/title.png');
-            this.load.image('level1', 'assets/bg.jpg');
-            this.load.image('bgTile', 'assets/bgTile.jpg');
+            this.load.image('bgTile', 'assets/bgTile.png');
             this.load.image('ground', 'assets/platform.png');
             this.load.image('artPiece', 'assets/artPiece.png');
-            this.load.image('platformTile', 'assets/platformTile');
+            this.load.image('platformTile', 'assets/platformTile.png');
             this.load.image('eye', 'assets/eye.png');
             this.load.spritesheet('dude', 'assets/dude.png', 32, 48, 9);
         };
