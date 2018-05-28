@@ -14,7 +14,7 @@ module MyGame {
 		timerSec:number = 0
 		timerMin:number = 0
 		endTile: Phaser.Sprite
-		airflow: MyGame.AirFlow
+		airflow: Phaser.Sprite
 
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
@@ -63,7 +63,7 @@ module MyGame {
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
-			this.elephants = this.add.group()
+			this.elephants = this.add.group(this.airflow)
 			this.elephants.enableBody = true
 			let elephant = this.elephants.add(new Elephant(this.game, 650, this.world.height - this.ground.height))
 
@@ -106,7 +106,7 @@ module MyGame {
 			this.physics.arcade.collide(this.player, this.platforms);
 			this.physics.arcade.collide(this.player, this.ground);
 			this.physics.arcade.collide(this.player, this.elephants);
-			this.physics.arcade.collide(this.player, this.airflow, () => this.player.fly(), null, this);
+			this.physics.arcade.overlap(this.player, this.airflow, () => this.player.fly(), null, this);
 			this.physics.arcade.overlap(this.player, this.enemies, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.eye, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.spikes, () => this.player.spawn(), null, this);
