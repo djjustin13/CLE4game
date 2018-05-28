@@ -4,6 +4,8 @@ module MyGame {
         private startX:number
         private startY:number
         public lives:number = 9
+        private timer: number = 0
+        private enemyState: number
         private jumpPressed:boolean
 
         constructor(game: Phaser.Game, x: number, y: number) {
@@ -80,6 +82,18 @@ module MyGame {
 
         gameOver() {
             this.game.state.start('GameOver', true, false);
+        }
+
+        fly() {
+            this.timer++
+            console.log("FLY!!")
+
+            if (this.timer <= 5) {
+                this.game.input.keyboard.isDown(Phaser.Keyboard.UP)
+                this.body.velocity.y = -350;
+            } else {
+                this.timer = 0
+            }
         }
     }
 }
