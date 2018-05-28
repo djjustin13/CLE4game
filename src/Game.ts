@@ -9,6 +9,7 @@ module MyGame {
 			this.state.add('Boot', Boot, false);
 			this.state.add('Preloader', Preloader, false);
 			this.state.add('StartScreen', StartScreen, false);
+			this.state.add('MainMenu', MainMenu, false);
 			this.state.add('Level1', Level1, false);
 			this.state.add('LevelComplete', LevelComplete, false);
 			this.state.add('GameOver', GameOver, false);

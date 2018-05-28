@@ -19,7 +19,7 @@ module MyGame {
 			this.button.events.onInputOver.add(() => this.hover())
 			this.button.events.onInputOut.add(() => this.hoverOut())
 
-			console.log("menu state")
+			console.log("start screen state")
 		}
 
 		hover(){
@@ -32,7 +32,7 @@ module MyGame {
 
 		startGame() {
 			
-			this.game.state.start('Level1', true, false);
+			this.game.state.start('MainMenu', true, false);
 
 		}
 
