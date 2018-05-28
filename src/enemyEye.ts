@@ -85,16 +85,16 @@ module MyGame{
                     let returnX = 570;
                     let returnY = 150;
 
-                    if (eyeX > pieceX) {
+                    if (eyeX > pieceX-2) {
                         this.body.position.x-=this.speed
                     }
-                    if (eyeY > pieceY) {
+                    if (eyeY > pieceY+2) {
                         this.body.position.y-=this.speed
                     }
-                    if (eyeX < pieceX) {
+                    if (eyeX < pieceX+2) {
                         this.body.position.x+=this.speed
                     }
-                    if (eyeY < pieceY) {
+                    if (eyeY < pieceY-2) {
                         this.body.position.y+=this.speed
                     }
                     if (((eyeX-pieceX) < 10 && (eyeX-pieceX) > -10) && ((eyeY-pieceY) < 10 && (eyeY-pieceY) > -10)) {
@@ -102,6 +102,7 @@ module MyGame{
                         this.returnToDefaultLocation()
                         console.log("eye arrived on location");
                     }
+    
                 break;    
             }
         }
