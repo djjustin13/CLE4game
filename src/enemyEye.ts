@@ -99,7 +99,6 @@ module MyGame{
                     }
                     if (((eyeX-pieceX) < 10 && (eyeX-pieceX) > -10) && ((eyeY-pieceY) < 10 && (eyeY-pieceY) > -10)) {
                         this.enemyState = 0;
-                        this.returnToDefaultLocation()
                         console.log("eye arrived on location");
                     }
     
@@ -111,22 +110,6 @@ module MyGame{
             this.followX = x
             this.followY = y
             console.log("started following")
-        }
-
-        returnToDefaultLocation() {
-            // if (eyeX > returnX) {}
-            //     this.body.position.x-=this.speed
-            // }
-            // if (eyeY > returnY) {
-            //     this.body.position.y-=this.speed
-            // }
-            // if (eyeX < returnX) {
-            //     this.body.position.x+=this.speed
-            // }
-            // if (eyeY < returnY) {
-            //     this.body.position.y+=this.speed
-            // }
-            console.log("eye started returning")
         }
     }
 }
