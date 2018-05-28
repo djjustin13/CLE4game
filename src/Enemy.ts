@@ -15,8 +15,8 @@ module MyGame{
 
             this.anchor.setTo(0.5, 0);
 
-            this.animations.add('right', [5, 6, 7, 8], 10, true)
-            this.animations.add('left', [5, 6, 7, 8], 10, true)
+            this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 15, true)
+            this.animations.frame = 0
 
             game.add.existing(this);
 
@@ -40,14 +40,14 @@ module MyGame{
                             this.facing = -1;
                             this.body.velocity.x = -100;
                             this.animations.stop();
-                            this.animations.play('left');
+                            this.animations.play('walk');
                         }
                         //if(this.facing == 0){
                         else{
                             this.facing = 1;
                             this.body.velocity.x = 100;
                             this.animations.stop();
-                            this.animations.play('right');
+                            this.animations.play('walk');
                         }
                     }
                 break;
