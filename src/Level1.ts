@@ -9,7 +9,7 @@ module MyGame {
 		artPieces: Phaser.Group
 		enemys: Phaser.Group
 		eye: MyGame.EnemyEye
-		spike: MyGame.Spikes
+		spikes: Phaser.Group
 		timerSec:number = 0
 		timerMin:number = 0
 		endTile: Phaser.Sprite
@@ -39,7 +39,8 @@ module MyGame {
 			this.ledge = this.platforms.create(0, 400, 'ground')
 			this.ledge.body.immovable = true
 			
-			this.spike = new Spikes(this.game, 200, 200);
+			this.spikes = this.add.group()
+			let spike = this.spikes.add(new Spikes(this.game, 300, 200));
 
 			// Creation of Puzzle pieces
 			this.artPieces = this.add.group()
@@ -91,6 +92,7 @@ module MyGame {
 			this.physics.arcade.collide(this.player, this.ground)
 			this.physics.arcade.overlap(this.player, this.enemys, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.eye, () => this.player.spawn(), null, this);
+			this.physics.arcade.overlap(this.player, this.spikes, () => this.player.spawn(), null, this);
 			this.physics.arcade.collide(this.enemys, this.platforms)
 			this.physics.arcade.collide(this.enemys, this.ground)
 			this.physics.arcade.collide(this.platforms, this.artPieces)
