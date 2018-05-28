@@ -2,7 +2,7 @@ module MyGame{
 
     export class Elephant extends Phaser.Sprite {
 
-        airflow:Phaser.Sprite
+        public airflow:Phaser.Sprite
         game:Phaser.Game
 
         constructor(game: Phaser.Game, x: number, y: number) {
@@ -10,7 +10,7 @@ module MyGame{
             super(game, x, y, 'elephant', 0);
             this.game = game
 
-		    this.airflow = new AirFlow(this.game, x+50, y-104)
+		    this.airflow = new AirFlow(this.game, x+50, y-120)
 			this.airflow.body.immovable = true
 
             this.game.physics.arcade.enableBody(this)

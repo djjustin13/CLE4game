@@ -9,12 +9,11 @@ module MyGame {
 		artPieces: Phaser.Group
 		enemies: Phaser.Group
 		eye: MyGame.EnemyEye
-		elephants: Phaser.Group
+		elephant: Phaser.Sprite
 		spikes: Phaser.Group
 		timerSec:number = 0
 		timerMin:number = 0
 		endTile: Phaser.Sprite
-		airflow: Phaser.Sprite
 
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
@@ -63,9 +62,7 @@ module MyGame {
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
-			this.elephants = this.add.group(this.airflow)
-			this.elephants.enableBody = true
-			let elephant = this.elephants.add(new Elephant(this.game, 650, this.world.height - this.ground.height))
+			this.elephant = new Elephant(this.game, 650, this.world.height - this.ground.height)
 
 			// Creation of End-tile
 			this.endTile = new EndTile(this.game, 1000, 550);
@@ -100,13 +97,13 @@ module MyGame {
 			this.physics.arcade.collide(this.enemies, this.ground);
 			this.physics.arcade.collide(this.platforms, this.artPieces);
 			this.physics.arcade.collide(this.ground, this.artPieces);
-			this.physics.arcade.collide(this.ground, this.elephants);
+			this.physics.arcade.collide(this.ground, this.elephant);
 
 			// Player collision
 			this.physics.arcade.collide(this.player, this.platforms);
 			this.physics.arcade.collide(this.player, this.ground);
-			this.physics.arcade.collide(this.player, this.elephants);
-			this.physics.arcade.overlap(this.player, this.airflow, () => this.player.fly(), null, this);
+			this.physics.arcade.collide(this.player, this.elephant);
+			this.physics.arcade.overlap(this.player, this.elephant.airflow, () => this.player.fly(), null, this);
 			this.physics.arcade.overlap(this.player, this.enemies, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.eye, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.spikes, () => this.player.spawn(), null, this);

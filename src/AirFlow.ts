@@ -12,8 +12,8 @@ module MyGame{
 
             this.anchor.setTo(0.5, 1);
 
-            // this.animations.add('right', [5, 6, 7, 8], 10, true)
-            // this.animations.add('left', [5, 6, 7, 8], 10, true)
+            this.animations.add('flow', [0, 1, 2, 1], 10, true)
+            this.animations.play('flow')
 
             game.add.existing(this);
         }
