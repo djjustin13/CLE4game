@@ -34,34 +34,64 @@ module MyGame {
 			this.ground.body.immovable = true;
 			this.ground.body.allowGravity = false;
 
-			this.ledge = this.platforms.create(400, h-120, 'ground')
+			this.ledge = this.platforms.create(400, h-64, 'ground') // the first jump
 			this.ledge.body.immovable = true
-			this.ledge = this.platforms.create(0, 400, 'ground')
+
+			this.ledge = this.platforms.create(800, h-64, 'ground') 
+			this.ledge.body.immovable = true
+			this.ledge = this.platforms.create(800, h-96, 'ground')
 			this.ledge.body.immovable = true
 			
-			this.spikes = this.add.group()
-			let spike = this.spikes.add(new Spikes(this.game, 300, 200));
+			this.spikes = this.add.group() // first spiketrap
+			let spike = this.spikes.add(new Spikes(this.game, 960, h-69));
+
+			this.ledge = this.platforms.create(1050, h-64, 'ground')
+			this.ledge.body.immovable = true
+			this.ledge = this.platforms.create(1050, h-96, 'ground')
+			this.ledge.body.immovable = true
+
+			this.ledge = this.platforms.create(1200, 500, 'ground')
+			this.ledge.body.immovable = true
+			this.ledge = this.platforms.create(1400, 450, 'ground')
+			this.ledge.body.immovable = true
+			this.ledge = this.platforms.create(1600, 400, 'ground')
+			this.ledge.body.immovable = true
+
+			for(let i = 0; i < 15; i++){//spiked floor
+				this.spikes.add(new Spikes(this.game, 1400 + i * 87, h-69));
+			}
+
+			this.ledge = this.platforms.create(1800, 350, 'ground')
+			this.ledge.body.immovable = true
+
+			this.artPieces = this.add.group()
+			let artPiece = this.artPieces.add(new ArtPiece(this.game, 1650, 350))
+
+			this.ledge = this.platforms.create(1900, 360, 'ground')
+			this.ledge.body.immovable = true
+			this.ledge = this.platforms.create(2100, 360, 'ground')
+			this.ledge.body.immovable = true
 
 			// Creation of Puzzle pieces
-			this.artPieces = this.add.group()
+			/*this.artPieces = this.add.group()
 			this.artPieces.enableBody = true
 			for (var i = 0; i < 4; i++) {
 				let artPiece = this.artPieces.add(new ArtPiece(this.game, 250*i+1, 100))
-			}
+			}*/
 
 			// Creation of Enemies
-			this.enemys = this.add.group()
-			let e = this.enemys.add(new Enemy(this.game, 300, 200));
+			//this.enemys = this.add.group()
+			//let e = this.enemys.add(new Enemy(this.game, 300, 200));
 
 			// Creation of Eye
-			this.eye = new EnemyEye(this.game, 570, 150);
+			//this.eye = new EnemyEye(this.game, 570, 150);
 
 			// Creation of the player
 			this.player = new Player(this.game, 130, 284);
 			this.game.camera.follow(this.player)
 
 			// Creation of end-tile
-			this.endTile = new EndTile(this.game, 1000, 550);
+			//this.endTile = new EndTile(this.game, 1000, 550);
 
 			// Creation on UI
 			let ui:Phaser.Sprite = this.add.sprite(this.game.width, 0, 'uiBase');
@@ -139,7 +169,7 @@ module MyGame {
 		}
 
 		completeLevelCheck(){
-			if (this.artPieceScore == 4) {
+			if (this.artPieceScore == this.artPieces.length) {
 				this.completeLevel()
 				console.log("level complete, such amaze")
 			} else {
@@ -153,7 +183,9 @@ module MyGame {
 	
 		collectArtPiece(player:Player, artPiece:ArtPiece){
 			artPiece.kill()
-			this.eye.follow(player.position.x, player.position.y)
+			if(this.eye){
+				this.eye.follow(player.position.x, player.position.y)
+			}
 			this.artPieceScore += 1;
 			this.artPieceScoreDisplay.text = this.artPieceScore + '/4';
 		}
