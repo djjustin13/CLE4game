@@ -1,0 +1,26 @@
+body{
+    background-color: #717171;
+    text-align: center;
+    margin: 0;
+    
+}
+
+.parent{
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game{
+  resize: both;
+  overflow: auto;
+  padding-bottom: 5px;
+}
+
+.game img{
+    width: 300px;
+    margin-bottom: 5px;
+}
