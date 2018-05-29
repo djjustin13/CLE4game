@@ -73,25 +73,25 @@ module MyGame {
 			this.ledge.body.immovable = true
 
 			// Creation of Puzzle pieces
-			/*this.artPieces = this.add.group()
+			this.artPieces = this.add.group()
 			this.artPieces.enableBody = true
 			for (var i = 0; i < 4; i++) {
 				let artPiece = this.artPieces.add(new ArtPiece(this.game, 250*i+1, 100))
-			}*/
+			}
 
 			// Creation of Enemies
-			//this.enemys = this.add.group()
-			//let e = this.enemys.add(new Enemy(this.game, 300, 200));
+			this.enemys = this.add.group()
+			let e = this.enemys.add(new Enemy(this.game, 300, 200));
 
 			// Creation of Eye
-			//this.eye = new EnemyEye(this.game, 570, 150);
+			this.eye = new EnemyEye(this.game, 570, 150);
 
 			// Creation of the player
 			this.player = new Player(this.game, 130, 284);
 			this.game.camera.follow(this.player)
 
 			// Creation of end-tile
-			//this.endTile = new EndTile(this.game, 1000, 550);
+			this.endTile = new EndTile(this.game, 1000, 550);
 
 			// Creation on UI
 			let ui:Phaser.Sprite = this.add.sprite(this.game.width, 0, 'uiBase');
