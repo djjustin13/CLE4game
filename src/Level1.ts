@@ -35,42 +35,42 @@ module MyGame {
 			this.ground.body.immovable = true;
 			this.ground.body.allowGravity = false;
 
-			this.ledge = this.platforms.create(400, h-64, 'ground') // the first jump
+			this.ledge = this.platforms.create(400, h-64, 'platform') // the first jump
 			this.ledge.body.immovable = true
 
-			this.ledge = this.platforms.create(800, h-64, 'ground') 
+			this.ledge = this.platforms.create(800, h-64, 'platform') 
 			this.ledge.body.immovable = true
-			this.ledge = this.platforms.create(800, h-96, 'ground')
+			this.ledge = this.platforms.create(800, h-96, 'platform')
 			this.ledge.body.immovable = true
 			
 			this.spikes = this.add.group() // first spiketrap
 			let spike = this.spikes.add(new Spikes(this.game, 960, h-69));
 
-			this.ledge = this.platforms.create(1050, h-64, 'ground')
+			this.ledge = this.platforms.create(1050, h-64, 'platform')
 			this.ledge.body.immovable = true
-			this.ledge = this.platforms.create(1050, h-96, 'ground')
+			this.ledge = this.platforms.create(1050, h-96, 'platform')
 			this.ledge.body.immovable = true
 
-			this.ledge = this.platforms.create(1200, 500, 'ground')
+			this.ledge = this.platforms.create(1200, 500, 'platform')
 			this.ledge.body.immovable = true
-			this.ledge = this.platforms.create(1400, 450, 'ground')
+			this.ledge = this.platforms.create(1400, 450, 'platform')
 			this.ledge.body.immovable = true
-			this.ledge = this.platforms.create(1600, 400, 'ground')
+			this.ledge = this.platforms.create(1600, 400, 'platform')
 			this.ledge.body.immovable = true
 
 			for(let i = 0; i < 15; i++){//spiked floor
 				this.spikes.add(new Spikes(this.game, 1400 + i * 87, h-69));
 			}
 
-			this.ledge = this.platforms.create(1800, 350, 'ground')
+			this.ledge = this.platforms.create(1800, 350, 'platform')
 			this.ledge.body.immovable = true
 
 			this.artPieces = this.add.group()
 			let artPiece = this.artPieces.add(new ArtPiece(this.game, 1650, 350))
 
-			this.ledge = this.platforms.create(1900, 360, 'ground')
+			this.ledge = this.platforms.create(1900, 360, 'platform')
 			this.ledge.body.immovable = true
-			this.ledge = this.platforms.create(2100, 360, 'ground')
+			this.ledge = this.platforms.create(2100, 360, 'platform')
 			this.ledge.body.immovable = true
 
 			// Creation of Enemies
