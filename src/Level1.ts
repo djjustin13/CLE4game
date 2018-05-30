@@ -79,7 +79,7 @@ module MyGame {
 			this.artPieces.add(new ArtPiece(this.game, 1650, 100));
 			this.artPieces.add(new ArtPiece(this.game, 2600, 225));
 			this.artPieces.add(new ArtPiece(this.game, 3650, 150));
-			this.artPieces.add(new ArtPiece(this.game, 4150, 100));
+			this.artPieces.add(new ArtPiece(this.game, 4150, 150));
 			//end level
 
 			// Creation of Enemies
