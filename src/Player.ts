@@ -7,6 +7,8 @@ module MyGame {
         private timer: number = 0
         private enemyState: number
         private jumpPressed:boolean
+        private speed: number = 250;
+        private jumpheight: number = 275;
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'dude', 0);
@@ -21,8 +23,8 @@ module MyGame {
 
             this.anchor.setTo(0.5, 0);
 
-            this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 30, true)
-            this.animations.add('jump',[8, 9, 10, 11, 12, 13, 14, 9, 9, 9, 9, 9, 9, 9, 8], 10, false)
+            this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 40, true)
+            this.animations.add('jump',[8, 9, 10, 11, 12, 13, 14, 9, 9, 9, 9, 9, 9, 9, 8], 15, false)
             this.animations.frame = 0
 
             game.add.existing(this)
@@ -31,11 +33,11 @@ module MyGame {
         update() {
             this.body.velocity.x = 0
             this.body.bounce.y = 0.0
-            this.body.gravity.y = 350
+            this.body.gravity.y = 500
 
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.A) || this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
 
-                this.body.velocity.x = -150
+                this.body.velocity.x = -this.speed
                 if(this.body.touching.down)this.animations.play('walk')
 
                 if (this.scale.x == 1) {
@@ -44,7 +46,7 @@ module MyGame {
             }
             else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D) || this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
 
-                this.body.velocity.x = 150;
+                this.body.velocity.x = this.speed;
                 if(this.body.touching.down)this.animations.play('walk')
 
                 if (this.scale.x == -1) {
@@ -57,7 +59,7 @@ module MyGame {
             
 
             if ((this.game.input.keyboard.isDown(Phaser.Keyboard.W) || this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) && this.body.touching.down && this.jumpPressed == false){
-                this.body.velocity.y = -250
+                this.body.velocity.y = -this.jumpheight;
                 this.animations.frame = 8
                 this.animations.play('jump')
             }
