@@ -87,7 +87,7 @@ module MyGame {
 			let enemy = this.enemies.add(new Enemy(this.game, 2900, h-100));
 
 			// Creation of Eye
-			//this.eye = new EnemyEye(this.game, 570, 150);
+			this.eye = new EnemyEye(this.game, 3500, 150);
 
 			// Creation of the Player
 			this.player = new Player(this.game, 130, 400);
