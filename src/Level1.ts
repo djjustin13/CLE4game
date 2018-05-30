@@ -133,7 +133,6 @@ module MyGame {
 			this.physics.arcade.collide(this.enemies, this.ground);
 			this.physics.arcade.collide(this.platforms, this.artPieces);
 			this.physics.arcade.collide(this.ground, this.artPieces);
-			this.physics.arcade.collide(this.ground, this.elephant);
 			this.physics.arcade.collide(this.player, this.ledge);
 			this.physics.arcade.collide(this.artPieces, this.ledge);
 
