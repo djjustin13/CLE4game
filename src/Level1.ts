@@ -128,7 +128,7 @@ module MyGame {
 			this.physics.arcade.collide(this.player, this.platforms);
 			this.physics.arcade.collide(this.player, this.ground);
 			this.physics.arcade.collide(this.player, this.elephant);
-			this.physics.arcade.overlap(this.player, this.elephant.airflow, () => this.player.fly(), null, this);
+			// this.physics.arcade.overlap(this.player, this.elephant.airflow, () => this.player.fly(), null, this);
 			this.physics.arcade.overlap(this.player, this.enemies, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.eye, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.spikes, () => this.player.spawn(), null, this);

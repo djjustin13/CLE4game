@@ -32,7 +32,7 @@ module MyGame {
 
 		startGame() {
 			
-			this.game.state.start('MainMenu', true, false);
+			this.game.state.start('Level1', true, false);
 
 		}
 
