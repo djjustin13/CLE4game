@@ -59,6 +59,7 @@ module MyGame {
 				this.spikes.add(new Spikes(this.game, 1400 + i * 87, h-69));
 			}
 
+			// Creation of puzzle pieces
 			this.artPieces = this.add.group()
 			this.artPieces.add(new ArtPiece(this.game, 1650, 300))
 
