@@ -28,7 +28,8 @@ module MyGame {
 			// Creation of platforms: ground, platforms, ledges e.d.
 			this.platforms = this.add.group()
 			this.platforms.enableBody = true
-
+			
+			//start level
 			this.ground = this.add.tileSprite(0, h-32, this.world.width, 32, 'platformTile')
 			this.game.physics.arcade.enableBody(this.ground)
 			this.ground.body.collideWorldBounds = true;
@@ -72,23 +73,24 @@ module MyGame {
 			this.ledge.body.immovable = true
 			this.ledge = this.platforms.create(2100, 360, 'platform')
 			this.ledge.body.immovable = true
+			//end level
 
 			// Creation of Enemies
-			this.enemies = this.add.group()
-			let enemy = this.enemies.add(new Enemy(this.game, 300, 400));
+			//this.enemies = this.add.group()
+			//let enemy = this.enemies.add(new Enemy(this.game, 300, 400));
 
 			// Creation of Eye
-			this.eye = new EnemyEye(this.game, 570, 150);
+			//this.eye = new EnemyEye(this.game, 570, 150);
 
 			// Creation of the Player
 			this.player = new Player(this.game, 130, 284);
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
-			this.elephant = new Elephant(this.game, 650, this.world.height - this.ground.height)
+			//this.elephant = new Elephant(this.game, 650, this.world.height - this.ground.height)
 
 			// Creation of End-tile
-			this.endTile = new EndTile(this.game, 1000, 550);
+			//this.endTile = new EndTile(this.game, 1000, 550);
 
 			// Creation on UI
 			let ui:Phaser.Sprite = this.add.sprite(this.game.width, 0, 'uiBase');
