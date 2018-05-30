@@ -21,7 +21,7 @@ module MyGame {
 
             this.anchor.setTo(0.5, 0);
 
-            this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 20, true)
+            this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 30, true)
             this.animations.add('jump',[8, 9, 10, 11, 12, 13, 14, 9, 9, 9, 9, 9, 9, 9, 8], 10, false)
             this.animations.frame = 0
 
@@ -30,7 +30,7 @@ module MyGame {
 
         update() {
             this.body.velocity.x = 0
-            this.body.bounce.y = 0.2
+            this.body.bounce.y = 0.0
             this.body.gravity.y = 350
 
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.A) || this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
