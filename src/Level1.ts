@@ -52,14 +52,15 @@ module MyGame {
 			this.ledge = this.platforms.create(1050, h-96, 'platform')
 			this.ledge.body.immovable = true
 
-			this.ledge = this.platforms.create(1200, 500, 'platform')
-			this.ledge.body.immovable = true
-			this.ledge = this.platforms.create(1400, 450, 'platform')
-			this.ledge.body.immovable = true
+			//this.ledge = this.platforms.create(1200, 500, 'platform')
+			//this.ledge.body.immovable = true
+			//this.ledge = this.platforms.create(1400, 450, 'platform')
+			//this.ledge.body.immovable = true
+			this.elephant = new Elephant(this.game, 1350, this.world.height - this.ground.height)
 			this.ledge = this.platforms.create(1600, 400, 'platform')
 			this.ledge.body.immovable = true
 
-			for(let i = 0; i < 15; i++){//spiked floor
+			for(let i = 0; i < 14; i++){//spiked floor
 				this.spikes.add(new Spikes(this.game, 1400 + i * 87, h-69));
 			}
 
@@ -69,9 +70,9 @@ module MyGame {
 			this.artPieces = this.add.group()
 			let artPiece = this.artPieces.add(new ArtPiece(this.game, 1650, 350))
 
-			this.ledge = this.platforms.create(1900, 360, 'platform')
+			this.ledge = this.platforms.create(2000, 360, 'platform')
 			this.ledge.body.immovable = true
-			this.ledge = this.platforms.create(2100, 360, 'platform')
+			this.ledge = this.platforms.create(2300, 360, 'platform')
 			this.ledge.body.immovable = true
 			//end level
 
