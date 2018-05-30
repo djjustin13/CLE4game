@@ -3,7 +3,7 @@ module MyGame {
 	export class Level1 extends Phaser.State {
 		background: Phaser.TileSprite
 		ground: Phaser.TileSprite
-		ledge: Phaser.Sprite
+		ledge: Phaser.Group
 		player: MyGame.Player
 		platforms: Phaser.Group
 		artPieces: Phaser.Group
@@ -36,44 +36,35 @@ module MyGame {
 			this.ground.body.immovable = true;
 			this.ground.body.allowGravity = false;
 
-			this.ledge = this.platforms.create(400, h-64, 'platform') // the first jump
-			this.ledge.body.immovable = true
-
-			this.ledge = this.platforms.create(800, h-64, 'platform') 
-			this.ledge.body.immovable = true
-			this.ledge = this.platforms.create(800, h-96, 'platform')
-			this.ledge.body.immovable = true
+			this.ledge = this.add.group()
+			this.ledge.add(new Platform(this.game, 400, h-64));
+			this.ledge.add(new Platform(this.game, 800, h-64));
+			this.ledge.add(new Platform(this.game, 800, h-96));
+			this.ledge.add(new Platform(this.game, 1050, h-64));
+			this.ledge.add(new Platform(this.game, 1050, h-96));
+			this.ledge.add(new Platform(this.game, 1200, 500));
+			this.ledge.add(new Platform(this.game, 1400, 450));
 			
-			this.spikes = this.add.group() // first spiketrap
-			let spike = this.spikes.add(new Spikes(this.game, 960, h-69));
-
-			this.ledge = this.platforms.create(1050, h-64, 'platform')
-			this.ledge.body.immovable = true
-			this.ledge = this.platforms.create(1050, h-96, 'platform')
-			this.ledge.body.immovable = true
-
-			//this.ledge = this.platforms.create(1200, 500, 'platform')
-			//this.ledge.body.immovable = true
-			//this.ledge = this.platforms.create(1400, 450, 'platform')
-			//this.ledge.body.immovable = true
 			this.elephant = new Elephant(this.game, 1350, this.world.height - this.ground.height)
-			this.ledge = this.platforms.create(1600, 400, 'platform')
-			this.ledge.body.immovable = true
+			this.ledge.add(new Platform(this.game, 1600, 400));
+			this.ledge.add(new Platform(this.game, 1800, 350));
+			this.ledge.add(new Platform(this.game, 1900, 360));
+			this.ledge.add(new Platform(this.game, 2000, 360));
+			this.ledge.add(new Platform(this.game, 2300, 360));
 
-			for(let i = 0; i < 14; i++){//spiked floor
+
+			// Creation of singular spikes
+			this.spikes = this.add.group()
+			this.spikes.add(new Spikes(this.game, 960, h-69));
+
+			// Creation of spiked floor
+			for(let i = 0; i < 15; i++){
 				this.spikes.add(new Spikes(this.game, 1400 + i * 87, h-69));
 			}
 
-			this.ledge = this.platforms.create(1800, 350, 'platform')
-			this.ledge.body.immovable = true
-
+			// Creation of puzzle pieces
 			this.artPieces = this.add.group()
-			let artPiece = this.artPieces.add(new ArtPiece(this.game, 1650, 350))
-
-			this.ledge = this.platforms.create(2000, 360, 'platform')
-			this.ledge.body.immovable = true
-			this.ledge = this.platforms.create(2300, 360, 'platform')
-			this.ledge.body.immovable = true
+			this.artPieces.add(new ArtPiece(this.game, 1650, 300))
 			//end level
 
 			// Creation of Enemies
@@ -124,12 +115,14 @@ module MyGame {
 			this.physics.arcade.collide(this.platforms, this.artPieces);
 			this.physics.arcade.collide(this.ground, this.artPieces);
 			this.physics.arcade.collide(this.ground, this.elephant);
+			this.physics.arcade.collide(this.player, this.ledge);
+			this.physics.arcade.collide(this.artPieces, this.ledge);
 
 			// Player collision
 			this.physics.arcade.collide(this.player, this.platforms);
 			this.physics.arcade.collide(this.player, this.ground);
 			this.physics.arcade.collide(this.player, this.elephant);
-			this.physics.arcade.overlap(this.player, this.elephant.airflow, () => this.player.fly(), null, this);
+			// this.physics.arcade.overlap(this.player, this.elephant.airflow, () => this.player.fly(), null, this);
 			this.physics.arcade.overlap(this.player, this.enemies, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.eye, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.spikes, () => this.player.spawn(), null, this);

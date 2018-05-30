@@ -9,7 +9,9 @@ module MyGame {
             this.game.physics.arcade.enableBody(this)
             this.body.collideWorldBounds=true;
 
-            this.anchor.setTo(0.5, 0.5);
+            this.body.immovable = true
+
+            this.anchor.setTo(1.0, 0.0);
 
             game.add.existing(this);
         }
