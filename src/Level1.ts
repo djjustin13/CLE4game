@@ -9,12 +9,13 @@ module MyGame {
 		artPieces: Phaser.Group
 		enemies: Phaser.Group
 		eye: MyGame.EnemyEye
+		endTile: Phaser.Sprite
 		elephant1: any
 		elephant2: any
 		spikes: Phaser.Group
 		timerSec:number = 0
 		timerMin:number = 0
-		endTile: Phaser.Sprite
+		dynamicLedge:any
 
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
@@ -57,11 +58,15 @@ module MyGame {
 			this.ledge.add(new Platform(this.game, 4482, h-96));
 			this.ledge.add(new Platform(this.game, 4639, h-96));
 
+			// Creation of moving platforms
+			this.dynamicLedge = this.add.group()
+			this.dynamicLedge.add(new DynamicLedge(this.game, 400, 200, 1))
+			this.dynamicLedge.add(new DynamicLedge(this.game, 800, 200, 3))
+
 
 			// Creation of singular spikes
 			this.spikes = this.add.group()
 			this.spikes.add(new Spikes(this.game, 960, h-69));
-		
 
 			// Creation of spiked floor
 			for(let i = 0; i < 15; i++){
@@ -76,9 +81,9 @@ module MyGame {
 
 			// Creation of puzzle pieces
 			this.artPieces = this.add.group()
+			this.artPieces.add(new ArtPiece(this.game, 37, 250));
 			this.artPieces.add(new ArtPiece(this.game, 1650, 100));
 			this.artPieces.add(new ArtPiece(this.game, 2600, 225));
-			this.artPieces.add(new ArtPiece(this.game, 3650, 150));
 			this.artPieces.add(new ArtPiece(this.game, 4150, 150));
 			//end level
 
@@ -91,12 +96,11 @@ module MyGame {
 
 			// Creation of the Player
 			this.player = new Player(this.game, 130, 400);
+			
 			// this.player = new Player(this.game, 2750, 400);
-
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
-			//this.elephant = new Elephant(this.game, 650, this.world.height - this.ground.height)
 			this.elephant1 = new Elephant(this.game, 1350, this.world.height - this.ground.height);
 			this.elephant2 = new Elephant(this.game, 3750, this.world.height - this.ground.height);
 
@@ -122,7 +126,6 @@ module MyGame {
 			this.livesDisplay = this.game.add.text(16, 16, String(this.player.lives), style);
 			this.livesDisplay.x = this.game.width - 90
 			this.livesDisplay.fixedToCamera = true;
-		
 
 			this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
 		}
@@ -135,6 +138,7 @@ module MyGame {
 			this.physics.arcade.collide(this.ground, this.artPieces);
 			this.physics.arcade.collide(this.player, this.ledge);
 			this.physics.arcade.collide(this.artPieces, this.ledge);
+			this.physics.arcade.collide(this.player, this.dynamicLedge);
 
 			// Player collision
 			this.physics.arcade.collide(this.player, this.platforms);
