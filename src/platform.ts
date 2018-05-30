@@ -11,7 +11,7 @@ module MyGame {
 
             this.body.immovable = true
 
-            this.anchor.setTo(1.0, 0.0);
+            this.anchor.setTo(0.0, 0.0);
 
             game.add.existing(this);
         }
