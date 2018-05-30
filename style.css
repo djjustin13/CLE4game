@@ -22,14 +22,15 @@ body{
 }
 
 .game{
-  resize: both;
   overflow: auto;
   padding-bottom: 5px;
 }
 
 #content{
-  border: 5px solid #FFFFFF;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 1016px;
+  height: 600px;
+  border: 52px solid transparent;
+  border-image: url(assets/frame.png) 44 stretch;
 }
 
 .game img{
