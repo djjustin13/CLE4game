@@ -16,7 +16,7 @@ module MyGame {
 
         update() {
             this.body.bounce.y = 0.0;
-            this.body.gravity.y = 600;
+            this.body.gravity.y = 0.0;
         }
     }
 }
