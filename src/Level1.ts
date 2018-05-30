@@ -9,7 +9,7 @@ module MyGame {
 		artPieces: Phaser.Group
 		enemies: Phaser.Group
 		eye: MyGame.EnemyEye
-		elephant: Phaser.Sprite
+		elephant: any
 		spikes: Phaser.Group
 		timerSec:number = 0
 		timerMin:number = 0
