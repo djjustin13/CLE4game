@@ -2,13 +2,11 @@ module MyGame {
 
 	export class MainMenu extends Phaser.State {
 
-		background: Phaser.Sprite
 		button: Phaser.Sprite
 		
 
 		create() {
 			
-			this.background = this.add.sprite(0, 0, 'startBackground');
 			this.button = this.add.sprite(this.world.centerX+40, this.world.centerY-130, 'startButton')
 			this.button.anchor.setTo(0.5, 0)
 
