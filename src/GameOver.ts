@@ -31,6 +31,7 @@ module MyGame {
 		}
 
 		restartLevel() {
+			console.log('.. OR NOT!!!')
 			this.game.state.start('Level1', true, false);
 		}
 	}
