@@ -13,6 +13,8 @@ module MyGame{
             this.body.collideWorldBounds=true;
 
             this.anchor.setTo(0.5, 0);
+            
+            this.body.immovable = true;
 
             game.add.existing(this);
         
