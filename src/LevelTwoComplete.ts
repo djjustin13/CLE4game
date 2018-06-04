@@ -17,7 +17,7 @@ module MyGame {
 			this.button.events.onInputOver.add(() => this.hover())
 			this.button.events.onInputOut.add(() => this.hoverOut())
 
-			console.log("level one complete!")
+			console.log("level two complete!")
 		}
 
 		hover(){

@@ -9,7 +9,7 @@ module MyGame {
 		create() {
 			
 			this.background = this.add.sprite(0, 0, 'gameOverBackground');
-			this.button = this.add.sprite(this.world.centerX+40, this.world.centerY-130, 'restartLevelButton')
+			this.button = this.add.sprite(550, 168, 'restartLevelButton')
 			this.button.anchor.setTo(0.5, 0)
 
 			this.button.inputEnabled = true
@@ -19,7 +19,7 @@ module MyGame {
 			this.button.events.onInputOver.add(() => this.hover())
 			this.button.events.onInputOut.add(() => this.hoverOut())
 
-			console.log("O dear, you are dead!")
+			console.log("Game ended..")
 		}
 
 		hover(){
@@ -31,6 +31,7 @@ module MyGame {
 		}
 
 		restartLevel() {
+			console.log('.. OR NOT!!!')
 			this.game.state.start('Level1', true, false);
 		}
 	}
