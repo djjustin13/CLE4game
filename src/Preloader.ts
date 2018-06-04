@@ -7,9 +7,15 @@ module MyGame {
 		ready: boolean = false;
 
 		preload() {
-			// Load menu items
+			// Load Start items
 			this.load.image('startBackground', 'assets/startBackground.jpg')
 			this.load.image('startButton', 'assets/startButton.png')
+
+			//Load menu items
+			this.load.image('levelButton', 'assets/levelButton.png')
+			this.load.image('menuGoButton', 'assets/startButton.png')
+
+
 
 			this.load.image('uiBase', 'assets/uiBase.png')
 
