@@ -24,6 +24,7 @@ module MyGame {
 			this.load.image('elephant', 'assets/elephant.png')
 			this.load.spritesheet('airflow', 'assets/airflow.png', 20, 32, 3)
 			this.load.image('dead', 'assets/skull.png')
+			this.load.image('longlegs', 'assets/longlegsplaceholder.png')
 
 			this.load.image('uiBase', 'assets/uiBase.png')
 			this.load.image('pedestal', 'assets/pedestal.png')
