@@ -1,14 +1,13 @@
 module MyGame {
 
-	export class LevelComplete extends Phaser.State {
+	export class LevelOneComplete extends Phaser.State {
 
 		background: Phaser.Sprite
-		button: Phaser.Sprite
-		
+		button: Phaser.Sprite		
+
 		create() {
-			
 			this.background = this.add.sprite(0, 0, 'levelCompleteBackground');
-			this.button = this.add.sprite(this.world.centerX+40, this.world.centerY-130, 'nextLevelButton')
+			this.button = this.add.sprite(550, 168, 'nextLevelButton')
 			this.button.anchor.setTo(0.5, 0)
 
 			this.button.inputEnabled = true
@@ -18,7 +17,7 @@ module MyGame {
 			this.button.events.onInputOver.add(() => this.hover())
 			this.button.events.onInputOut.add(() => this.hoverOut())
 
-			console.log("level1 complete state")
+			console.log("level one complete!")
 		}
 
 		hover(){
@@ -30,9 +29,7 @@ module MyGame {
 		}
 
 		nextLevel() {
-			
-			this.game.state.start('Level1', true, false);
-
+			this.game.state.start('Level2', true, false);
 		}
 
 	}

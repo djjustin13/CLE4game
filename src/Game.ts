@@ -11,8 +11,12 @@ module MyGame {
 			this.state.add('StartScreen', StartScreen, false);
 			this.state.add('MainMenu', MainMenu, false);
 			this.state.add('Level1', Level1, false);
+			this.state.add('Level2', Level2, false);
+			this.state.add('Level3', Level3, false);
 			this.state.add('TestLevel', TestLevel, false)
-			this.state.add('LevelComplete', LevelComplete, false);
+			this.state.add('LevelOneComplete', LevelOneComplete, false);
+			this.state.add('LevelTwoComplete', LevelTwoComplete, false);
+			this.state.add('LevelThreeComplete', LevelThreeComplete, false);
 			this.state.add('GameOver', GameOver, false);
 
 			this.state.start('Boot');
