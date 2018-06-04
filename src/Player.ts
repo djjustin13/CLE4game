@@ -9,8 +9,6 @@ module MyGame {
         private jumpPressed:boolean
         private speed: number = 250;
         private jumpheight: number = 275;
-        private playerState:number = 0;
-        private respawnTimer:number = 0;
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'dude', 0);
@@ -74,29 +72,10 @@ module MyGame {
         }
 
         spawn() {
-            switch(this.playerState) {
-                case 0: {
-                    this.respawnTimer++
-                    this.death();
-
-                    if (this.respawnTimer > 40) {
-                        this.playerState = 1;
-                    }
-                break;
-                }
-
-                case 1: {
-                    this.normal();
-                    this.x = this.startX
-                    this.y = this.startY
-                    this.lives -= 1
-                    this.playerState = 0;
-                    this.respawnTimer = 0;
-                    console.log(this.lives)
-
-                break;
-                }
-            }
+            this.x = this.startX
+            this.y = this.startY
+            this.lives -= 1
+            console.log(this.lives)
         }
 
         gameOver() {
@@ -107,20 +86,12 @@ module MyGame {
             this.timer++
             console.log("FLY!!")
 
-            if (this.timer <= 5) {
+            if (this.timer <= 7) {
                 this.game.input.keyboard.isDown(Phaser.Keyboard.UP)
-                this.body.velocity.y = -500;
+                this.body.velocity.y = -600;
             } else {
                 this.timer = 0
             }
-        }
-
-        death() {
-            this.loadTexture('dead');
-        }
-
-        normal() {
-            this.loadTexture('dude');
         }
     }
 }

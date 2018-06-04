@@ -1,6 +1,6 @@
 module MyGame {
 
-	export class Level1 extends Phaser.State {
+	export class Level3 extends Phaser.State {
 		background: Phaser.TileSprite
 		ground: Phaser.TileSprite
 		ledge: Phaser.Group
@@ -40,28 +40,10 @@ module MyGame {
 
 			this.ledge = this.add.group()
 			this.ledge.add(new Platform(this.game, 400, h-64));
-			this.ledge.add(new Platform(this.game, 800, h-64));
-			this.ledge.add(new Platform(this.game, 800, h-96));
-			this.ledge.add(new Platform(this.game, 800, h-98));
-			this.ledge.add(new Platform(this.game, 1050, h-64));
-			this.ledge.add(new Platform(this.game, 1050, h-96));
-			this.ledge.add(new Platform(this.game, 1050, h-128));
-			this.ledge.add(new Platform(this.game, 1600, 400));
-			this.ledge.add(new Platform(this.game, 1900, 360));
-			this.ledge.add(new Platform(this.game, 2300, 360));
-			this.ledge.add(new Platform(this.game, 2705, h-64));
-			this.ledge.add(new Platform(this.game, 2705, h-96));
-			this.ledge.add(new Platform(this.game, 3105, h-64));
-			this.ledge.add(new Platform(this.game, 3105, h-96));
-			this.ledge.add(new Platform(this.game, 3523, h-75));
-			this.ledge.add(new Platform(this.game, 4325, h-96));
-			this.ledge.add(new Platform(this.game, 4482, h-96));
-			this.ledge.add(new Platform(this.game, 4639, h-96));
 
 			// Creation of moving platforms
 			this.dynamicLedge = this.add.group()
 			this.dynamicLedge.add(new DynamicLedge(this.game, 400, 200, 1))
-			this.dynamicLedge.add(new DynamicLedge(this.game, 800, 200, 3))
 
 			// Creation of singular spikes
 			this.spikes = this.add.group()
@@ -71,20 +53,10 @@ module MyGame {
 			for(let i = 0; i < 15; i++){
 				this.spikes.add(new Spikes(this.game, 1400 + i * 87, h-69));
 			}
-			for(let i = 0; i < 3; i++){
-				this.spikes.add(new Spikes(this.game, 3265 + i * 87, h-69));
-			}
-			for(let i = 0; i < 20; i++){
-				this.spikes.add(new Spikes(this.game, 3800 + i * 87, h-69));
-			}
 
 			// Creation of puzzle pieces
 			this.artPieces = this.add.group()
 			this.artPieces.add(new ArtPiece(this.game, 37, 250));
-			this.artPieces.add(new ArtPiece(this.game, 1650, 100));
-			this.artPieces.add(new ArtPiece(this.game, 2600, 225));
-			this.artPieces.add(new ArtPiece(this.game, 4150, 150));
-			//end level
 
 			// Creation of Enemies
 			this.enemies = this.add.group()
@@ -101,7 +73,6 @@ module MyGame {
 
 			// Creation of Elephant
 			this.elephant1 = new Elephant(this.game, 1300, this.world.height - this.ground.height);
-			this.elephant2 = new Elephant(this.game, 3750, this.world.height - this.ground.height);
 
 			// Creation of End-tile
 			this.endTile = new EndTile(this.game, 4750, h-150);
@@ -144,8 +115,6 @@ module MyGame {
 			this.physics.arcade.collide(this.player, this.ground);
 			this.physics.arcade.collide(this.player, this.elephant1);
 			this.physics.arcade.overlap(this.player, this.elephant1.airflow, () => this.player.fly(), null, this);
-			this.physics.arcade.collide(this.player, this.elephant2);
-			this.physics.arcade.overlap(this.player, this.elephant2.airflow, () => this.player.fly(), null, this);
 			this.physics.arcade.overlap(this.player, this.enemies, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.eye, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.spikes, () => this.player.spawn(), null, this);
