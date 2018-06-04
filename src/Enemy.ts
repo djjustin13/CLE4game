@@ -31,19 +31,19 @@ module MyGame{
             this.body.gravity.y = 300;
             this.scale.x = this.facing;
 
-            switch(this.enemyState){
+            switch(this.enemyState){ //The state indicates different behaviors for the enemy
                 case 0: //idle
                     this.timer++;
                     if (this.timer > 100){
                         this.timer = 0;
-                        if(this.facing == 1){
+                        if(this.facing == 1){ //walking left
                             this.facing = -1;
                             this.body.velocity.x = -100;
                             this.animations.stop();
                             this.animations.play('walk');
                         }
                         //if(this.facing == 0){
-                        else{
+                        else{ //walking right
                             this.facing = 1;
                             this.body.velocity.x = 100;
                             this.animations.stop();
