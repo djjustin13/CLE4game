@@ -9,8 +9,9 @@ module MyGame{
 
             super(game, x, y, 'elephant', 0);
             this.game = game
+            this.game.add.sprite(this.x - 60, this.y - 118, 'elephanttop')
 
-		    this.airflow = new AirFlow(this.game, x+19, y-87)
+		    this.airflow = new AirFlow(this.game, x+55, y-100)
 			this.airflow.body.immovable = true
 
             this.game.physics.arcade.enableBody(this)
