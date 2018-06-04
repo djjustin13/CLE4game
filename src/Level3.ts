@@ -159,7 +159,7 @@ module MyGame {
 		}
 		
 		resetLevel(){
-			this.game.state.start('Level1', true, false);
+			this.game.state.start('Level3', true, false);
 		}
 
 		completeLevelCheck(){

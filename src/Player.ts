@@ -88,7 +88,7 @@ module MyGame {
 
             if (this.timer <= 7) {
                 this.game.input.keyboard.isDown(Phaser.Keyboard.UP)
-                this.body.velocity.y = -600;
+                this.body.velocity.y = -550;
             } else {
                 this.timer = 0
             }
