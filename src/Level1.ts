@@ -9,11 +9,13 @@ module MyGame {
 		artPieces: Phaser.Group
 		enemies: Phaser.Group
 		eye: MyGame.EnemyEye
-		elephant: any
+		endTile: Phaser.Sprite
+		elephant1: any
+		elephant2: any
 		spikes: Phaser.Group
 		timerSec:number = 0
 		timerMin:number = 0
-		endTile: Phaser.Sprite
+		dynamicLedge:any
 
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
@@ -40,18 +42,26 @@ module MyGame {
 			this.ledge.add(new Platform(this.game, 400, h-64));
 			this.ledge.add(new Platform(this.game, 800, h-64));
 			this.ledge.add(new Platform(this.game, 800, h-96));
+			this.ledge.add(new Platform(this.game, 800, h-98));
 			this.ledge.add(new Platform(this.game, 1050, h-64));
 			this.ledge.add(new Platform(this.game, 1050, h-96));
-			this.ledge.add(new Platform(this.game, 1200, 500));
-			this.ledge.add(new Platform(this.game, 1400, 450));
-			
-			this.elephant = new Elephant(this.game, 1350, this.world.height - this.ground.height)
+			this.ledge.add(new Platform(this.game, 1050, h-128));
 			this.ledge.add(new Platform(this.game, 1600, 400));
-			this.ledge.add(new Platform(this.game, 1800, 350));
 			this.ledge.add(new Platform(this.game, 1900, 360));
-			this.ledge.add(new Platform(this.game, 2000, 360));
 			this.ledge.add(new Platform(this.game, 2300, 360));
+			this.ledge.add(new Platform(this.game, 2705, h-64));
+			this.ledge.add(new Platform(this.game, 2705, h-96));
+			this.ledge.add(new Platform(this.game, 3105, h-64));
+			this.ledge.add(new Platform(this.game, 3105, h-96));
+			this.ledge.add(new Platform(this.game, 3523, h-75));
+			this.ledge.add(new Platform(this.game, 4325, h-96));
+			this.ledge.add(new Platform(this.game, 4482, h-96));
+			this.ledge.add(new Platform(this.game, 4639, h-96));
 
+			// Creation of moving platforms
+			this.dynamicLedge = this.add.group()
+			this.dynamicLedge.add(new DynamicLedge(this.game, 400, 200, 1))
+			this.dynamicLedge.add(new DynamicLedge(this.game, 800, 200, 3))
 
 			// Creation of singular spikes
 			this.spikes = this.add.group()
@@ -61,28 +71,40 @@ module MyGame {
 			for(let i = 0; i < 15; i++){
 				this.spikes.add(new Spikes(this.game, 1400 + i * 87, h-69));
 			}
+			for(let i = 0; i < 3; i++){
+				this.spikes.add(new Spikes(this.game, 3265 + i * 87, h-69));
+			}
+			for(let i = 0; i < 20; i++){
+				this.spikes.add(new Spikes(this.game, 3800 + i * 87, h-69));
+			}
 
 			// Creation of puzzle pieces
 			this.artPieces = this.add.group()
-			this.artPieces.add(new ArtPiece(this.game, 1650, 300))
+			this.artPieces.add(new ArtPiece(this.game, 37, 250));
+			this.artPieces.add(new ArtPiece(this.game, 1650, 100));
+			this.artPieces.add(new ArtPiece(this.game, 2600, 225));
+			this.artPieces.add(new ArtPiece(this.game, 4150, 150));
 			//end level
 
 			// Creation of Enemies
-			//this.enemies = this.add.group()
-			//let enemy = this.enemies.add(new Enemy(this.game, 300, 400));
+			this.enemies = this.add.group()
+			let enemy = this.enemies.add(new Enemy(this.game, 2900, h-100));
 
 			// Creation of Eye
-			//this.eye = new EnemyEye(this.game, 570, 150);
+			this.eye = new EnemyEye(this.game, 4250, 150);
 
 			// Creation of the Player
-			this.player = new Player(this.game, 130, 284);
+			this.player = new Player(this.game, 130, 400);
+			
+			// this.player = new Player(this.game, 2750, 400);
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
-			//this.elephant = new Elephant(this.game, 650, this.world.height - this.ground.height)
+			this.elephant1 = new Elephant(this.game, 1280, this.world.height - this.ground.height);
+			this.elephant2 = new Elephant(this.game, 3750, this.world.height - this.ground.height);
 
 			// Creation of End-tile
-			//this.endTile = new EndTile(this.game, 1000, 550);
+			this.endTile = new EndTile(this.game, 4750, h-150);
 
 			// Creation on UI
 			let ui:Phaser.Sprite = this.add.sprite(this.game.width, 0, 'uiBase');
@@ -103,7 +125,6 @@ module MyGame {
 			this.livesDisplay = this.game.add.text(16, 16, String(this.player.lives), style);
 			this.livesDisplay.x = this.game.width - 90
 			this.livesDisplay.fixedToCamera = true;
-		
 
 			this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
 		}
@@ -114,15 +135,17 @@ module MyGame {
 			this.physics.arcade.collide(this.enemies, this.ground);
 			this.physics.arcade.collide(this.platforms, this.artPieces);
 			this.physics.arcade.collide(this.ground, this.artPieces);
-			this.physics.arcade.collide(this.ground, this.elephant);
 			this.physics.arcade.collide(this.player, this.ledge);
 			this.physics.arcade.collide(this.artPieces, this.ledge);
+			this.physics.arcade.collide(this.player, this.dynamicLedge);
 
 			// Player collision
 			this.physics.arcade.collide(this.player, this.platforms);
 			this.physics.arcade.collide(this.player, this.ground);
-			this.physics.arcade.collide(this.player, this.elephant);
-			this.physics.arcade.overlap(this.player, this.elephant.airflow, () => this.player.fly(), null, this);
+			this.physics.arcade.collide(this.player, this.elephant1);
+			this.physics.arcade.overlap(this.player, this.elephant1.airflow, () => this.player.fly(), null, this);
+			this.physics.arcade.collide(this.player, this.elephant2);
+			this.physics.arcade.overlap(this.player, this.elephant2.airflow, () => this.player.fly(), null, this);
 			this.physics.arcade.overlap(this.player, this.enemies, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.eye, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.spikes, () => this.player.spawn(), null, this);

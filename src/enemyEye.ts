@@ -9,6 +9,8 @@ module MyGame{
         followX:number
         followY:number
 
+        eyeX:number
+
         speed:number = 2
 
         constructor(game: Phaser.Game, x: number, y: number){
@@ -106,10 +108,14 @@ module MyGame{
             }
         }
         follow(x:number, y:number) {
-            this.enemyState = 1 
-            this.followX = x
-            this.followY = y
-            console.log("started following")
+            if (this.eyeX - x < 1500 && this.eyeX - x > -1500) {
+                this.enemyState = 1 
+                this.followX = x
+                this.followY = y
+                console.log("started following")
+            } else {
+                console.log("out of reach")
+            }
         }
     }
 }
