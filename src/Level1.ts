@@ -91,7 +91,7 @@ module MyGame {
 			let enemy = this.enemies.add(new Enemy(this.game, 2900, h-100));
 
 			// Creation of Eye
-			this.eye = new EnemyEye(this.game, 4250, 150);
+			this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
 			this.player = new Player(this.game, 130, 400);
@@ -100,7 +100,7 @@ module MyGame {
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
-			this.elephant1 = new Elephant(this.game, 1280, this.world.height - this.ground.height);
+			this.elephant1 = new Elephant(this.game, 1300, this.world.height - this.ground.height);
 			this.elephant2 = new Elephant(this.game, 3750, this.world.height - this.ground.height);
 
 			// Creation of End-tile
