@@ -127,6 +127,9 @@ module MyGame {
 			this.livesDisplay.fixedToCamera = true;
 
 			this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
+
+			// Console level has started
+			console.log("LEVEL ONE STARTED - GOGOGO!")
 		}
 
 		update(){
@@ -200,7 +203,7 @@ module MyGame {
 		}
 
 		completeLevel(){
-			this.game.state.start('LevelComplete', true, false);
+			this.game.state.start('LevelOneComplete', true, false);
 		}
 	
 		collectArtPiece(player:Player, artPiece:ArtPiece){

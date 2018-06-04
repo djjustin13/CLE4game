@@ -17,7 +17,7 @@ module MyGame {
 			this.button.events.onInputOver.add(() => this.hover())
 			this.button.events.onInputOut.add(() => this.hoverOut())
 
-			console.log("level one complete!")
+			console.log("level three complete!")
 		}
 
 		hover(){
@@ -29,7 +29,7 @@ module MyGame {
 		}
 
 		nextLevel() {
-			this.game.state.start('Level2', true, false);
+			this.game.state.start('GameOver', true, false);
 		}
 
 	}
