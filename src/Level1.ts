@@ -63,7 +63,6 @@ module MyGame {
 			this.dynamicLedge.add(new DynamicLedge(this.game, 400, 200, 1))
 			this.dynamicLedge.add(new DynamicLedge(this.game, 800, 200, 3))
 
-
 			// Creation of singular spikes
 			this.spikes = this.add.group()
 			this.spikes.add(new Spikes(this.game, 960, h-69));
@@ -95,13 +94,13 @@ module MyGame {
 			this.eye = new EnemyEye(this.game, 4250, 150);
 
 			// Creation of the Player
-			// this.player = new Player(this.game, 130, 400);
+			this.player = new Player(this.game, 130, 400);
 			
-			this.player = new Player(this.game, 2750, 400);
+			// this.player = new Player(this.game, 2750, 400);
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
-			this.elephant1 = new Elephant(this.game, 1350, this.world.height - this.ground.height);
+			this.elephant1 = new Elephant(this.game, 1280, this.world.height - this.ground.height);
 			this.elephant2 = new Elephant(this.game, 3750, this.world.height - this.ground.height);
 
 			// Creation of End-tile

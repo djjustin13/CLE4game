@@ -9,7 +9,6 @@ html{
 body{
     text-align: center;
     margin: 0;
-    
 }
 
 .parent{
@@ -24,6 +23,8 @@ body{
 .game{
   overflow: auto;
   padding-bottom: 5px;
+  overflow-x: hidden;
+
 }
 
 #content{
