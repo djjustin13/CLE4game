@@ -8,7 +8,7 @@ module MyGame {
 
         constructor(game: Phaser.Game, x: number, y: number, behaviour:number) {
             
-            super(game, x, y, 'platform', 0);
+            super(game, x, y, 'dynamicledge', 0);
             this.behaviour = behaviour
 
             this.game.physics.arcade.enableBody(this)
