@@ -22,6 +22,10 @@ module MyGame {
 		timerDisplay: any
 		livesDisplay: any
 
+		init(a:any){
+			console.log(a)
+		}
+
 		create() {
 			let h = this.game.world.height
 			this.game.world.setBounds(0, 0, 6000, 600);
@@ -60,7 +64,7 @@ module MyGame {
 
 			// Creation of moving platforms
 			this.dynamicLedge = this.add.group()
-			this.dynamicLedge.add(new DynamicLedge(this.game, 400, 200, 1))
+			this.dynamicLedge.add(new DynamicLedge(this.game, 400, 200, 2))
 			this.dynamicLedge.add(new DynamicLedge(this.game, 800, 200, 3))
 
 			// Creation of singular spikes

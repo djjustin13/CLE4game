@@ -81,9 +81,7 @@ module MyGame {
 		}
 
 		startGame() {
-			if(this.selectedLevel == 1){
-				this.game.state.start('Level1', true, false);
-			}
+			this.game.state.start('Level1', true, false, 'test123');
 		}
 	}
 }

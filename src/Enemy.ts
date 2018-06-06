@@ -42,7 +42,6 @@ module MyGame{
                             this.animations.stop();
                             this.animations.play('walk');
                         }
-                        //if(this.facing == 0){
                         else{ //walking right
                             this.facing = 1;
                             this.body.velocity.x = 100;
