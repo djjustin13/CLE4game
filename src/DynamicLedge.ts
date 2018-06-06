@@ -3,7 +3,8 @@ module MyGame {
     export class DynamicLedge extends Phaser.Sprite {
 
         timer:number = 0
-        speed:number = 50
+        speed:number = 100
+        distance:number = 50
         behaviour:number
 
         constructor(game: Phaser.Game, x: number, y: number, behaviour:number) {
@@ -67,13 +68,13 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 299) {
+            if (this.timer >= 0 && this.timer <= 3*this.distance-1) {
                 this.body.velocity.x = -this.speed;
-            } else if (this.timer >= 300 && this.timer <= 399) {
+            } else if (this.timer >= 3*this.distance && this.timer <= 4*this.distance-1) {
                 this.body.velocity.x = 0;
-            } else if (this.timer >= 400 && this.timer <= 699) {
+            } else if (this.timer >= 4*this.distance && this.timer <= 7*this.distance-1) {
                 this.body.velocity.x = this.speed;
-            } else if (this.timer >= 700 && this.timer <= 799) {
+            } else if (this.timer >= 7*this.distance && this.timer <= 8*this.distance-1) {
                 this.body.velocity.x = 0;
             } else {
                 this.timer = 0;
@@ -84,13 +85,13 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 299) {
+            if (this.timer >= 0 && this.timer <= 3*this.distance-1) {
                 this.body.velocity.x = this.speed;
-            } else if (this.timer >= 300 && this.timer <= 399) {
+            } else if (this.timer >= 3*this.distance && this.timer <= 3*this.distance-1) {
                 this.body.velocity.x = 0;
-            } else if (this.timer >= 400 && this.timer <= 699) {
+            } else if (this.timer >= 4*this.distance && this.timer <= 7*this.distance-1) {
                 this.body.velocity.x = -this.speed;
-            } else if (this.timer >= 700 && this.timer <= 799) {
+            } else if (this.timer >= 7*this.distance && this.timer <= 7*this.distance-1) {
                 this.body.velocity.x = 0;
             } else {
                 this.timer = 0;
@@ -101,16 +102,16 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 299) {
+            if (this.timer >= 0 && this.timer <= 3*this.distance-1) {
                 this.body.velocity.x = -this.speed;
                 this.body.velocity.y = 0;
-            } else if (this.timer >= 300 && this.timer <= 349) {
+            } else if (this.timer >= 3*this.distance && this.timer <= 3.5*this.distance-1) {
                 this.body.velocity.x = 0;
                 this.body.velocity.y = this.speed;
-            } else if (this.timer >= 350 && this.timer <= 649) {
+            } else if (this.timer >= 3.5*this.distance && this.timer <= 6.5*this.distance-1) {
                 this.body.velocity.x = this.speed;
                 this.body.velocity.y = 0;
-            } else if (this.timer >= 650 && this.timer <= 699) {
+            } else if (this.timer >= 6.5*this.distance && this.timer <= 7*this.distance-1) {
                 this.body.velocity.x = 0;
                 this.body.velocity.y = -this.speed;
             } else {
@@ -122,16 +123,16 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 299) {
+            if (this.timer >= 0 && this.timer <= 3*this.distance-1) {
                 this.body.velocity.x = this.speed;
                 this.body.velocity.y = 0;
-            } else if (this.timer >= 300 && this.timer <= 349) {
+            } else if (this.timer >= 3*this.distance && this.timer <= 3.5*this.distance-1) {
                 this.body.velocity.x = 0;
                 this.body.velocity.y = -this.speed;
-            } else if (this.timer >= 350 && this.timer <= 649) {
+            } else if (this.timer >= 3.5*this.distance && this.timer <= 6.5*this.distance-1) {
                 this.body.velocity.x = -this.speed;
                 this.body.velocity.y = 0;
-            } else if (this.timer >= 650 && this.timer <= 699) {
+            } else if (this.timer >= 6.5*this.distance && this.timer <= 7*this.distance-1) {
                 this.body.velocity.x = 0;
                 this.body.velocity.y = this.speed;
             } else {
@@ -143,9 +144,9 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 200) {
+            if (this.timer >= 0 && this.timer <= 2*this.distance-1) {
                 this.body.velocity.y = -this.speed;
-            } else if (this.timer >= 200 && this.timer <= 399) {
+            } else if (this.timer >= 2*this.distance && this.timer <= 4*this.distance-1) {
                 this.body.velocity.y = this.speed;
             } else {
                 this.timer = 0;
@@ -156,9 +157,9 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 200) {
+            if (this.timer >= 0 && this.timer <= 2*this.distance-1) {
                 this.body.velocity.y = this.speed;
-            } else if (this.timer >= 200 && this.timer <= 399) {
+            } else if (this.timer >= 2*this.distance && this.timer <= 4*this.distance-1) {
                 this.body.velocity.y = -this.speed;
             } else {
                 this.timer = 0;
@@ -169,13 +170,13 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 500) {
+            if (this.timer >= 0 && this.timer <= 5*this.distance-1) {
                 this.body.velocity.x = -this.speed;
-            } else if (this.timer >= 500 && this.timer <= 599) {
+            } else if (this.timer >= 5*this.distance && this.timer <= 6*this.distance-1) {
                 this.body.velocity.x = 0;
-            } else if (this.timer >= 600 && this.timer <= 1099) {
+            } else if (this.timer >= 6*this.distance && this.timer <= 11*this.distance-1) {
                 this.body.velocity.x = this.speed;
-            } else if (this.timer >= 1100 && this.timer <= 1199) {
+            } else if (this.timer >= 11*this.distance && this.timer <= 12*this.distance-1) {
                 this.body.velocity.x = 0;
             } else {
                 this.timer = 0;
@@ -186,13 +187,13 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 500) {
+            if (this.timer >= 0 && this.timer <= 5*this.distance-1) {
                 this.body.velocity.x = this.speed;
-            } else if (this.timer >= 500 && this.timer <= 599) {
+            } else if (this.timer >= 5*this.distance && this.timer <= 6*this.distance-1) {
                 this.body.velocity.x = 0;
-            } else if (this.timer >= 600 && this.timer <= 1099) {
+            } else if (this.timer >= 6*this.distance && this.timer <= 11*this.distance-1) {
                 this.body.velocity.x = -this.speed;
-            } else if (this.timer >= 1100 && this.timer <= 1199) {
+            } else if (this.timer >= 11*this.distance && this.timer <= 12*this.distance-1) {
                 this.body.velocity.x = 0;
             } else {
                 this.timer = 0;
@@ -203,16 +204,16 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 299) {
+            if (this.timer >= 0 && this.timer <= 3*this.distance-1) {
                 this.body.velocity.x = -this.speed;
                 this.body.velocity.y = 0;
-            } else if (this.timer >= 300 && this.timer <= 449) {
+            } else if (this.timer >= 3*this.distance && this.timer <= 4.5*this.distance-1) {
                 this.body.velocity.x = 0;
                 this.body.velocity.y = this.speed;
-            } else if (this.timer >= 450 && this.timer <= 749) {
+            } else if (this.timer >= 4.5*this.distance && this.timer <= 7.5*this.distance-1) {
                 this.body.velocity.x = this.speed;
                 this.body.velocity.y = 0;
-            } else if (this.timer >= 750 && this.timer <= 899) {
+            } else if (this.timer >= 7.5*this.distance && this.timer <= 9*this.distance-1) {
                 this.body.velocity.x = 0;
                 this.body.velocity.y = -this.speed;
             } else {
@@ -224,16 +225,16 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 299) {
+            if (this.timer >= 0 && this.timer <= 3*this.distance-1) {
                 this.body.velocity.x = this.speed;
                 this.body.velocity.y = 0;
-            } else if (this.timer >= 300 && this.timer <= 449) {
+            } else if (this.timer >= 3*this.distance && this.timer <= 4.5*this.distance-1) {
                 this.body.velocity.x = 0;
                 this.body.velocity.y = -this.speed;
-            } else if (this.timer >= 450 && this.timer <= 749) {
+            } else if (this.timer >= 4.5*this.distance && this.timer <= 7.5*this.distance-1) {
                 this.body.velocity.x = -this.speed;
                 this.body.velocity.y = 0;
-            } else if (this.timer >= 750 && this.timer <= 899) {
+            } else if (this.timer >= 7.5*this.distance && this.timer <= 9*this.distance-1) {
                 this.body.velocity.x = 0;
                 this.body.velocity.y = this.speed;
             } else {
@@ -245,9 +246,9 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 399) {
+            if (this.timer >= 0 && this.timer <= 4*this.distance-1) {
                 this.body.velocity.y = -this.speed;
-            } else if (this.timer >= 400 && this.timer <= 799) {
+            } else if (this.timer >= 4*this.distance && this.timer <= 8*this.distance-1) {
                 this.body.velocity.y = this.speed;
             } else {
                 this.timer = 0;
@@ -258,9 +259,9 @@ module MyGame {
                 
             this.timer++
 
-            if (this.timer >= 0 && this.timer <= 399) {
+            if (this.timer >= 0 && this.timer <= 4*this.distance-1) {
                 this.body.velocity.y = this.speed;
-            } else if (this.timer >= 400 && this.timer <= 799) {
+            } else if (this.timer >= 4*this.distance && this.timer <= 8*this.distance-1) {
                 this.body.velocity.y = -this.speed;
             } else {
                 this.timer = 0;

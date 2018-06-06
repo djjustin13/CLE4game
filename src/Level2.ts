@@ -58,6 +58,7 @@ module MyGame {
 			this.dynamicLedge.add(new DynamicLedge(this.game, 934, 350, 8))
 			this.dynamicLedge.add(new DynamicLedge(this.game, 1068, 350, 9))
 			this.dynamicLedge.add(new DynamicLedge(this.game, 1702, 350, 8))
+
 			this.dynamicLedge.add(new DynamicLedge(this.game, 1836, 470, 10))
 			this.dynamicLedge.add(new DynamicLedge(this.game, 2441+(157-114)/2, h-this.ground.height-38, 4))
 			this.dynamicLedge.add(new DynamicLedge(this.game, 2441+(157-144)/2+114+20, h-this.ground.height-38, 7))
@@ -88,15 +89,15 @@ module MyGame {
 			this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			// this.player = new Player(this.game, 130, 190);
-			this.player = new Player(this.game, 1970+157/2, h-500);
+			this.player = new Player(this.game, 130, 190);
+			// this.player = new Player(this.game, 1970+157/2, h-500);
 
 			
 			// this.player = new Player(this.game, 2750, 400);
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
-			this.elephant1 = new Elephant(this.game, 300, this.world.height - this.ground.height);
+			this.elephant1 = new Elephant(this.game, 3000000, this.world.height - this.ground.height);
 
 			// Creation of End-tile
 			this.endTile = new EndTile(this.game, 4750, h-150);
