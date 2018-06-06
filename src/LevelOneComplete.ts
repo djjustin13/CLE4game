@@ -3,7 +3,7 @@ module MyGame {
 	export class LevelOneComplete extends Phaser.State {
 
 		background: Phaser.Sprite
-		button: Phaser.Sprite		
+		button: Phaser.Sprite	
 
 		create() {
 			this.background = this.add.sprite(0, 0, 'levelCompleteBackground');

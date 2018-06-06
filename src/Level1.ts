@@ -202,8 +202,9 @@ module MyGame {
 			}
 		}
 
-		completeLevel(){
+		completeLevel() {
 			this.game.state.start('LevelOneComplete', true, false);
+			console.log(this.timerDisplay.text)
 		}
 	
 		collectArtPiece(player:Player, artPiece:ArtPiece){
