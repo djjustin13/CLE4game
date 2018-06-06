@@ -3,16 +3,28 @@ module MyGame {
 	export class MainMenu extends Phaser.State {
 
 		level1: Phaser.Sprite
+		level2: Phaser.Sprite
+		level3: Phaser.Sprite
 		goButton: Phaser.Sprite
 		selectedLevel:number = 0
 
 		create() {
-			
-			this.level1 = this.add.sprite(200, this.world.centerY-50 , 'levelButton')
-			this.goButton = this.add.sprite(this.game.width-200, this.game.height-120 , 'menuGoButton')
+			this.add.sprite(0, 0, 'uiBackground')
+
+			this.add.sprite(this.world.centerX, 45, 'menuTitle').anchor.setTo(0.5, 0.5)
+
+
+			this.level1 = this.add.sprite(this.world.centerX-245, this.world.centerY , 'daliButton')
+			this.level2 = this.add.sprite(this.world.centerX, this.world.centerY , 'locked1')
+			this.level3 = this.add.sprite(this.world.centerX+245, this.world.centerY , 'locked2')
+
+			this.goButton = this.add.sprite(this.world.centerX+235, this.game.height-60 , 'menuGoButton')
 
 
 			this.level1.anchor.setTo(0.5, 0.5)
+			this.level2.anchor.setTo(0.5, 0.5)
+			this.level3.anchor.setTo(0.5, 0.5)
+
 			this.goButton.anchor.setTo(0.5, 0.5)
 
 			this.level1.inputEnabled = true
@@ -33,16 +45,39 @@ module MyGame {
 		}
 
 		hover(el:Phaser.Sprite){
-			el.scale.setTo(1.05, 1.05)
+			if(el == this.goButton){
+				if(this.selectedLevel != 0)el.animations.frame = 2
+			}else{
+				el.scale.setTo(1.05, 1.05)
+				el.animations.frame = 1
+			}
+			
 		}
 
 		hoverOut(el:Phaser.Sprite){
-			el.scale.setTo(1, 1)
+			if(el == this.goButton){
+				if(this.selectedLevel == 0){
+					el.animations.frame = 0
+				}else{
+					el.animations.frame = 1
+				}
+			}else{
+				if(this.selectedLevel == 0)el.animations.frame = 0
+				el.scale.setTo(1, 1)
+			}
+			
 		}
 
 		selectLevel(el:Phaser.Sprite, n:number){
-			el.tint = 0xff00ff;
-			this.selectedLevel = n
+			if(this.selectedLevel == n){
+				this.selectedLevel = 0
+				this.goButton.animations.frame = 0
+			}else{
+				this.goButton.animations.frame = 1
+				el.animations.frame = 1
+				this.selectedLevel = n
+			}
+			
 		}
 
 		startGame() {
