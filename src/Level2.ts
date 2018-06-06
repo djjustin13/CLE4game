@@ -108,7 +108,7 @@ module MyGame {
 			ui.fixedToCamera = true;
 
 			// Creation of text
-			let style = { font: "20px Arial", fill: "#ffffff" };
+			let style = { font: "bold 20px Assistent", fill: "#ffffff" };
 
 			this.artPieceScoreDisplay = this.game.add.text(16, 16, '0/4', style);
 			this.artPieceScoreDisplay.x = this.game.width - 300
