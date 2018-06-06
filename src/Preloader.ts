@@ -18,7 +18,7 @@ module MyGame {
 			this.load.image('platform', 'assets/platform.png')
 			this.load.image('artPiece', 'assets/artPiece.png')
 			this.load.image('platformTile', 'assets/platformTile.png')
-			this.load.image('dynamicledge', 'assets/platform.png')
+			this.load.image('dynamicledge', 'assets/platform_spikes_small.png')
 			this.load.image('eye', 'assets/eye.png')
 			this.load.image('spikes', 'assets/spikes.png')
 			this.load.image('elephant', 'assets/elephant.png')

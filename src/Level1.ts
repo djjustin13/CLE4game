@@ -60,7 +60,7 @@ module MyGame {
 
 			// Creation of moving platforms
 			this.dynamicLedge = this.add.group()
-			this.dynamicLedge.add(new DynamicLedge(this.game, 400, 200, 1))
+			this.dynamicLedge.add(new DynamicLedge(this.game, 400, 200, 2))
 			this.dynamicLedge.add(new DynamicLedge(this.game, 800, 200, 3))
 
 			// Creation of singular spikes
