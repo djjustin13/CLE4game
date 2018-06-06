@@ -89,8 +89,8 @@ module MyGame {
 			this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			this.player = new Player(this.game, 130, 190);
-			// this.player = new Player(this.game, 1970+157/2, h-500);
+			// this.player = new Player(this.game, 130, 190);
+			this.player = new Player(this.game, 1970+157/2, h-500);
 
 			
 			// this.player = new Player(this.game, 2750, 400);
