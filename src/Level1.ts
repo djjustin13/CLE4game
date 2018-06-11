@@ -118,7 +118,7 @@ module MyGame {
 			this.longlegs1 = new LongLegs(this.game, 4500, 200);
 
 			// Creation of End-tile
-			this.endTile = new EndTile(this.game, 4750, h-150);
+			this.endTile = new EndTile(this.game, 4750, h-142);
 
 			// Creation on UI
 			let ui:Phaser.Sprite = this.add.sprite(this.game.width, 0, 'uiBase');

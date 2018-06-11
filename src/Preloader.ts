@@ -37,10 +37,10 @@ module MyGame {
 			this.load.image('longlegs', 'assets/longlegsplaceholder.png')
 
 			this.load.image('uiBase', 'assets/uiBase.png')
-			this.load.image('pedestal', 'assets/pedestal.png')
+			this.load.image('endSign', 'assets/endSign.png')
 
 			//Load Player
-			this.load.spritesheet('dude', 'assets/spritesheetV3.png', 64, 64, 15);
+			this.load.spritesheet('dude', 'assets/playerSheet.png', 64, 64, 16);
 
 			// Load level completion
 			this.load.image('levelCompleteBackground', 'assets/startBackground.jpg')
