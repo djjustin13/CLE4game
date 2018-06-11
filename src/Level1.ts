@@ -29,7 +29,7 @@ module MyGame {
 
 		create() {
 			let h = this.game.world.height
-			this.game.world.setBounds(0, 0, 6000, 600);
+			this.game.world.setBounds(0, 0, 6500, 600);
 			this.background = this.add.tileSprite(0, 0, this.world.width, 600, 'bgTile')
 
 			// Creation of platforms: ground, platforms, ledges e.d.
@@ -104,8 +104,13 @@ module MyGame {
 			//this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
+<<<<<<< HEAD
+			this.player = new Player(this.game, 130, 400);
+			//this.player = new Player(this.game, 4639, 400);
+=======
 			this.player = new Player(this.game, 130, this.world.height-this.ground.height-25);
 			// this.player = new Player(this.game, 4639, 400);
+>>>>>>> 7a99e50be58010e02bf1b089d613216078bc8e5f
 			
 			// this.player = new Player(this.game, 2750, 400);
 			this.game.camera.follow(this.player)
@@ -115,7 +120,7 @@ module MyGame {
 			this.elephant2 = new Elephant(this.game, 3750, this.world.height - this.ground.height);
 
 			// Creation of Longlegs
-			this.longlegs1 = new LongLegs(this.game, 4500, 200);
+			this.longlegs1 = new LongLegs(this.game, 5900, 300);
 
 			// Creation of End-tile
 			this.endTile = new EndTile(this.game, 4750, h-142);
@@ -151,7 +156,10 @@ module MyGame {
 			this.physics.arcade.collide(this.artPieces, this.ledge);
 			this.physics.arcade.collide(this.player, this.dynamicLedge);
 			this.physics.arcade.collide(this.player, this.longlegs1);
+
+			this.physics.arcade.collide(this.longlegs1, this.ground);
 			this.physics.arcade.collide(this.longlegs1, this.ledge);
+			this.physics.arcade.collide(this.longlegs1, this.spikes);
 
 			// Player collision
 			this.physics.arcade.collide(this.player, this.platforms);

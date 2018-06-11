@@ -35,7 +35,7 @@ module MyGame {
 			this.load.image('elephant', 'assets/elephant.png')
 			this.load.image('elephanttop', 'assets/elephanttop.png')
 			this.load.spritesheet('airflow', 'assets/airflow.png', 20, 32, 3)
-			this.load.image('longlegs', 'assets/longlegsplaceholder.png')
+			this.load.spritesheet('longlegs', 'assets/Elephant_spritesheet.png', 150, 164, 7);
 
 			this.load.image('uiBase', 'assets/uiBase.png')
 			this.load.image('endSign', 'assets/endSign.png')

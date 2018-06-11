@@ -12,14 +12,12 @@ module MyGame{
             this.game.physics.arcade.enableBody(this)
             this.body.collideWorldBounds=true;
 
-            this.anchor.setTo(0.5, 0);
-            
-            this.body.immovable = true;
+            this.anchor.setTo(0.0, 0.0);
+
+            this.facing = 1;
+            this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6], 10, true)
 
             game.add.existing(this);
-        
-            this.facing = 1;
-
         }
 
         update(){
@@ -30,16 +28,15 @@ module MyGame{
             if(this.moving){
                 this.body.velocity.x = this.facing * 100;
             }
-            if(this.facing == 1 && this.body.touching.right){
-                this.facing = -1;
-            }
-            if(this.facing == -1 && this.body.touching.left){
-                this.facing = 1;
-            }
         }
 
         startmoving(){
             this.moving = true;
+            this.animations.play('walk');
+        }
+
+        turnAround(){
+            this.facing *= -1
         }
     }
 }
