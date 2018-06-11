@@ -4,7 +4,7 @@ module MyGame {
 
         constructor(game: Phaser.Game, x: number, y: number) {
 
-            super(game, x, y, 'pedestal', 0);
+            super(game, x, y, 'endSign', 0);
 
             this.game.physics.arcade.enableBody(this)
             this.body.collideWorldBounds=true;

@@ -8,8 +8,8 @@ module MyGame {
 
 		create() {
 			this.background = this.add.sprite(0, 0, 'startBackground');
-			this.button = this.add.sprite(this.world.centerX+40, this.world.centerY-130, 'startButton')
-			this.button.anchor.setTo(0.5, 0)
+			this.button = this.add.sprite(this.world.centerX, this.world.centerY, 'startButton')
+			this.button.anchor.setTo(0.5, 0.5)
 
 			this.button.inputEnabled = true
 			this.button.input.useHandCursor = true;

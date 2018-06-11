@@ -118,7 +118,7 @@ module MyGame {
 			this.longlegs1 = new LongLegs(this.game, 4500, 200);
 
 			// Creation of End-tile
-			this.endTile = new EndTile(this.game, 4750, h-150);
+			this.endTile = new EndTile(this.game, 4750, h-142);
 
 			// Creation on UI
 			let ui:Phaser.Sprite = this.add.sprite(this.game.width, 0, 'uiBase');
@@ -128,16 +128,13 @@ module MyGame {
 			// Creation of text
 			let style = { font: "bold 20px Assistant", fill: "#ffffff" };
 
-			this.artPieceScoreDisplay = this.game.add.text(16, 16, '0/4', style);
-			this.artPieceScoreDisplay.x = this.game.width - 300
+			this.artPieceScoreDisplay = this.game.add.text(this.game.width - 236, 24, '0/4', style);
 			this.artPieceScoreDisplay.fixedToCamera = true;
 
-			this.timerDisplay = this.game.add.text(16, 16, "00:00", style);
-			this.timerDisplay.x = this.game.width - 210
+			this.timerDisplay = this.game.add.text(this.game.width - 146, 24, "00:00", style)
 			this.timerDisplay.fixedToCamera = true;
 
-			this.livesDisplay = this.game.add.text(16, 16, String(this.player.lives), style);
-			this.livesDisplay.x = this.game.width - 90
+			this.livesDisplay = this.game.add.text(this.game.width - 26, 24, String(this.player.lives), style);
 			this.livesDisplay.fixedToCamera = true;
 
 			this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);

@@ -19,10 +19,9 @@ module MyGame {
 			this.load.spritesheet('menuGoButton', 'assets/ui_go.png',210, 80, 3)
 			this.load.image('uiBackground', 'assets/ui_background.jpg')
 			this.load.image('menuTitle', 'assets/menu_title.png')
-			
+		
 
-
-			this.load.image('uiBase', 'assets/UI_baseV2.png')
+			this.load.image('uiBase', 'assets/ui_base.png')
 
 			// Load items
 			this.load.image('bgTile', 'assets/bgTile.png')
@@ -38,7 +37,7 @@ module MyGame {
 			this.load.image('longlegs', 'assets/longlegsplaceholder.png')
 
 			this.load.image('uiBase', 'assets/uiBase.png')
-			this.load.image('pedestal', 'assets/pedestal.png')
+			this.load.image('endSign', 'assets/endSign.png')
 
 			//Load Player
 			this.load.spritesheet('dude', 'assets/playerSheet.png', 64, 64, 15);
