@@ -87,7 +87,7 @@ module MyGame {
             }
 
             // Falling animation if velocity y is positive
-            if (this.body.velocity.y > 60 && (this.body.velocity.x != 0 || this.body.velocity.x == 0)) 
+            if (this.body.velocity.y > 100 && (this.body.velocity.x != 0 || this.body.velocity.x == 0)) 
             {
                 this.animations.play('fall')
                 this.jumpState = 0
