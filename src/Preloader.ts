@@ -19,10 +19,10 @@ module MyGame {
 			this.load.spritesheet('menuGoButton', 'assets/ui_go.png',210, 80, 3)
 			this.load.image('uiBackground', 'assets/ui_background.jpg')
 			this.load.image('menuTitle', 'assets/menu_title.png')
-			
-
-
-			this.load.image('uiBase', 'assets/UI_baseV2.png')
+		
+			//Load ui
+			this.load.image('uiBase', 'assets/ui_base.png')
+			this.load.image('gamePause', 'assets/ui_pauseButton.png')
 
 			// Load items
 			this.load.image('bgTile', 'assets/bgTile.png')
@@ -38,10 +38,10 @@ module MyGame {
 			this.load.spritesheet('longlegs', 'assets/Elephant_spritesheet.png', 150, 164, 7);
 
 			this.load.image('uiBase', 'assets/uiBase.png')
-			this.load.image('pedestal', 'assets/pedestal.png')
+			this.load.image('endSign', 'assets/endSign.png')
 
 			//Load Player
-			this.load.spritesheet('dude', 'assets/spritesheetV3.png', 64, 64, 15);
+			this.load.spritesheet('dude', 'assets/playerSheet.png', 64, 64, 16);
 
 			// Load level completion
 			this.load.image('levelCompleteBackground', 'assets/startBackground.jpg')
