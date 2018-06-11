@@ -40,7 +40,7 @@ module MyGame {
 			this.load.image('endSign', 'assets/endSign.png')
 
 			//Load Player
-			this.load.spritesheet('dude', 'assets/playerSheet.png', 64, 64, 15);
+			this.load.spritesheet('dude', 'assets/playerSheet.png', 64, 64, 16);
 
 			// Load level completion
 			this.load.image('levelCompleteBackground', 'assets/startBackground.jpg')

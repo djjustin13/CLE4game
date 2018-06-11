@@ -9,6 +9,7 @@ module MyGame {
         private jumpPressed:boolean
         private speed: number = 250;
         private jumpheight: number = 275;
+        private jumpState: number = 0;
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'dude', 0);
@@ -24,9 +25,11 @@ module MyGame {
             this.anchor.setTo(0.5, 1.0);
 
             this.animations.add('idle', [0], 40, false)
-            this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 40, true)
-            this.animations.add('jump', [8, 9, 10, 11, 12, 12, 13, 13, 14, 14, 14], 15, false)
-            this.animations.add('fall', [14], 40, false)
+            this.animations.add('walk', [1, 2, 3, 4, 5, 6, 7, 0], 40, true)
+            this.animations.add('jump', [8, 9, 10, 11, 12, 13, 13, 14, 14, 14], 15, false)
+            this.animations.add('fall', [15], 15, false)
+            this.animations.add('transform', [14], 15, false)
+
             this.animations.frame = 0
 
             game.add.existing(this)
@@ -72,21 +75,23 @@ module MyGame {
             }
             
             // Player animations
-            // Falling animation if velocity y is positive
+            // Idle animation when player is standing still
             if (this.body.velocity.y == 0 && this.body.velocity.x == 0)
             {
                 this.animations.play('idle')
             }
 
-            if (this.body.velocity.y > 0 && (this.body.velocity.x !== 0)) 
-            {
-                this.animations.play('fall')
-            }
-
             // Falling animation if velocity y is negative
-            if (this.body.velocity.y < 0) 
+            if (this.body.velocity.y < 0 && this.jumpState == 0) 
             {
                 this.animations.play('jump')
+                this.jumpState = 0
+            }
+
+            // Falling animation if velocity y is positive
+            if (this.body.velocity.y > 40 && (this.body.velocity.x !== 0 || this.body.velocity.x == 0)) 
+            {
+                this.animations.play('fall')
             }
 
             // Walking animation if velocity x > 0
@@ -102,6 +107,7 @@ module MyGame {
             }
         }
 
+        // When collision between player and something deadly is detected, one life is deducted
         spawn() {
             this.x = this.startX
             this.y = this.startY
@@ -109,10 +115,12 @@ module MyGame {
             console.log(this.lives)
         }
 
+        // When you're all out of lives
         gameOver() {
             this.game.state.start('GameOver', true, false);
         }
 
+        // When collision between player and airflow is detected
         fly() {
             this.timer++
             console.log("FLY!!")
@@ -121,6 +129,7 @@ module MyGame {
                 this.animations.play('jump')
                 this.game.input.keyboard.isDown(Phaser.Keyboard.UP)
                 this.body.velocity.y = -550;
+                this.jumpState = 1
             } else {
                 this.timer = 0
             }
