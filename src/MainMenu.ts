@@ -2,34 +2,86 @@ module MyGame {
 
 	export class MainMenu extends Phaser.State {
 
-		button: Phaser.Sprite
-		
+		level1: Phaser.Sprite
+		level2: Phaser.Sprite
+		level3: Phaser.Sprite
+		goButton: Phaser.Sprite
+		selectedLevel:number = 0
 
 		create() {
-			
-			this.button = this.add.sprite(this.world.centerX+40, this.world.centerY-130, 'startButton')
-			this.button.anchor.setTo(0.5, 0)
+			this.add.sprite(0, 0, 'uiBackground')
 
-			this.button.inputEnabled = true
-			this.button.input.useHandCursor = true;
+			this.add.sprite(this.world.centerX, 45, 'menuTitle').anchor.setTo(0.5, 0.5)
 
-			this.button.events.onInputDown.add(() => this.startGame())
-			this.button.events.onInputOver.add(() => this.hover())
-			this.button.events.onInputOut.add(() => this.hoverOut())
+
+			this.level1 = this.add.sprite(this.world.centerX-245, this.world.centerY , 'daliButton')
+			this.level2 = this.add.sprite(this.world.centerX, this.world.centerY , 'locked1')
+			this.level3 = this.add.sprite(this.world.centerX+245, this.world.centerY , 'locked2')
+
+			this.goButton = this.add.sprite(this.world.centerX+235, this.game.height-60 , 'menuGoButton')
+
+
+			this.level1.anchor.setTo(0.5, 0.5)
+			this.level2.anchor.setTo(0.5, 0.5)
+			this.level3.anchor.setTo(0.5, 0.5)
+
+			this.goButton.anchor.setTo(0.5, 0.5)
+
+			this.level1.inputEnabled = true
+			this.level1.input.useHandCursor = true;
+
+			this.goButton.inputEnabled = true
+			this.goButton.input.useHandCursor = true;
+
+			this.level1.events.onInputDown.add(() => this.selectLevel(this.level1, 1))
+			this.level1.events.onInputOver.add(() => this.hover(this.level1))
+			this.level1.events.onInputOut.add(() => this.hoverOut(this.level1))
+
+			this.goButton.events.onInputDown.add(() => this.startGame())
+			this.goButton.events.onInputOver.add(() => this.hover(this.goButton))
+			this.goButton.events.onInputOut.add(() => this.hoverOut(this.goButton))
 
 			console.log("menu state")
 		}
 
-		hover(){
-			this.button.scale.setTo(1.05, 1.05)
+		hover(el:Phaser.Sprite){
+			if(el == this.goButton){
+				if(this.selectedLevel != 0)el.animations.frame = 2
+			}else{
+				el.scale.setTo(1.05, 1.05)
+				el.animations.frame = 1
+			}
+			
 		}
 
-		hoverOut(){
-			this.button.scale.setTo(1, 1)
+		hoverOut(el:Phaser.Sprite){
+			if(el == this.goButton){
+				if(this.selectedLevel == 0){
+					el.animations.frame = 0
+				}else{
+					el.animations.frame = 1
+				}
+			}else{
+				if(this.selectedLevel == 0)el.animations.frame = 0
+				el.scale.setTo(1, 1)
+			}
+			
+		}
+
+		selectLevel(el:Phaser.Sprite, n:number){
+			if(this.selectedLevel == n){
+				this.selectedLevel = 0
+				this.goButton.animations.frame = 0
+			}else{
+				this.goButton.animations.frame = 1
+				el.animations.frame = 1
+				this.selectedLevel = n
+			}
+			
 		}
 
 		startGame() {
-			this.game.state.start('Level1', true, false, 'test123');
+			if(this.selectedLevel != 0)this.game.state.start('Level1', true, false, 'test123');
 		}
 	}
 }

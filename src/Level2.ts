@@ -39,40 +39,63 @@ module MyGame {
 			this.ground.body.allowGravity = false;
 
 			this.ledge = this.add.group()
-			this.ledge.add(new Platform(this.game, 400, h-64));
+			this.ledge.add(new Platform(this.game, 0, h-400));
+			this.ledge.add(new Platform(this.game, 1970, h-460));
+			this.ledge.add(new Platform(this.game, 1970, h-460));
+			this.ledge.add(new Platform(this.game, 1970+157, h-460+41));
+			this.ledge.add(new Platform(this.game, 1970+157*2, h-460+41*2));
+			this.ledge.add(new Platform(this.game, 1970+157*3, h-460+41*3));
+			this.ledge.add(new Platform(this.game, 1970+157*4, h-460+41*4));
+			this.ledge.add(new Platform(this.game, 1970+157*5, h-460+41*5));
+			this.ledge.add(new Platform(this.game, 1970+157*6, h-460+41*6));
+			this.ledge.add(new Platform(this.game, 1970+157*7, h-460+41*7));
+
+
 
 			// Creation of moving platforms
 			this.dynamicLedge = this.add.group()
-			this.dynamicLedge.add(new DynamicLedge(this.game, 400, 200, 1))
+			this.dynamicLedge.add(new DynamicLedge(this.game, 300, 350, 9))
+			this.dynamicLedge.add(new DynamicLedge(this.game, 934, 350, 8))
+			this.dynamicLedge.add(new DynamicLedge(this.game, 1068, 350, 9))
+			this.dynamicLedge.add(new DynamicLedge(this.game, 1702, 350, 8))
+
+			this.dynamicLedge.add(new DynamicLedge(this.game, 1836, 470, 10))
+			this.dynamicLedge.add(new DynamicLedge(this.game, 2441+(157-114)/2, h-this.ground.height-38, 4))
+			this.dynamicLedge.add(new DynamicLedge(this.game, 2441+(157-144)/2+114+20, h-this.ground.height-38, 7))
+
 
 			// Creation of singular spikes
 			this.spikes = this.add.group()
-			this.spikes.add(new Spikes(this.game, 960, h-69));
+			this.spikes.add(new Spikes(this.game, 1970+32+157, h-454));
+			this.spikes.add(new Spikes(this.game, 1970+32+157*3, h-454+41*2));
+			this.spikes.add(new Spikes(this.game, 1970+32+157*5, h-454+41*4));
+			this.spikes.add(new Spikes(this.game, 1970+32+157*6, h-454+41*5));
+
 
 			// Creation of spiked floor
-			for(let i = 0; i < 15; i++){
-				this.spikes.add(new Spikes(this.game, 1400 + i * 87, h-69));
+			for(let i = 0; i < 35; i++){
+				this.spikes.add(new Spikes(this.game, 0 + i * 87, h-69));
 			}
 
 			// Creation of puzzle pieces
 			this.artPieces = this.add.group()
-			this.artPieces.add(new ArtPiece(this.game, 37, 250));
+			this.artPieces.add(new ArtPiece(this.game, 2500, h-460+41*4));
 
 			// Creation of Enemies
 			this.enemies = this.add.group()
-			let enemy = this.enemies.add(new Enemy(this.game, 2900, h-100));
+			let enemy = this.enemies.add(new Enemy(this.game, 3300, h-100));
 
 			// Creation of Eye
 			this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			this.player = new Player(this.game, 130, 400);
-			
+			this.player = new Player(this.game, 130, 190);
+			// this.player = new Player(this.game, 1970+157/2, h-500);			
 			// this.player = new Player(this.game, 2750, 400);
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
-			this.elephant1 = new Elephant(this.game, 1300, this.world.height - this.ground.height);
+			this.elephant1 = new Elephant(this.game, 3000000, this.world.height - this.ground.height);
 
 			// Creation of End-tile
 			this.endTile = new EndTile(this.game, 4750, h-150);
@@ -83,7 +106,7 @@ module MyGame {
 			ui.fixedToCamera = true;
 
 			// Creation of text
-			let style = { font: "20px Arial", fill: "#ffffff" };
+			let style = { font: "bold 20px Assistent", fill: "#ffffff" };
 
 			this.artPieceScoreDisplay = this.game.add.text(16, 16, '0/4', style);
 			this.artPieceScoreDisplay.x = this.game.width - 300
