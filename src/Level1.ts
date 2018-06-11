@@ -121,9 +121,7 @@ module MyGame {
 			this.endTile = new EndTile(this.game, 4750, h-142);
 
 			// Creation on UI
-			let ui:Phaser.Sprite = this.add.sprite(this.game.width, 0, 'uiBase');
-			ui.anchor.setTo(1, 0)
-			ui.fixedToCamera = true;
+			let ui = new Ui(this.game)
 
 			// Creation of text
 			let style = { font: "bold 20px Assistant", fill: "#ffffff" };
