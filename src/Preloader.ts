@@ -41,7 +41,7 @@ module MyGame {
 			this.load.image('pedestal', 'assets/pedestal.png')
 
 			//Load Player
-			this.load.spritesheet('dude', 'assets/playerSheet.png', 64, 64, 15);
+			this.load.spritesheet('dude', 'assets/spritesheetV3.png', 64, 64, 15);
 
 			// Load level completion
 			this.load.image('levelCompleteBackground', 'assets/startBackground.jpg')
