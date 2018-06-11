@@ -27,8 +27,7 @@ module MyGame {
             this.animations.add('idle', [0], 40, false)
             this.animations.add('walk', [1, 2, 3, 4, 5, 6, 7, 0], 40, true)
             this.animations.add('jump', [8, 9, 10, 11, 12, 13, 13, 14, 14, 14], 15, false)
-            this.animations.add('fall', [15], 15, false)
-            this.animations.add('transform', [14], 15, false)
+            this.animations.add('fall', [5, 5, 6, 15], 15, false)
 
             this.animations.frame = 0
 
@@ -85,17 +84,17 @@ module MyGame {
             if (this.body.velocity.y < 0 && this.jumpState == 0) 
             {
                 this.animations.play('jump')
-                this.jumpState = 0
             }
 
             // Falling animation if velocity y is positive
-            if (this.body.velocity.y > 40 && (this.body.velocity.x !== 0 || this.body.velocity.x == 0)) 
+            if (this.body.velocity.y > 60 && (this.body.velocity.x != 0 || this.body.velocity.x == 0)) 
             {
                 this.animations.play('fall')
+                this.jumpState = 0
             }
 
-            // Walking animation if velocity x > 0
-            if (this.body.velocity.x !== 0 && this.body.velocity.y == 0)
+            // Walking animation if velocity x != 0
+            if (this.body.velocity.x != 0 && this.body.velocity.y == 0)
             {
                 this.animations.play('walk')
             }
