@@ -20,8 +20,9 @@ module MyGame {
 			this.load.image('uiBackground', 'assets/ui_background.jpg')
 			this.load.image('menuTitle', 'assets/menu_title.png')
 		
-
+			//Load ui
 			this.load.image('uiBase', 'assets/ui_base.png')
+			this.load.image('gamePause', 'assets/ui_pauseButton.png')
 
 			// Load items
 			this.load.image('bgTile', 'assets/bgTile.png')
