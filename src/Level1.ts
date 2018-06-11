@@ -149,7 +149,7 @@ module MyGame {
 			this.physics.arcade.collide(this.ground, this.artPieces);
 			this.physics.arcade.collide(this.player, this.ledge);
 			this.physics.arcade.collide(this.artPieces, this.ledge);
-			this.physics.arcade.collide(this.player, this.dynamicLedge);
+			this.physics.arcade.collide(this.player, this.dynamicLedge, () => this.player.cancelfall(), null, this);
 			this.physics.arcade.collide(this.player, this.longlegs1);
 
 			this.physics.arcade.collide(this.longlegs1, this.ground);
