@@ -11,9 +11,12 @@ module MyGame {
         private jumpheight: number = 275;
         private jumpState: number = 0;
 
+        private played:boolean
+
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'dude', 0);
 
+            this.played = false
             this.startX = x
             this.startY = y
 
@@ -86,15 +89,20 @@ module MyGame {
                 this.animations.play('jump')
             }
 
+            
             // Falling animation if velocity y is positive
-            if (this.body.velocity.y > 60 && (this.body.velocity.x != 0 || this.body.velocity.x == 0)) 
+            if (this.body.velocity.y > 60 && (this.body.velocity.x != 0 || this.body.velocity.x == 0) && this.played == false) 
             {
                 this.animations.play('fall')
+                this.played = true
                 this.jumpState = 0
             }
-
+            if(this.body.velocity.y == 0){
+                this.played = false
+            }
+        
             // Walking animation if velocity x != 0
-            if (this.body.velocity.x != 0 && this.body.velocity.y == 0)
+            if (this.body.velocity.x != 0 && this.body.velocity.y == 0 && this.played == false)
             {
                 this.animations.play('walk')
             }
@@ -123,6 +131,7 @@ module MyGame {
         fly() {
             this.timer++
             console.log("FLY!!")
+            this.played = false
 
             if (this.timer <= 7) {
                 this.animations.play('jump')
