@@ -12,6 +12,7 @@ module MyGame {
 		endTile: Phaser.Sprite
 		elephant1: any
 		elephant2: any
+		longlegs1: LongLegs
 		spikes: Phaser.Group
 		timerSec:number = 0
 		timerMin:number = 0
@@ -61,6 +62,10 @@ module MyGame {
 			this.ledge.add(new Platform(this.game, 4325, h-96));
 			this.ledge.add(new Platform(this.game, 4482, h-96));
 			this.ledge.add(new Platform(this.game, 4639, h-96));
+			this.ledge.add(new Platform(this.game, 5000, 500));
+			this.ledge.add(new Platform(this.game, 5200, 450));
+			this.ledge.add(new Platform(this.game, 5400, 400));
+			this.ledge.add(new Platform(this.game, 5600, 450));
 
 			// Creation of moving platforms
 			this.dynamicLedge = this.add.group()
@@ -95,10 +100,11 @@ module MyGame {
 			let enemy = this.enemies.add(new Enemy(this.game, 2900, h-100));
 
 			// Creation of Eye
-			this.eye = new EnemyEye(this.game, 4820, 350);
+			//this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			this.player = new Player(this.game, 130, 400);
+			//this.player = new Player(this.game, 130, 400);
+			this.player = new Player(this.game, 4639, 400);
 			
 			// this.player = new Player(this.game, 2750, 400);
 			this.game.camera.follow(this.player)
@@ -106,6 +112,9 @@ module MyGame {
 			// Creation of Elephant
 			this.elephant1 = new Elephant(this.game, 1300, this.world.height - this.ground.height);
 			this.elephant2 = new Elephant(this.game, 3750, this.world.height - this.ground.height);
+
+			// Creation of Longlegs
+			this.longlegs1 = new LongLegs(this.game, 4500, 200);
 
 			// Creation of End-tile
 			this.endTile = new EndTile(this.game, 4750, h-150);
@@ -145,6 +154,8 @@ module MyGame {
 			this.physics.arcade.collide(this.player, this.ledge);
 			this.physics.arcade.collide(this.artPieces, this.ledge);
 			this.physics.arcade.collide(this.player, this.dynamicLedge);
+			this.physics.arcade.collide(this.player, this.longlegs1);
+			this.physics.arcade.collide(this.longlegs1, this.ledge);
 
 			// Player collision
 			this.physics.arcade.collide(this.player, this.platforms);
@@ -153,6 +164,7 @@ module MyGame {
 			this.physics.arcade.overlap(this.player, this.elephant1.airflow, () => this.player.fly(), null, this);
 			this.physics.arcade.collide(this.player, this.elephant2);
 			this.physics.arcade.overlap(this.player, this.elephant2.airflow, () => this.player.fly(), null, this);
+			this.physics.arcade.overlap(this.player, this.longlegs1, () => this.longlegs1.startmoving(), null, this);
 			this.physics.arcade.overlap(this.player, this.enemies, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.eye, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.spikes, () => this.player.spawn(), null, this);
