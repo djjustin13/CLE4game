@@ -1,7 +1,7 @@
 module MyGame {
 
 	export class LevelTwoComplete extends Phaser.State {
-
+		game:Game
 		background: Phaser.Sprite
 		button: Phaser.Sprite	
 		

@@ -1,6 +1,7 @@
 module MyGame {
 
     export class Player extends Phaser.Sprite {
+        game:Game
         private startX:number
         private startY:number
         private timer: number = 0
