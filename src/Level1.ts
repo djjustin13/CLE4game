@@ -24,10 +24,6 @@ module MyGame {
 		timerDisplay: any
 		livesDisplay: any
 
-		init(a:any){
-			console.log(a)
-		}
-
 		create() {
 			let h = this.game.world.height
 			this.game.world.setBounds(0, 0, 6500, 600);
