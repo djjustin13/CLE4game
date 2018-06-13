@@ -57,22 +57,24 @@ module MyGame {
         }
 
         unPause(event:any){
-            let w = this.game.width
-            let h = this.game.height
-            var x1 = w/2 - 120, x2 = w/2 + 120,
-            y1 = h/2 + 50, y2 = h/2 + 150;
+            if(this.game.paused == true){
+                console.log("unpause")
+                let w = this.game.width
+                let h = this.game.height
+                var x1 = w/2 - 120, x2 = w/2 + 120,
+                y1 = h/2 + 50, y2 = h/2 + 150;
 
-            if(this.game.paused == true && (event.x < x1 || event.x > x2) || (event.y < y1 || event.y > y2)){
-                console.log(this.pauseBackground)
-                // this.game.paused = false
-                // this.pauseBackground.kill()
-                // this.homeButton.kill()
-                // this.restartButton.kill()
+                if((event.x < x1 || event.x > x2) || (event.y < y1 || event.y > y2)){
+                    this.game.paused = false
+                }
             }
         }
 
         restartLevel(){
+            console.log("restart")
+            this.game.paused = false
             this.level.resetLevel()
+            
         }
 
         gotoHome(){
