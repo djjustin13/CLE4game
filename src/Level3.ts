@@ -1,6 +1,7 @@
 module MyGame {
 
 	export class Level3 extends Phaser.State {
+		game:Game
 		background: Phaser.TileSprite
 		ground: Phaser.TileSprite
 		ledge: Phaser.Group
@@ -93,7 +94,7 @@ module MyGame {
 			this.timerDisplay.x = this.game.width - 210
 			this.timerDisplay.fixedToCamera = true;
 
-			this.livesDisplay = this.game.add.text(16, 16, String(this.player.lives), style);
+			this.livesDisplay = this.game.add.text(16, 16, String(this.game.lives), style);
 			this.livesDisplay.x = this.game.width - 90
 			this.livesDisplay.fixedToCamera = true;
 
