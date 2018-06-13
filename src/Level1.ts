@@ -176,10 +176,8 @@ module MyGame {
 
 			this.physics.arcade.collide(this.longlegs1, this.ground);
 			this.physics.arcade.collide(this.longlegs1, this.ledge);
-			this.physics.arcade.collide(this.longlegs1, this.spikes);
 			this.physics.arcade.collide(this.longlegs2, this.ground);
 			this.physics.arcade.collide(this.longlegs2, this.ledge);
-			this.physics.arcade.collide(this.longlegs2, this.spikes);
 
 			// Player collision
 			this.physics.arcade.collide(this.player, this.platforms);
