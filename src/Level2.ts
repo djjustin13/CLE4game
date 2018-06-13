@@ -90,7 +90,7 @@ module MyGame {
 			this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			this.player = new Player(this.game, 130, 190);
+			this.player = new Player(this.game, 130, 190, this);
 			// this.player = new Player(this.game, 1970+157/2, h-500);			
 			// this.player = new Player(this.game, 2750, 400);
 			this.game.camera.follow(this.player)
@@ -204,6 +204,9 @@ module MyGame {
 			// }
 			this.game.artpieces2++
 			this.artPieceScoreDisplay.text = this.game.artpieces2 + '/4';
+		}
+
+		respawnElements(){
 		}
 	}
 } 

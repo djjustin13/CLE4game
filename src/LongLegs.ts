@@ -4,6 +4,8 @@ module MyGame{
 
         facing: number
         moving: boolean = false
+        startX: number
+        startY: number
 
         constructor(game: Phaser.Game, x: number, y: number){
             
@@ -16,6 +18,9 @@ module MyGame{
 
             this.facing = 1;
             this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6], 10, true)
+
+            this.startX = x;
+            this.startY = y;
 
             game.add.existing(this);
         }
@@ -37,6 +42,15 @@ module MyGame{
 
         turnAround(){
             this.facing *= -1
+        }
+
+        respawn(){
+            this.moving = false;
+            this.body.velocity.x = 0;
+            this.facing = 1;
+            this.x = this.startX;
+            this.y = this.startY;
+            this.animations.stop();
         }
     }
 }

@@ -25,10 +25,6 @@ module MyGame {
 		timerDisplay: any
 		livesDisplay: any
 
-		init(a:any){
-			console.log(a)
-		}
-
 		create() {
 			let h = this.game.world.height
 			this.game.world.setBounds(0, 0, 9000, 600);
@@ -126,10 +122,9 @@ module MyGame {
 			//this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			this.player = new Player(this.game, 130, this.world.height-this.ground.height-25);
-			//this.player = new Player(this.game, 8888, 100);
+			//this.player = new Player(this.game, 130, this.world.height-this.ground.height-25, this);
+			this.player = new Player(this.game, 7000, 100, this);
 			
-			// this.player = new Player(this.game, 2750, 400);
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
@@ -255,6 +250,11 @@ module MyGame {
 			// }
 			this.game.artpieces1++
 			this.artPieceScoreDisplay.text = this.game.artpieces1 + '/4';
+		}
+
+		respawnElements(){
+			this.longlegs1.respawn();
+			this.longlegs2.respawn();
 		}
 	}
 } 
