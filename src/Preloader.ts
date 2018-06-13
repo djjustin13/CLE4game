@@ -20,6 +20,14 @@ module MyGame {
 			this.load.spritesheet('menuKunstwerkenButton', 'assets/ui_kunstwerken.png', 460, 80, 2)
 			this.load.image('uiBackground', 'assets/ui_background.jpg')
 			this.load.image('menuTitle', 'assets/menu_title.png')
+
+			// Load gallary items
+			this.load.image('gallaryBackground', 'assets/gallary_frame.png')
+			this.load.image('uiOkButton', 'assets/gallary_ui_okButton.png')
+			this.load.image('uiDaliMelt', 'assets/gallary_ui_melting-watch.png')
+			this.load.image('uiDaliSphere', 'assets/gallary_ui_galatea-of-the-spheres.png')
+			this.load.image('daliMelt', 'assets/dali_melting-watch.png')
+			this.load.image('daliSphere', 'assets/dali_galatea-of-the-spheres.png')
 		
 			//Load ui
 			this.load.image('uiBase', 'assets/ui_base.png')
