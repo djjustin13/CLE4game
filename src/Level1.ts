@@ -121,7 +121,7 @@ module MyGame {
 			this.longlegs1 = new LongLegs(this.game, 5900, 300);
 
 			// Creation of End-tile
-			this.endTile = new EndTile(this.game, 4750, h-142);
+			this.endTile = new EndTile(this.game, null, null);
 
 			// Creation on UI
 			let ui = new Ui(this.game)
