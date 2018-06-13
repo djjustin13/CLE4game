@@ -54,14 +54,13 @@ module MyGame {
 		}
 
 		hover(el:Phaser.Sprite){
+			if(el == this.level1){
+				el.scale.setTo(1.05, 1.05)
+			}
+			
 			if(el == this.goButton){
 				if(this.selectedLevel != 0)el.animations.frame = 2
 			}else{
-				el.scale.setTo(1.05, 1.05)
-				el.animations.frame = 1
-			}
-
-			if(el == this.kunstwerkenButton){
 				el.animations.frame = 1
 			}
 			
