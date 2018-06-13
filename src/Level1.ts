@@ -45,7 +45,7 @@ module MyGame {
 			this.ground.body.immovable = true;
 			this.ground.body.allowGravity = false;
 
-			let tutSign = this.game.add.sprite(120 ,h-282 , 'tutorialSign')
+			let tutSign = this.game.add.sprite(0 ,h-282 , 'tutorialSign')
 
 			this.ledge = this.add.group()
 			this.ledge.add(new Platform(this.game, 400, h-64));
@@ -62,8 +62,10 @@ module MyGame {
 			this.ledge.add(new Platform(this.game, 2705, h-96));
 			this.ledge.add(new Platform(this.game, 3105, h-64));
 			this.ledge.add(new Platform(this.game, 3105, h-96));
-			this.ledge.add(new Platform(this.game, 3523, h-75));
+			this.ledge.add(new Platform(this.game, 3523, h-64));
+			this.ledge.add(new Platform(this.game, 3523, h-96));
 			this.ledge.add(new Platform(this.game, 4325, h-96));
+			this.ledge.add(new Platform(this.game, 3523, h-128));
 			this.ledge.add(new Platform(this.game, 4482, h-96));
 			this.ledge.add(new Platform(this.game, 4639, h-96));
 			this.ledge.add(new Platform(this.game, 5000, 500));
@@ -131,7 +133,7 @@ module MyGame {
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
-			this.elephant1 = new Elephant(this.game, 1300, this.world.height - this.ground.height);
+			this.elephant1 = new Elephant(this.game, 1315, this.world.height - this.ground.height);
 			this.elephant2 = new Elephant(this.game, 3750, this.world.height - this.ground.height);
 
 			// Creation of Longlegs
