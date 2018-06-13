@@ -28,6 +28,7 @@ module MyGame {
 
 			// Load items
 			this.load.image('bgTile', 'assets/bgTile.png')
+			this.load.image('tutorialSign', 'assets/tutorialSign.png')
 			this.load.image('platform', 'assets/platform.png')
 			this.load.image('artPiece', 'assets/artPiece.png')
 			this.load.image('platformTile', 'assets/platformTile.png')
@@ -38,6 +39,7 @@ module MyGame {
 			this.load.image('elephanttop', 'assets/elephanttop.png')
 			this.load.spritesheet('airflow', 'assets/airflow.png', 20, 32, 3)
 			this.load.spritesheet('longlegs', 'assets/Elephant_spritesheet.png', 150, 164, 7);
+			this.load.spritesheet('dog', 'assets/dogSheet.png', 68, 64, 8);
 
 			this.load.image('uiBase', 'assets/uiBase.png')
 			this.load.image('endSign', 'assets/endSign.png')

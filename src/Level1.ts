@@ -43,6 +43,8 @@ module MyGame {
 			this.ground.body.immovable = true;
 			this.ground.body.allowGravity = false;
 
+			let tutSign = this.game.add.sprite(120 ,h-282 , 'tutorialSign')
+
 			this.ledge = this.add.group()
 			this.ledge.add(new Platform(this.game, 400, h-64));
 			this.ledge.add(new Platform(this.game, 800, h-64));
