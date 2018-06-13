@@ -101,7 +101,7 @@ module MyGame {
 		}
 
 		showGallary() {
-			console.log('such amazing art')
+			this.game.state.start('Gallary', true, false);
 		}
 	}
 }
