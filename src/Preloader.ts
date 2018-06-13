@@ -13,10 +13,11 @@ module MyGame {
 			this.load.image('uiBackground', 'assets/ui_background.jpg')
 
 			//Load menu items
-			this.load.spritesheet('daliButton', 'assets/ui_dali.png',218 ,368 ,2 )
+			this.load.spritesheet('daliButton', 'assets/ui_dali.png',218 ,368, 2 )
 			this.load.image('locked1', 'assets/ui_lockedcharacter1.png')
 			this.load.image('locked2', 'assets/ui_lockedcharacter2.png')
-			this.load.spritesheet('menuGoButton', 'assets/ui_go.png',210, 80, 3)
+			this.load.spritesheet('menuGoButton', 'assets/ui_go.png', 210, 80, 3)
+			this.load.spritesheet('menuKunstwerkenButton', 'assets/ui_kunstwerken.png', 450, 81, 2)
 			this.load.image('uiBackground', 'assets/ui_background.jpg')
 			this.load.image('menuTitle', 'assets/menu_title.png')
 		
