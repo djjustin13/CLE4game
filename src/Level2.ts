@@ -106,18 +106,15 @@ module MyGame {
 			ui.fixedToCamera = true;
 
 			// Creation of text
-			let style = { font: "bold 20px Assistent", fill: "#ffffff" };
+			let style = { font: "bold 20px Assistant", fill: "#ffffff" };
 
-			this.artPieceScoreDisplay = this.game.add.text(16, 16, '0/4', style);
-			this.artPieceScoreDisplay.x = this.game.width - 300
+			this.artPieceScoreDisplay = this.game.add.text(this.game.width - 236, 24, '0/4', style);
 			this.artPieceScoreDisplay.fixedToCamera = true;
 
-			this.timerDisplay = this.game.add.text(16, 16, "00:00", style);
-			this.timerDisplay.x = this.game.width - 210
+			this.timerDisplay = this.game.add.text(this.game.width - 146, 24, "00:00", style)
 			this.timerDisplay.fixedToCamera = true;
 
-			this.livesDisplay = this.game.add.text(16, 16, String(this.player.lives), style);
-			this.livesDisplay.x = this.game.width - 90
+			this.livesDisplay = this.game.add.text(this.game.width - 26, 24, String(this.player.lives), style);
 			this.livesDisplay.fixedToCamera = true;
 
 			this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
