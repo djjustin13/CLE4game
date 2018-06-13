@@ -4,6 +4,7 @@ module MyGame {
 
 		// Overall
 		public lives:number = 9
+		public gameprogression = 0
 
 		// Level 1
 		public artpieces1:number = 0

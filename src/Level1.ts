@@ -14,6 +14,7 @@ module MyGame {
 		elephant1: any
 		elephant2: any
 		longlegs1: LongLegs
+		longlegs2: LongLegs
 		spikes: Phaser.Group
 		timerSec:number = 0
 		timerMin:number = 0
@@ -26,7 +27,7 @@ module MyGame {
 
 		create() {
 			let h = this.game.world.height
-			this.game.world.setBounds(0, 0, 6500, 600);
+			this.game.world.setBounds(0, 0, 9000, 600);
 			this.background = this.add.tileSprite(0, 0, this.world.width, 600, 'bgTile')
 
 			// Creation of platforms: ground, platforms, ledges e.d.
@@ -40,7 +41,7 @@ module MyGame {
 			this.ground.body.immovable = true;
 			this.ground.body.allowGravity = false;
 
-			let tutSign = this.game.add.sprite(120 ,h-282 , 'tutorialSign')
+			let tutSign = this.game.add.sprite(0 ,h-282 , 'tutorialSign')
 
 			this.ledge = this.add.group()
 			this.ledge.add(new Platform(this.game, 400, h-64));
@@ -57,14 +58,27 @@ module MyGame {
 			this.ledge.add(new Platform(this.game, 2705, h-96));
 			this.ledge.add(new Platform(this.game, 3105, h-64));
 			this.ledge.add(new Platform(this.game, 3105, h-96));
-			this.ledge.add(new Platform(this.game, 3523, h-75));
+			this.ledge.add(new Platform(this.game, 3523, h-64));
+			this.ledge.add(new Platform(this.game, 3523, h-96));
 			this.ledge.add(new Platform(this.game, 4325, h-96));
+			this.ledge.add(new Platform(this.game, 3523, h-128));
 			this.ledge.add(new Platform(this.game, 4482, h-96));
 			this.ledge.add(new Platform(this.game, 4639, h-96));
 			this.ledge.add(new Platform(this.game, 5000, 500));
 			this.ledge.add(new Platform(this.game, 5200, 450));
 			this.ledge.add(new Platform(this.game, 5400, 400));
-			this.ledge.add(new Platform(this.game, 5600, 450));
+			this.ledge.add(new Platform(this.game, 5600, 400));
+			this.ledge.add(new Platform(this.game, 6500, 350));
+			this.ledge.add(new Platform(this.game, 6700, 300));
+			this.ledge.add(new Platform(this.game, 6900, 250));
+			this.ledge.add(new Platform(this.game, 7100, 200));
+			this.ledge.add(new Platform(this.game, 7300, 150));
+			this.ledge.add(new Platform(this.game, 7500, 300));
+			this.ledge.add(new Platform(this.game, 7700, 350));
+			this.ledge.add(new Platform(this.game, 7900, 400));
+			this.ledge.add(new Platform(this.game, 8100, 450));
+			this.ledge.add(new Platform(this.game, 8300, 500));
+			this.ledge.add(new Platform(this.game, 8800, 400));
 
 			// Creation of moving platforms
 			this.dynamicLedge = this.add.group()
@@ -75,6 +89,11 @@ module MyGame {
 			// Creation of singular spikes
 			this.spikes = this.add.group()
 			this.spikes.add(new Spikes(this.game, 960, h-69));
+			this.spikes.add(new Spikes(this.game, 7550, 263));
+			this.spikes.add(new Spikes(this.game, 7750, 313));
+			this.spikes.add(new Spikes(this.game, 7950, 363));
+			this.spikes.add(new Spikes(this.game, 8150, 413));
+			this.spikes.add(new Spikes(this.game, 8350, 463));
 
 			// Creation of spiked floor
 			for(let i = 0; i < 15; i++){
@@ -83,7 +102,7 @@ module MyGame {
 			for(let i = 0; i < 3; i++){
 				this.spikes.add(new Spikes(this.game, 3265 + i * 87, h-69));
 			}
-			for(let i = 0; i < 20; i++){
+			for(let i = 0; i < 60; i++){
 				this.spikes.add(new Spikes(this.game, 3800 + i * 87, h-69));
 			}
 
@@ -103,21 +122,21 @@ module MyGame {
 			//this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			this.player = new Player(this.game, 130, this.world.height-this.ground.height-25);
-			// this.player = new Player(this.game, 4639, 400);
+			//this.player = new Player(this.game, 130, this.world.height-this.ground.height-25, this);
+			this.player = new Player(this.game, 7000, 100, this);
 			
-			// this.player = new Player(this.game, 2750, 400);
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
-			this.elephant1 = new Elephant(this.game, 1300, this.world.height - this.ground.height);
+			this.elephant1 = new Elephant(this.game, 1315, this.world.height - this.ground.height);
 			this.elephant2 = new Elephant(this.game, 3750, this.world.height - this.ground.height);
 
 			// Creation of Longlegs
-			this.longlegs1 = new LongLegs(this.game, 5900, 300);
+			this.longlegs1 = new LongLegs(this.game, 5800, 300);
+			this.longlegs2 = new LongLegs(this.game, 7500, 100);
 
 			// Creation of End-tile
-			this.endTile = new EndTile(this.game, null, null);
+			this.endTile = new EndTile(this.game, 8888, 357);
 
 			// Creation on UI
 			let ui = new Ui(this.game, this)
@@ -150,10 +169,12 @@ module MyGame {
 			this.physics.arcade.collide(this.artPieces, this.ledge);
 			this.physics.arcade.collide(this.player, this.dynamicLedge, () => this.player.cancelfall(), null, this);
 			this.physics.arcade.collide(this.player, this.longlegs1);
+			this.physics.arcade.collide(this.player, this.longlegs2);
 
 			this.physics.arcade.collide(this.longlegs1, this.ground);
 			this.physics.arcade.collide(this.longlegs1, this.ledge);
-			this.physics.arcade.collide(this.longlegs1, this.spikes);
+			this.physics.arcade.collide(this.longlegs2, this.ground);
+			this.physics.arcade.collide(this.longlegs2, this.ledge);
 
 			// Player collision
 			this.physics.arcade.collide(this.player, this.platforms);
@@ -163,6 +184,7 @@ module MyGame {
 			this.physics.arcade.collide(this.player, this.elephant2);
 			this.physics.arcade.overlap(this.player, this.elephant2.airflow, () => this.player.fly(), null, this);
 			this.physics.arcade.overlap(this.player, this.longlegs1, () => this.longlegs1.startmoving(), null, this);
+			this.physics.arcade.overlap(this.player, this.longlegs2, () => this.longlegs2.startmoving(), null, this);
 			this.physics.arcade.overlap(this.player, this.enemies, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.eye, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.spikes, () => this.player.spawn(), null, this);
@@ -218,7 +240,7 @@ module MyGame {
 
 		completeLevel() {
 			this.game.state.start('LevelOneComplete', true, false);
-			console.log(this.timerDisplay.text)
+			this.game.gameprogression = 1
 		}
 	
 		collectArtPiece(player:Player, artPiece:ArtPiece){
@@ -228,6 +250,11 @@ module MyGame {
 			// }
 			this.game.artpieces1++
 			this.artPieceScoreDisplay.text = this.game.artpieces1 + '/4';
+		}
+
+		respawnElements(){
+			this.longlegs1.respawn();
+			this.longlegs2.respawn();
 		}
 	}
 } 
