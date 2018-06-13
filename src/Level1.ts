@@ -222,7 +222,7 @@ module MyGame {
 
 		completeLevel() {
 			this.game.state.start('LevelOneComplete', true, false);
-			console.log(this.timerDisplay.text)
+			this.game.gameprogression = 1
 		}
 	
 		collectArtPiece(player:Player, artPiece:ArtPiece){

@@ -174,6 +174,7 @@ module MyGame {
 
 		completeLevel(){
 			this.game.state.start('LevelThreeComplete', true, false);
+			this.game.gameprogression = 3
 		}
 	
 		collectArtPiece(player:Player, artPiece:ArtPiece){
