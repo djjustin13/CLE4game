@@ -1,9 +1,13 @@
 module MyGame {
 
 	export class LevelOneComplete extends Phaser.State {
-
+		game:Game
 		background: Phaser.Sprite
-		button: Phaser.Sprite	
+		button: Phaser.Sprite
+		
+		artPieceScoreDisplay:any
+		timerDisplay:any
+		livesDisplay:any
 
 		create() {
 			this.background = this.add.sprite(0, 0, 'levelCompleteBackground');
@@ -16,6 +20,14 @@ module MyGame {
 			this.button.events.onInputDown.add(() => this.nextLevel())
 			this.button.events.onInputOver.add(() => this.hover())
 			this.button.events.onInputOut.add(() => this.hoverOut())
+
+			let style = { font: "bold 20px Assistant", fill: "#ffffff" };
+
+			this.artPieceScoreDisplay = this.game.add.text(this.game.width - 236, 24, this.game.artpieces1 + '/4', style);
+
+			this.timerDisplay = this.game.add.text(this.game.width - 146, 24, String(this.game.timer1), style)
+
+			this.livesDisplay = this.game.add.text(this.game.width - 26, 24, String(this.game.lives), style);
 
 			console.log("level one complete!")
 		}

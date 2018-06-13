@@ -1,9 +1,9 @@
 module MyGame {
 
     export class Player extends Phaser.Sprite {
+        game:Game
         private startX:number
         private startY:number
-        public lives:number = 9
         private timer: number = 0
         private enemyState: number
         private jumpPressed:boolean
@@ -110,7 +110,7 @@ module MyGame {
 
             // No lives mechanic
             // If player lost all lives go to gameOver()
-            if (this.lives <= 0) {
+            if (this.game.lives <= 0) {
                 this.gameOver();
             }
         }
@@ -119,8 +119,9 @@ module MyGame {
         spawn() {
             this.x = this.startX
             this.y = this.startY
-            this.lives -= 1
-            console.log(this.lives)
+
+            this.game.lives--
+            console.log(this.game.lives)
         }
 
         // When you're all out of lives
@@ -131,7 +132,6 @@ module MyGame {
         // When collision between player and airflow is detected
         fly() {
             this.timer++
-            console.log("FLY!!")
             this.played = false
 
             if (this.timer <= 7) {

@@ -8,7 +8,7 @@ module MyGame{
 
         constructor(game: Phaser.Game, x: number, y: number){
             
-            super(game, x, y, 'dude', 0);
+            super(game, x, y, 'dog', 0);
 
             this.game.physics.arcade.enableBody(this)
             this.body.collideWorldBounds=true;

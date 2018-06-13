@@ -1,6 +1,7 @@
 module MyGame {
 
 	export class Level1 extends Phaser.State {
+		game:Game
 		background: Phaser.TileSprite
 		ground: Phaser.TileSprite
 		ledge: Phaser.Group
@@ -43,6 +44,8 @@ module MyGame {
 			this.ground.body.collideWorldBounds = true;
 			this.ground.body.immovable = true;
 			this.ground.body.allowGravity = false;
+
+			let tutSign = this.game.add.sprite(120 ,h-282 , 'tutorialSign')
 
 			this.ledge = this.add.group()
 			this.ledge.add(new Platform(this.game, 400, h-64));
@@ -139,18 +142,18 @@ module MyGame {
 			this.endTile = new EndTile(this.game, 8888, 357);
 
 			// Creation on UI
-			let ui = new Ui(this.game)
+			let ui = new Ui(this.game, this)
 
 			// Creation of text
 			let style = { font: "bold 20px Assistant", fill: "#ffffff" };
 
-			this.artPieceScoreDisplay = this.game.add.text(this.game.width - 236, 24, '0/4', style);
+			this.artPieceScoreDisplay = this.game.add.text(this.game.width - 236, 24, this.game.artpieces1 + '/4', style);
 			this.artPieceScoreDisplay.fixedToCamera = true;
 
 			this.timerDisplay = this.game.add.text(this.game.width - 146, 24, "00:00", style)
 			this.timerDisplay.fixedToCamera = true;
 
-			this.livesDisplay = this.game.add.text(this.game.width - 26, 24, String(this.player.lives), style);
+			this.livesDisplay = this.game.add.text(this.game.width - 26, 24, String(this.game.lives), style);
 			this.livesDisplay.fixedToCamera = true;
 
 			this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
@@ -193,7 +196,7 @@ module MyGame {
 			this.physics.arcade.overlap(this.player, this.artPieces, this.collectArtPiece, null, this);
 			this.physics.arcade.overlap(this.player, this.endTile, this.completeLevelCheck, null, this);
 
-			this.livesDisplay.text = String(this.player.lives)
+			this.livesDisplay.text = String(this.game.lives)
 
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
 				this.resetLevel()
@@ -223,8 +226,8 @@ module MyGame {
 			else{
 				minText = String(this.timerMin)
 			}
-			let timerText:string = minText+":"+secText
-			this.timerDisplay.text = timerText;
+			this.game.timer1 = minText+":"+secText
+			this.timerDisplay.text = this.game.timer1;
 		}
 		
 		resetLevel(){
@@ -232,7 +235,7 @@ module MyGame {
 		}
 
 		completeLevelCheck(){
-			if (this.artPieceScore == this.artPieces.length) {
+			if (this.game.artpieces1 == 4) {
 				this.completeLevel()
 				console.log("level complete, such amaze")
 			} else {
@@ -242,16 +245,16 @@ module MyGame {
 
 		completeLevel() {
 			this.game.state.start('LevelOneComplete', true, false);
-			console.log(this.timerDisplay.text)
+			this.game.gameprogression = 1
 		}
 	
 		collectArtPiece(player:Player, artPiece:ArtPiece){
 			artPiece.kill()
-			if(this.eye){
-				this.eye.follow(player.position.x, player.position.y)
-			}
-			this.artPieceScore += 1;
-			this.artPieceScoreDisplay.text = this.artPieceScore + '/4';
+			// if(this.eye){
+			// 	this.eye.follow(player.position.x, player.position.y)
+			// }
+			this.game.artpieces1++
+			this.artPieceScoreDisplay.text = this.game.artpieces1 + '/4';
 		}
 	}
 } 

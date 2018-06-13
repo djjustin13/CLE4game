@@ -1,21 +1,25 @@
 module MyGame {
 
     export class Ui{
-        game: Game
+        game: Phaser.Game
+        level: any
         pauseButton:Phaser.Sprite
         pauseBackground:Phaser.Sprite
 
-        constructor(g:Game){
+        homeButton:Phaser.Sprite
+        restartButton:Phaser.Sprite
+
+        constructor(g:Phaser.Game, l:any){
             this.game = g
+            this.level = l
             let ui:Phaser.Sprite = this.game.add.sprite(this.game.width, 0, 'uiBase');
             ui.anchor.setTo(1, 0)
             ui.fixedToCamera = true
 
             this.pauseButton = this.game.add.sprite(0, 0, 'gamePause');
             this.pauseButton.fixedToCamera = true
-
             this.pauseButton.inputEnabled = true
-			this.pauseButton.input.useHandCursor = true;
+            this.pauseButton.input.useHandCursor = true;
 
 			this.pauseButton.events.onInputDown.add(() => this.pauseLevel())
 			this.pauseButton.events.onInputOver.add(() => this.hover(this.pauseButton))
@@ -37,14 +41,37 @@ module MyGame {
             this.game.paused = true
             this.pauseBackground = this.game.add.sprite(this.game.camera.x, this.game.camera.y, 'pauseBackground');
             this.pauseBackground.fixedToCamera = true
-            console.log("Pauze")
+            
+            this.restartButton = this.game.add.sprite(this.game.width/2-50, this.game.height/2+100, 'pauseRestart');
+            this.restartButton.fixedToCamera = true
+            this.restartButton.inputEnabled = true
+            this.restartButton.input.useHandCursor = true;
+            this.restartButton.anchor.setTo(0.5, 0.5)
+            this.pauseButton.events.onInputDown.add(() => this.restartLevel())
+
+            this.homeButton = this.game.add.sprite(this.game.width/2+50, this.game.height/2+100, 'pauseHome');
+            this.homeButton.fixedToCamera = true
+            this.homeButton.inputEnabled = true
+            this.homeButton.input.useHandCursor = true;
+            this.homeButton.anchor.setTo(0.5, 0.5)
+            this.pauseButton.events.onInputDown.add(() => this.gotoHome())
         }
 
         unPause(){
             if(this.game.paused == true){
                 this.game.paused = false
                 this.pauseBackground.kill()
+                this.homeButton.kill()
+                this.restartButton.kill()
             }
+        }
+
+        restartLevel(){
+            this.level.resetLevel()
+        }
+
+        gotoHome(){
+
         }
     }
 }

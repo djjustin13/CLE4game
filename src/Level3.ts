@@ -1,6 +1,7 @@
 module MyGame {
 
 	export class Level3 extends Phaser.State {
+		game:Game
 		background: Phaser.TileSprite
 		ground: Phaser.TileSprite
 		ledge: Phaser.Group
@@ -93,7 +94,7 @@ module MyGame {
 			this.timerDisplay.x = this.game.width - 210
 			this.timerDisplay.fixedToCamera = true;
 
-			this.livesDisplay = this.game.add.text(16, 16, String(this.player.lives), style);
+			this.livesDisplay = this.game.add.text(16, 16, String(this.game.lives), style);
 			this.livesDisplay.x = this.game.width - 90
 			this.livesDisplay.fixedToCamera = true;
 
@@ -124,7 +125,7 @@ module MyGame {
 			this.physics.arcade.overlap(this.player, this.artPieces, this.collectArtPiece, null, this);
 			this.physics.arcade.overlap(this.player, this.endTile, this.completeLevelCheck, null, this);
 
-			this.livesDisplay.text = String(this.player.lives)
+			this.livesDisplay.text = String(this.game.lives)
 
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
 				this.resetLevel()
@@ -154,8 +155,8 @@ module MyGame {
 			else{
 				minText = String(this.timerMin)
 			}
-			let timerText:string = minText+":"+secText
-			this.timerDisplay.text = timerText;
+			this.game.timer3 = minText+":"+secText
+			this.timerDisplay.text = this.game.timer3;
 		}
 		
 		resetLevel(){
@@ -163,7 +164,7 @@ module MyGame {
 		}
 
 		completeLevelCheck(){
-			if (this.artPieceScore == this.artPieces.length) {
+			if (this.game.artpieces3 == 4) {
 				this.completeLevel()
 				console.log("level complete, such amaze")
 			} else {
@@ -173,15 +174,16 @@ module MyGame {
 
 		completeLevel(){
 			this.game.state.start('LevelThreeComplete', true, false);
+			this.game.gameprogression = 3
 		}
 	
 		collectArtPiece(player:Player, artPiece:ArtPiece){
 			artPiece.kill()
-			if(this.eye){
-				this.eye.follow(player.position.x, player.position.y)
-			}
-			this.artPieceScore += 1;
-			this.artPieceScoreDisplay.text = this.artPieceScore + '/4';
+			// if(this.eye){
+			// 	this.eye.follow(player.position.x, player.position.y)
+			// }
+			this.game.artpieces3++
+			this.artPieceScoreDisplay.text = this.game.artpieces3 + '/4';
 		}
 	}
 } 

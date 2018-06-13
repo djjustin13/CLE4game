@@ -1,6 +1,7 @@
 module MyGame {
 
 	export class Level2 extends Phaser.State {
+		game:Game
 		background: Phaser.TileSprite
 		ground: Phaser.TileSprite
 		ledge: Phaser.Group
@@ -106,18 +107,15 @@ module MyGame {
 			ui.fixedToCamera = true;
 
 			// Creation of text
-			let style = { font: "bold 20px Assistent", fill: "#ffffff" };
+			let style = { font: "bold 20px Assistant", fill: "#ffffff" };
 
-			this.artPieceScoreDisplay = this.game.add.text(16, 16, '0/4', style);
-			this.artPieceScoreDisplay.x = this.game.width - 300
+			this.artPieceScoreDisplay = this.game.add.text(this.game.width - 236, 24, '0/4', style);
 			this.artPieceScoreDisplay.fixedToCamera = true;
 
-			this.timerDisplay = this.game.add.text(16, 16, "00:00", style);
-			this.timerDisplay.x = this.game.width - 210
+			this.timerDisplay = this.game.add.text(this.game.width - 146, 24, "00:00", style)
 			this.timerDisplay.fixedToCamera = true;
 
-			this.livesDisplay = this.game.add.text(16, 16, String(this.player.lives), style);
-			this.livesDisplay.x = this.game.width - 90
+			this.livesDisplay = this.game.add.text(this.game.width - 26, 24, String(this.game.lives), style);
 			this.livesDisplay.fixedToCamera = true;
 
 			this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
@@ -147,7 +145,7 @@ module MyGame {
 			this.physics.arcade.overlap(this.player, this.artPieces, this.collectArtPiece, null, this);
 			this.physics.arcade.overlap(this.player, this.endTile, this.completeLevelCheck, null, this);
 
-			this.livesDisplay.text = String(this.player.lives)
+			this.livesDisplay.text = String(this.game.lives)
 
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
 				this.resetLevel()
@@ -177,8 +175,8 @@ module MyGame {
 			else{
 				minText = String(this.timerMin)
 			}
-			let timerText:string = minText+":"+secText
-			this.timerDisplay.text = timerText;
+			this.game.timer2 = minText+":"+secText
+			this.timerDisplay.text = this.game.timer2;
 		}
 		
 		resetLevel(){
@@ -186,7 +184,7 @@ module MyGame {
 		}
 
 		completeLevelCheck(){
-			if (this.artPieceScore == this.artPieces.length) {
+			if (this.game.artpieces2 == 4) {
 				this.completeLevel()
 				console.log("level complete, such amaze")
 			} else {
@@ -196,15 +194,16 @@ module MyGame {
 
 		completeLevel(){
 			this.game.state.start('LevelTwoComplete', true, false);
+			this.game.gameprogression = 2
 		}
 	
 		collectArtPiece(player:Player, artPiece:ArtPiece){
 			artPiece.kill()
-			if(this.eye){
-				this.eye.follow(player.position.x, player.position.y)
-			}
-			this.artPieceScore += 1;
-			this.artPieceScoreDisplay.text = this.artPieceScore + '/4';
+			// if(this.eye){
+			// 	this.eye.follow(player.position.x, player.position.y)
+			// }
+			this.game.artpieces2++
+			this.artPieceScoreDisplay.text = this.game.artpieces2 + '/4';
 		}
 	}
 } 
