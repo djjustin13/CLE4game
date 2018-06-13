@@ -19,7 +19,7 @@ module MyGame {
 			this.level3 = this.add.sprite(this.world.centerX+245, this.world.centerY , 'locked2')
 
 			this.goButton = this.add.sprite(this.world.centerX+235, this.game.height-60 , 'menuGoButton')
-			this.kunstwerkenButton = this.add.sprite(this.world.centerX-245, this.game.height-60 , 'menuKunstwerkenButton')
+			this.kunstwerkenButton = this.add.sprite(this.world.centerX-245-107, this.game.height-60 , 'menuKunstwerkenButton')
 
 			this.level1.anchor.setTo(0.5, 0.5)
 			this.level2.anchor.setTo(0.5, 0.5)
