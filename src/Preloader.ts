@@ -24,6 +24,7 @@ module MyGame {
 			// Load Gallery items
 			this.load.image('gallaryBackground', 'assets/UI/Menu/gallary_frame.png')
 			this.load.image('uiOkButton', 'assets/UI/Menu/gallary_ui_okButton.png')
+			this.load.image('uiArtLocked', 'assets/UI/Menu/gallary_ui_locked.png')
 			this.load.image('uiDaliMelt', 'assets/UI/Menu/gallary_ui_melting-watch.png')
 			this.load.image('uiDaliSphere', 'assets/UI/Menu/gallary_ui_galatea-of-the-spheres.png')
 			this.load.image('daliMelt', 'assets/UI/Menu/dali_melting-watch.png')
@@ -35,6 +36,11 @@ module MyGame {
 			this.load.image('pauseBackground', 'assets/UI/Ingame/pause.png')
 			this.load.image('pauseRestart', 'assets/UI/Ingame/pause_restart.png')
 			this.load.image('pauseHome', 'assets/UI/Ingame/pause_home.png')
+
+			// Load UI objects
+			this.load.image('uiLife', 'assets/UI/Ingame/life.png')
+			this.load.image('uiClock', 'assets/UI/Ingame/clock.png')
+			this.load.image('uiPiece', 'assets/UI/Ingame/piece.png')
 
 			// Load Game objects
 			this.load.image('bgTile', 'assets/Misc/bgTile.png')
