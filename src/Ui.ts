@@ -1,11 +1,11 @@
 module MyGame {
 
     export class Ui{
-        game: Game
+        game: Phaser.Game
         pauseButton:Phaser.Sprite
         pauseBackground:Phaser.Sprite
 
-        constructor(g:Game){
+        constructor(g:Phaser.Game){
             this.game = g
             let ui:Phaser.Sprite = this.game.add.sprite(this.game.width, 0, 'uiBase');
             ui.anchor.setTo(1, 0)

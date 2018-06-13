@@ -1,9 +1,8 @@
 module MyGame {
 
 	export class Game extends Phaser.Game {
-
+		public score:number = 0
 		constructor() {
-			
 			super(1020, 600, Phaser.AUTO, 'content', null);
 
 			this.state.add('Boot', Boot, false);

@@ -139,6 +139,9 @@ module MyGame {
 
 			// Console level has started
 			console.log("LEVEL ONE STARTED - GOGOGO!")
+			
+			this.game.score++
+			console.log(this.game.score)
 		}
 
 		update(){
