@@ -144,7 +144,7 @@ module MyGame {
 			this.physics.arcade.overlap(this.player, this.artPieces, this.collectArtPiece, null, this);
 			this.physics.arcade.overlap(this.player, this.endTile, this.completeLevelCheck, null, this);
 
-			this.livesDisplay.text = String(this.player.lives)
+			this.livesDisplay.text = String(this.game.lives)
 
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
 				this.resetLevel()
@@ -174,8 +174,8 @@ module MyGame {
 			else{
 				minText = String(this.timerMin)
 			}
-			let timerText:string = minText+":"+secText
-			this.timerDisplay.text = timerText;
+			this.game.timer2 = minText+":"+secText
+			this.timerDisplay.text = this.game.timer2;
 		}
 		
 		resetLevel(){
@@ -183,7 +183,7 @@ module MyGame {
 		}
 
 		completeLevelCheck(){
-			if (this.artPieceScore == this.artPieces.length) {
+			if (this.game.artpieces2 == 4) {
 				this.completeLevel()
 				console.log("level complete, such amaze")
 			} else {
@@ -197,11 +197,11 @@ module MyGame {
 	
 		collectArtPiece(player:Player, artPiece:ArtPiece){
 			artPiece.kill()
-			if(this.eye){
-				this.eye.follow(player.position.x, player.position.y)
-			}
-			this.artPieceScore += 1;
-			this.artPieceScoreDisplay.text = this.artPieceScore + '/4';
+			// if(this.eye){
+			// 	this.eye.follow(player.position.x, player.position.y)
+			// }
+			this.game.artpieces2++
+			this.artPieceScoreDisplay.text = this.game.artpieces2 + '/4';
 		}
 	}
 } 

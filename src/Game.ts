@@ -1,7 +1,22 @@
 module MyGame {
 
 	export class Game extends Phaser.Game {
-		public score:number = 0
+
+		// Overall
+		public lives:number = 9
+
+		// Level 1
+		public artpieces1:number = 0
+		public timer1:string = "00:00"
+
+		// Level 2
+		public artpieces2:number = 0
+		public timer2:string = "00:00"
+
+		// Level 3
+		public artpieces3:number = 0
+		public timer3:string = "00:00"
+
 		constructor() {
 			super(1020, 600, Phaser.AUTO, 'content', null);
 
