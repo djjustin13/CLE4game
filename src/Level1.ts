@@ -124,7 +124,7 @@ module MyGame {
 			this.endTile = new EndTile(this.game, null, null);
 
 			// Creation on UI
-			let ui = new Ui(this.game)
+			let ui = new Ui(this.game, this)
 
 			// Creation of text
 			let style = { font: "bold 20px Assistant", fill: "#ffffff" };

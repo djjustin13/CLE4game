@@ -1,5 +1,5 @@
 html{
-  background: url(assets/bg.jpg) no-repeat center center fixed; 
+  background: url(assets/UI/Website/bg.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -32,7 +32,7 @@ body{
   width: 1016px;
   height: 600px;
   border: 52px solid transparent;
-  border-image: url(assets/frame.png) 44 stretch;
+  border-image: url(assets/UI/Website/frame.png) 44 stretch;
 }
 
 .game img{

@@ -2,14 +2,16 @@ module MyGame {
 
     export class Ui{
         game: Phaser.Game
+        level: any
         pauseButton:Phaser.Sprite
         pauseBackground:Phaser.Sprite
 
         homeButton:Phaser.Sprite
         restartButton:Phaser.Sprite
 
-        constructor(g:Phaser.Game){
+        constructor(g:Phaser.Game, l:any){
             this.game = g
+            this.level = l
             let ui:Phaser.Sprite = this.game.add.sprite(this.game.width, 0, 'uiBase');
             ui.anchor.setTo(1, 0)
             ui.fixedToCamera = true
@@ -45,12 +47,14 @@ module MyGame {
             this.restartButton.inputEnabled = true
             this.restartButton.input.useHandCursor = true;
             this.restartButton.anchor.setTo(0.5, 0.5)
+            this.pauseButton.events.onInputDown.add(() => this.restartLevel())
 
             this.homeButton = this.game.add.sprite(this.game.width/2+50, this.game.height/2+100, 'pauseHome');
             this.homeButton.fixedToCamera = true
             this.homeButton.inputEnabled = true
             this.homeButton.input.useHandCursor = true;
             this.homeButton.anchor.setTo(0.5, 0.5)
+            this.pauseButton.events.onInputDown.add(() => this.gotoHome())
         }
 
         unPause(){
@@ -60,6 +64,14 @@ module MyGame {
                 this.homeButton.kill()
                 this.restartButton.kill()
             }
+        }
+
+        restartLevel(){
+            this.level.resetLevel()
+        }
+
+        gotoHome(){
+
         }
     }
 }

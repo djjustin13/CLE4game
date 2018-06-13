@@ -7,63 +7,63 @@ module MyGame {
 		ready: boolean = false;
 
 		preload() {
-			// Load Start items
-			this.load.image('startBackground', 'assets/startBackground.jpg')
-			this.load.image('startButton', 'assets/startButton.png')
-			this.load.image('uiBackground', 'assets/ui_background.jpg')
+			//Load main menu screen
+			this.load.image('startBackground', 'assets/UI/Menu/startBackground.jpg')
+			this.load.image('startButton', 'assets/UI/Menu/startButton.png')
+			this.load.image('uiBackground', 'assets/UI/Menu/ui_background.jpg')
 
-			//Load menu items
-			this.load.spritesheet('daliButton', 'assets/ui_dali.png', 218, 368, 2)
-			this.load.image('locked1', 'assets/ui_lockedcharacter1.png')
-			this.load.image('locked2', 'assets/ui_lockedcharacter2.png')
-			this.load.spritesheet('menuGoButton', 'assets/ui_go.png', 210, 80, 3)
-			this.load.spritesheet('menuKunstwerkenButton', 'assets/ui_kunstwerken.png', 460, 80, 2)
-			this.load.image('uiBackground', 'assets/ui_background.jpg')
-			this.load.image('menuTitle', 'assets/menu_title.png')
+			//Load second menu screen
+			this.load.spritesheet('daliButton', 'assets/UI/Menu/ui_dali.png', 218, 368, 2)
+			this.load.image('locked1', 'assets/UI/Menu/ui_lockedcharacter1.png')
+			this.load.image('locked2', 'assets/UI/Menu/ui_lockedcharacter2.png')
+			this.load.spritesheet('menuGoButton', 'assets/UI/Menu/ui_go.png', 210, 80, 3)
+			this.load.spritesheet('menuKunstwerkenButton', 'assets/UI/Menu/ui_kunstwerken.png', 460, 80, 2)
+			this.load.image('uiBackground', 'assets/UI/Menu/ui_background.jpg')
+			this.load.image('menuTitle', 'assets/UI/Menu/menu_title.png')
 
-			// Load gallary items
-			this.load.image('gallaryBackground', 'assets/gallary_frame.png')
-			this.load.image('uiOkButton', 'assets/gallary_ui_okButton.png')
-			this.load.image('uiDaliMelt', 'assets/gallary_ui_melting-watch.png')
-			this.load.image('uiDaliSphere', 'assets/gallary_ui_galatea-of-the-spheres.png')
-			this.load.image('daliMelt', 'assets/dali_melting-watch.png')
-			this.load.image('daliSphere', 'assets/dali_galatea-of-the-spheres.png')
+			// Load Gallery items
+			this.load.image('gallaryBackground', 'assets/UI/Menu/gallary_frame.png')
+			this.load.image('uiOkButton', 'assets/UI/Menu/gallary_ui_okButton.png')
+			this.load.image('uiDaliMelt', 'assets/UI/Menu/gallary_ui_melting-watch.png')
+			this.load.image('uiDaliSphere', 'assets/UI/Menu/gallary_ui_galatea-of-the-spheres.png')
+			this.load.image('daliMelt', 'assets/UI/Menu/dali_melting-watch.png')
+			this.load.image('daliSphere', 'assets/UI/Menu/dali_galatea-of-the-spheres.png')
 		
-			//Load ui
-			this.load.image('uiBase', 'assets/ui_base.png')
-			this.load.image('gamePause', 'assets/ui_pauseButton.png')
-			this.load.image('pauseBackground', 'assets/pause.png')
-			this.load.image('pauseRestart', 'assets/pause_restart.png')
-			this.load.image('pauseHome', 'assets/pause_home.png')
+			//Load Ingame UI
+			this.load.image('uiBase', 'assets/UI/Ingame/ui_base.png')
+			this.load.image('gamePause', 'assets/UI/Ingame/ui_pauseButton.png')
+			this.load.image('pauseBackground', 'assets/UI/Ingame/pause.png')
+			this.load.image('pauseRestart', 'assets/UI/Ingame/pause_restart.png')
+			this.load.image('pauseHome', 'assets/UI/Ingame/pause_home.png')
 
-			// Load items
-			this.load.image('bgTile', 'assets/bgTile.png')
-			this.load.image('tutorialSign', 'assets/tutorialSign.png')
-			this.load.image('platform', 'assets/platform.png')
-			this.load.image('artPiece', 'assets/artPiece.png')
-			this.load.image('platformTile', 'assets/platformTile.png')
-			this.load.image('dynamicledge', 'assets/platform_spikes_small.png')
-			this.load.image('eye', 'assets/eye.png')
-			this.load.image('spikes', 'assets/spikes.png')
-			this.load.image('elephant', 'assets/elephant.png')
-			this.load.image('elephanttop', 'assets/elephanttop.png')
-			this.load.spritesheet('airflow', 'assets/airflow.png', 20, 32, 3)
-			this.load.spritesheet('longlegs', 'assets/Elephant_spritesheet.png', 150, 164, 7);
-			this.load.spritesheet('dog', 'assets/dogSheet.png', 68, 64, 8);
+			// Load Game objects
+			this.load.image('bgTile', 'assets/Misc/bgTile.png')
+			this.load.image('tutorialSign', 'assets/Misc/tutorialSign.png')
+			this.load.image('platform', 'assets/Platforms/platform.png')
+			this.load.image('artPiece', 'assets/Collectibles/artPiece.png')
+			this.load.image('platformTile', 'assets/Misc/platformTile.png')
+			this.load.image('dynamicledge', 'assets/Platforms/platform_spikes_small.png')
+			this.load.image('eye', 'assets/Enemies/eye.png')
+			this.load.image('spikes', 'assets/Enemies/spikes.png')
+			this.load.image('elephant', 'assets/IO/elephant.png')
+			this.load.image('elephanttop', 'assets/IO/elephanttop.png')
+			this.load.spritesheet('airflow', 'assets/Misc/airflow.png', 20, 32, 3)
+			this.load.spritesheet('longlegs', 'assets/IO/Elephant_spritesheet.png', 150, 164, 7);
+			this.load.spritesheet('dog', 'assets/Enemies/dogSheet.png', 68, 64, 8);
 
-			this.load.image('uiBase', 'assets/uiBase.png')
-			this.load.image('endSign', 'assets/endSign.png')
+			this.load.image('uiBase', 'assets/UI/Ingame/uiBase.png')
+			this.load.image('endSign', 'assets/Misc/endSign.png')
 
 			//Load Player
-			this.load.spritesheet('dude', 'assets/playerSheet.png', 64, 64, 16);
+			this.load.spritesheet('dude', 'assets/Misc/playerSheet.png', 64, 64, 16);
 
 			// Load level completion
-			this.load.image('levelCompleteBackground', 'assets/startBackground.jpg')
-			this.load.image('nextLevelButton', 'assets/startButton.png')
+			this.load.image('levelCompleteBackground', 'assets/UI/Menu/startBackground.jpg')
+			this.load.image('nextLevelButton', 'assets/UI/Menu/startButton.png')
 
 			// Load gameover screen
-			this.load.image('gameOverBackground', 'assets/startBackground.jpg')
-			this.load.image('restartLevelButton', 'assets/startButton.png')
+			this.load.image('gameOverBackground', 'assets/UI/Menu/startBackground.jpg')
+			this.load.image('restartLevelButton', 'assets/UI/Menu/startButton.png')
 		}
 
 		create() {
