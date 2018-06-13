@@ -10,10 +10,12 @@ module MyGame {
         private speed: number = 250;
         private jumpheight: number = 275;
         private jumpState: number = 0;
+        private played: boolean
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'dude', 0);
 
+            this.played = false
             this.startX = x
             this.startY = y
 
@@ -27,7 +29,7 @@ module MyGame {
             this.animations.add('idle', [0], 40, false)
             this.animations.add('walk', [1, 2, 3, 4, 5, 6, 7, 0], 40, true)
             this.animations.add('jump', [8, 9, 10, 11, 12, 13, 13, 14, 14, 14], 15, false)
-            this.animations.add('fall', [5, 5, 6, 15], 15, false)
+            this.animations.add('fall', [5, 6, 15], 10, false)
 
             this.animations.frame = 0
 
@@ -81,20 +83,27 @@ module MyGame {
             }
 
             // Falling animation if velocity y is negative
-            if (this.body.velocity.y < 0 && this.jumpState == 0) 
+            if (this.body.velocity.y < 0 && this.jumpState == 0 && this.played == false) 
             {
                 this.animations.play('jump')
             }
 
+            
             // Falling animation if velocity y is positive
-            if (this.body.velocity.y > 60 && (this.body.velocity.x != 0 || this.body.velocity.x == 0)) 
+            if (this.body.velocity.y > 120 && (this.body.velocity.x != 0 || this.body.velocity.x == 0) && this.played == false) 
             {
                 this.animations.play('fall')
+                this.played = true
                 this.jumpState = 0
             }
-
+            
+            if (this.body.velocity.y == 0)
+            {
+                this.played = false
+            }
+        
             // Walking animation if velocity x != 0
-            if (this.body.velocity.x != 0 && this.body.velocity.y == 0)
+            if (this.body.velocity.x != 0 && this.body.velocity.y == 0 && this.played == false)
             {
                 this.animations.play('walk')
             }
@@ -123,6 +132,7 @@ module MyGame {
         fly() {
             this.timer++
             console.log("FLY!!")
+            this.played = false
 
             if (this.timer <= 7) {
                 this.animations.play('jump')
@@ -132,6 +142,11 @@ module MyGame {
             } else {
                 this.timer = 0
             }
+        }
+
+        //
+        cancelfall() {
+            this.played == true
         }
     }
 }

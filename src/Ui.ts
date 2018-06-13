@@ -3,6 +3,7 @@ module MyGame {
     export class Ui{
         game: Game
         pauseButton:Phaser.Sprite
+        pauseBackground:Phaser.Sprite
 
         constructor(g:Game){
             this.game = g
@@ -34,12 +35,16 @@ module MyGame {
 
         pauseLevel(){
             this.game.paused = true
+            this.pauseBackground = this.game.add.sprite(this.game.camera.x, this.game.camera.y, 'pauseBackground');
+            this.pauseBackground.fixedToCamera = true
             console.log("Pauze")
         }
 
         unPause(){
-            console.log("cliick")
-            if(this.game.paused == true)this.game.paused = false
+            if(this.game.paused == true){
+                this.game.paused = false
+                this.pauseBackground.kill()
+            }
         }
     }
 }
