@@ -11,13 +11,15 @@ module MyGame {
         private jumpheight: number = 275;
         private jumpState: number = 0;
         private played: boolean
+        private level: any
 
-        constructor(game: Phaser.Game, x: number, y: number) {
+        constructor(game: Phaser.Game, x: number, y: number, level:any) {
             super(game, x, y, 'dude', 0);
 
             this.played = false
             this.startX = x
             this.startY = y
+            this.level = level;
 
             this.jumpPressed = false
 
@@ -122,6 +124,7 @@ module MyGame {
 
             this.game.lives--
             console.log(this.game.lives)
+            this.level.respawnElements();
         }
 
         // When you're all out of lives

@@ -59,7 +59,7 @@ module MyGame {
 			this.eye = new EnemyEye(this.game, 570, 150);
 
 			// Creation of the Player
-			this.player = new Player(this.game, 130, 284);
+			this.player = new Player(this.game, 130, 284, this);
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
