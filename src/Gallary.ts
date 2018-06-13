@@ -3,6 +3,8 @@ module MyGame {
 	export class Gallary extends Phaser.State {
         game:Game
 
+        ui_locked1: Phaser.Sprite
+        ui_locked2: Phaser.Sprite
 		ui_painting1: Phaser.Sprite
         ui_painting2: Phaser.Sprite
         painting1: Phaser.Sprite
@@ -14,11 +16,21 @@ module MyGame {
 		create() {
             this.add.sprite(0, 0, 'uiBackground')
             this.add.sprite(0, 0, 'gallaryBackground')
+
+            if (this.game.gameprogression == 0) {
+                this.ui_locked1 = this.add.sprite(this.world.centerX, this.world.centerY-50 , 'uiArtLocked')
+                this.ui_locked2 = this.add.sprite(this.world.centerX, this.world.centerY+80 , 'uiArtLocked')
+
+                this.ui_locked1.anchor.setTo(0.5, 0.5)
+                this.ui_locked2.anchor.setTo(0.5, 0.5)
+            }
             
-            if (this.game.gameprogression >= 1) {
-                this.ui_painting1 = this.add.sprite(this.world.centerX-56.5, this.world.centerY-50 , 'uiDaliMelt')
+            if (this.game.gameprogression == 1) {
+                this.ui_painting1 = this.add.sprite(this.world.centerX-75.5, this.world.centerY-50 , 'uiDaliMelt')
+                this.ui_locked2 = this.add.sprite(this.world.centerX, this.world.centerY+80 , 'uiArtLocked')
 
                 this.ui_painting1.anchor.setTo(0.5, 0.5)
+                this.ui_locked2.anchor.setTo(0.5, 0.5)
 
                 this.ui_painting1.inputEnabled = true
                 this.ui_painting1.input.useHandCursor = true
@@ -29,13 +41,20 @@ module MyGame {
             }
 
             if (this.game.gameprogression >= 2) {
+                this.ui_painting1 = this.add.sprite(this.world.centerX-56.5, this.world.centerY-50 , 'uiDaliMelt')
                 this.ui_painting2 = this.add.sprite(this.world.centerX, this.world.centerY+80 , 'uiDaliSphere')
 
+                this.ui_painting1.anchor.setTo(0.5, 0.5)
                 this.ui_painting2.anchor.setTo(0.5, 0.5)
 
+                this.ui_painting1.inputEnabled = true
+                this.ui_painting1.input.useHandCursor = true
                 this.ui_painting2.inputEnabled = true
                 this.ui_painting2.input.useHandCursor = true
 
+                this.ui_painting1.events.onInputDown.add(() => this.selectPainting(this.ui_painting1, 1))
+                this.ui_painting1.events.onInputOver.add(() => this.hoverOn(this.ui_painting1, 1))    
+                this.ui_painting1.events.onInputOut.add(() => this.hoverOut(this.ui_painting1, 1))
                 this.ui_painting2.events.onInputDown.add(() => this.selectPainting(this.ui_painting2, 2))
                 this.ui_painting2.events.onInputOver.add(() => this.hoverOn(this.ui_painting2, 2))
                 this.ui_painting2.events.onInputOut.add(() => this.hoverOut(this.ui_painting2, 2))
@@ -50,7 +69,7 @@ module MyGame {
 
             this.okButton.events.onInputDown.add(() => this.mainMenu())
             this.okButton.events.onInputOver.add(() => this.hoverOn(this.okButton, 3))
-            this.okButton.events.onInputOver.add(() => this.hoverOut(this.okButton, 3))
+            this.okButton.events.onInputOut.add(() => this.hoverOut(this.okButton, 3))
 
 			console.log("gallary of gallaries")
 		}
