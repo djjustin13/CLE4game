@@ -66,6 +66,9 @@ module MyGame {
 
                 if((event.x < x1 || event.x > x2) || (event.y < y1 || event.y > y2)){
                     this.game.paused = false
+                    this.pauseBackground.kill()
+                    this.restartButton.kill()
+                    this.homeButton.kill()
                 }
             }
         }
