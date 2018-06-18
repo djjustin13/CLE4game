@@ -43,13 +43,11 @@ module MyGame {
 			this.ledge.add(new Platform(this.game, 0, h-400));
 			this.ledge.add(new Platform(this.game, 1970, h-460));
 			this.ledge.add(new Platform(this.game, 1970, h-460));
-			this.ledge.add(new Platform(this.game, 1970+157, h-460+41));
-			this.ledge.add(new Platform(this.game, 1970+157*2, h-460+41*2));
-			this.ledge.add(new Platform(this.game, 1970+157*3, h-460+41*3));
-			this.ledge.add(new Platform(this.game, 1970+157*4, h-460+41*4));
-			this.ledge.add(new Platform(this.game, 1970+157*5, h-460+41*5));
-			this.ledge.add(new Platform(this.game, 1970+157*6, h-460+41*6));
-			this.ledge.add(new Platform(this.game, 1970+157*7, h-460+41*7));
+			for(let i = 0; i < 7; i++){
+				this.ledge.add(new Platform(this.game, 1970+157*i, h-460+41*i));
+			}
+			this.ledge.add(new Platform(this.game, 3000, h-100));
+			this.ledge.add(new Platform(this.game, 5000, h-460));
 
 
 
@@ -84,15 +82,15 @@ module MyGame {
 
 			// Creation of Enemies
 			this.enemies = this.add.group()
-			let enemy = this.enemies.add(new Enemy(this.game, 3300, h-100));
+			this.enemies.add(new Enemy(this.game, 3300, h-100));
 
 			// Creation of Eye
-			this.eye = new EnemyEye(this.game, 4820, 350);
+			//this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
 			this.player = new Player(this.game, 130, 190, this);
-			// this.player = new Player(this.game, 1970+157/2, h-500);			
-			// this.player = new Player(this.game, 2750, 400);
+			//this.player = new Player(this.game, 2000, 190, this); //debug position
+			
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
