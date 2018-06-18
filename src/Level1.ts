@@ -80,6 +80,11 @@ module MyGame {
 			this.ledge.add(new Platform(this.game, 8300, 500));
 			this.ledge.add(new Platform(this.game, 8800, 400));
 
+			// Creation of wall
+			for(let i = 0; i < 5; i++){
+				this.ledge.add(new Platform(this.game, 6500, 382 + i * 32));
+			}
+
 			// Creation of moving platforms
 			this.dynamicLedge = this.add.group()
 			this.dynamicLedge.add(new DynamicLedge(this.game, 80, 200, 3))
@@ -89,11 +94,16 @@ module MyGame {
 			// Creation of singular spikes
 			this.spikes = this.add.group()
 			this.spikes.add(new Spikes(this.game, 960, h-69));
-			this.spikes.add(new Spikes(this.game, 7550, 263));
-			this.spikes.add(new Spikes(this.game, 7750, 313));
-			this.spikes.add(new Spikes(this.game, 7950, 363));
-			this.spikes.add(new Spikes(this.game, 8150, 413));
-			this.spikes.add(new Spikes(this.game, 8350, 463));
+			this.spikes.add(new Spikes(this.game, 7500, 263));
+			this.spikes.add(new Spikes(this.game, 7570, 263));
+			this.spikes.add(new Spikes(this.game, 7700, 313));
+			this.spikes.add(new Spikes(this.game, 7770, 313));
+			this.spikes.add(new Spikes(this.game, 7900, 363));
+			this.spikes.add(new Spikes(this.game, 7970, 363));
+			this.spikes.add(new Spikes(this.game, 8100, 413));
+			this.spikes.add(new Spikes(this.game, 8170, 413));
+			this.spikes.add(new Spikes(this.game, 8300, 463));
+			this.spikes.add(new Spikes(this.game, 8370, 463));
 
 			// Creation of spiked floor
 			for(let i = 0; i < 15; i++){
@@ -122,8 +132,8 @@ module MyGame {
 			//this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			this.player = new Player(this.game, 130, this.world.height-this.ground.height-25, this);
-			//this.player = new Player(this.game, 7000, 100, this);
+			//this.player = new Player(this.game, 130, this.world.height-this.ground.height-25, this);
+			this.player = new Player(this.game, 7000, 100, this);
 			
 			this.game.camera.follow(this.player)
 
