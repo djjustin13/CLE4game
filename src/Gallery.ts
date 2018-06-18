@@ -1,6 +1,6 @@
 module MyGame {
 
-	export class Gallary extends Phaser.State {
+	export class Gallery extends Phaser.State {
         game:Game
         ui_locked1: Phaser.Sprite
         ui_locked2: Phaser.Sprite
@@ -14,7 +14,7 @@ module MyGame {
 
 		create() {
             this.add.sprite(0, 0, 'uiBackground')
-            this.add.sprite(0, 0, 'gallaryBackground')
+            this.add.sprite(0, 0, 'galleryBackground')
 
             if (this.game.gameprogression <= 0) {
                 this.ui_locked1 = this.add.sprite(this.world.centerX, this.world.centerY-50 , 'uiArtLocked')
@@ -70,7 +70,7 @@ module MyGame {
             this.okButton.events.onInputOver.add(() => this.hoverOn(this.okButton, 3))
             this.okButton.events.onInputOut.add(() => this.hoverOut(this.okButton, 3))
 
-			console.log("gallary of gallaries")
+			console.log("gallery of galleries")
 		}
 
 		selectPainting(el:Phaser.Sprite, n:number) {

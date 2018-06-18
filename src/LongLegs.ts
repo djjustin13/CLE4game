@@ -30,12 +30,12 @@ module MyGame{
             this.body.gravity.y = 300;
             this.scale.x = this.facing;
 
-            if(this.moving){
+            if (this.moving){
                 this.body.velocity.x = this.facing * 100;
             }
         }
 
-        startmoving(){
+        startMoving(){
             this.moving = true;
             this.animations.play('walk');
         }

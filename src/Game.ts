@@ -25,7 +25,7 @@ module MyGame {
 			this.state.add('Preloader', Preloader, false);
 			this.state.add('StartScreen', StartScreen, false);
 			this.state.add('MainMenu', MainMenu, false);
-			this.state.add('Gallary', Gallary, false);
+			this.state.add('Gallery', Gallery, false);
 			this.state.add('Level1', Level1, false);
 			this.state.add('Level2', Level2, false);
 			this.state.add('Level3', Level3, false);

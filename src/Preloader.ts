@@ -22,11 +22,11 @@ module MyGame {
 			this.load.image('menuTitle', 'assets/UI/Menu/menu_title.png')
 
 			// Load Gallery items
-			this.load.image('gallaryBackground', 'assets/UI/Menu/gallary_frame.png')
-			this.load.image('uiOkButton', 'assets/UI/Menu/gallary_ui_okButton.png')
-			this.load.image('uiArtLocked', 'assets/UI/Menu/gallary_ui_locked.png')
-			this.load.image('uiDaliMelt', 'assets/UI/Menu/gallary_ui_melting-watch.png')
-			this.load.image('uiDaliSphere', 'assets/UI/Menu/gallary_ui_galatea-of-the-spheres.png')
+			this.load.image('galleryBackground', 'assets/UI/Menu/gallery_frame.png')
+			this.load.image('uiOkButton', 'assets/UI/Menu/gallery_ui_okButton.png')
+			this.load.image('uiArtLocked', 'assets/UI/Menu/gallery_ui_locked.png')
+			this.load.image('uiDaliMelt', 'assets/UI/Menu/gallery_ui_melting-watch.png')
+			this.load.image('uiDaliSphere', 'assets/UI/Menu/gallery_ui_galatea-of-the-spheres.png')
 			this.load.image('daliMelt', 'assets/UI/Menu/dali_melting-watch.png')
 			this.load.image('daliSphere', 'assets/UI/Menu/dali_galatea-of-the-spheres.png')
 		

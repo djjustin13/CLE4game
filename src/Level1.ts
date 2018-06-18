@@ -68,11 +68,11 @@ module MyGame {
 			this.ledge.add(new Platform(this.game, 5200, 450));
 			this.ledge.add(new Platform(this.game, 5400, 400));
 			this.ledge.add(new Platform(this.game, 5600, 400));
-			this.ledge.add(new Platform(this.game, 6500, 350));
-			this.ledge.add(new Platform(this.game, 6700, 300));
-			this.ledge.add(new Platform(this.game, 6900, 250));
-			this.ledge.add(new Platform(this.game, 7100, 200));
-			this.ledge.add(new Platform(this.game, 7300, 150));
+			this.ledge.add(new Platform(this.game, 6300, 400));
+			this.ledge.add(new Platform(this.game, 6550, 350));
+			this.ledge.add(new Platform(this.game, 6800, 300));
+			this.ledge.add(new Platform(this.game, 7050, 250));
+			this.ledge.add(new Platform(this.game, 7300, 200));
 			this.ledge.add(new Platform(this.game, 7500, 300));
 			this.ledge.add(new Platform(this.game, 7700, 350));
 			this.ledge.add(new Platform(this.game, 7900, 400));
@@ -108,10 +108,9 @@ module MyGame {
 
 			// Creation of puzzle pieces
 			this.artPieces = this.add.group()
-			this.artPieces.add(new ArtPiece(this.game, 37, 250));
-			this.artPieces.add(new ArtPiece(this.game, 1650, 100));
+			this.artPieces.add(new ArtPiece(this.game, 105, 140));
 			this.artPieces.add(new ArtPiece(this.game, 2600, 225));
-			this.artPieces.add(new ArtPiece(this.game, 4150, 150));
+			this.artPieces.add(new ArtPiece(this.game, 6000, 250));
 			//end level
 
 			// Creation of Enemies
@@ -122,8 +121,8 @@ module MyGame {
 			//this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			this.player = new Player(this.game, 100, this.world.height-this.ground.height-25, this);
-			//this.player = new Player(this.game, 7000, 100, this);
+			// this.player = new Player(this.game, 100, this.world.height-this.ground.height-25, this);
+			this.player = new Player(this.game, 5600, 100, this);
 			
 			this.game.camera.follow(this.player)
 
@@ -132,7 +131,7 @@ module MyGame {
 			this.elephant2 = new Elephant(this.game, 3750, this.world.height - this.ground.height);
 
 			// Creation of Longlegs
-			this.longlegs1 = new LongLegs(this.game, 5800, 300);
+			this.longlegs1 = new LongLegs(this.game, 5800, 400);
 			this.longlegs2 = new LongLegs(this.game, 7500, 100);
 
 			// Creation of End-tile
@@ -183,8 +182,8 @@ module MyGame {
 			this.physics.arcade.overlap(this.player, this.elephant1.airflow, () => this.player.fly(), null, this);
 			this.physics.arcade.collide(this.player, this.elephant2);
 			this.physics.arcade.overlap(this.player, this.elephant2.airflow, () => this.player.fly(), null, this);
-			this.physics.arcade.overlap(this.player, this.longlegs1, () => this.longlegs1.startmoving(), null, this);
-			this.physics.arcade.overlap(this.player, this.longlegs2, () => this.longlegs2.startmoving(), null, this);
+			this.physics.arcade.overlap(this.player, this.longlegs1, () => this.longlegs1.startMoving(),null, this);
+			this.physics.arcade.overlap(this.player, this.longlegs2, () => this.longlegs2.startMoving(), null, this);
 			this.physics.arcade.overlap(this.player, this.enemies, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.eye, () => this.player.spawn(), null, this);
 			this.physics.arcade.overlap(this.player, this.spikes, () => this.player.spawn(), null, this);
