@@ -81,7 +81,8 @@ module MyGame {
         }
 
         gotoHome(){
-
+            this.game.paused = false
+            this.game.state.start('MainMenu', true, false);
         }
     }
 }
