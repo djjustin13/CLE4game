@@ -8,6 +8,8 @@ module MyGame {
         ui_painting2: Phaser.Sprite
         painting1: Phaser.Sprite
         painting2: Phaser.Sprite
+        big_painting1: Phaser.Sprite
+        big_painting2: Phaser.Sprite
 
         selectedPainting: Phaser.Sprite
         
@@ -18,8 +20,8 @@ module MyGame {
             this.add.sprite(0, 0, 'galleryBackground')
 
             if (this.game.gameprogression <= 0) {
-                this.ui_locked1 = this.add.sprite(500, 300-50 , 'uiArtLocked')
-                this.ui_locked2 = this.add.sprite(500, 300+80 , 'uiArtLocked')
+                this.ui_locked1 = this.add.sprite(510, 300-50 , 'uiArtLocked')
+                this.ui_locked2 = this.add.sprite(510, 300+80 , 'uiArtLocked')
 
                 this.ui_locked1.anchor.setTo(0.5, 0.5)
                 this.ui_locked2.anchor.setTo(0.5, 0.5)
@@ -28,8 +30,8 @@ module MyGame {
             }
             
             if (this.game.gameprogression == 1) {
-                this.ui_painting1 = this.add.sprite(500-75.5, 300-50 , 'uiDaliMelt')
-                this.ui_locked2 = this.add.sprite(500, 300+80 , 'uiArtLocked')
+                this.ui_painting1 = this.add.sprite(this.game.width/2-75.5, this.game.height/2-50 , 'uiDaliMelt')
+                this.ui_locked2 = this.add.sprite(this.game.width/2, this.game.height/2+80 , 'uiArtLocked')
 
                 this.ui_painting1.anchor.setTo(0.5, 0.5)
                 this.ui_locked2.anchor.setTo(0.5, 0.5)
@@ -45,8 +47,8 @@ module MyGame {
             }
 
             if (this.game.gameprogression >= 2) {
-                this.ui_painting1 = this.add.sprite(500-56.5, 300-50 , 'uiDaliMelt')
-                this.ui_painting2 = this.add.sprite(500, 300+80 , 'uiDaliSphere')
+                this.ui_painting1 = this.add.sprite(this.game.width/2-56.5, this.game.height/2-50 , 'uiDaliMelt')
+                this.ui_painting2 = this.add.sprite(this.game.width/2, this.game.height/2+80 , 'uiDaliSphere')
 
                 this.ui_painting1.anchor.setTo(0.5, 0.5)
                 this.ui_painting2.anchor.setTo(0.5, 0.5)
@@ -59,6 +61,7 @@ module MyGame {
                 this.ui_painting1.events.onInputDown.add(() => this.selectPainting(this.ui_painting1, 1))
                 this.ui_painting1.events.onInputOver.add(() => this.hoverOn(this.ui_painting1))    
                 this.ui_painting1.events.onInputOut.add(() => this.hoverOut(this.ui_painting1))
+                
                 this.ui_painting2.events.onInputDown.add(() => this.selectPainting(this.ui_painting2, 2))
                 this.ui_painting2.events.onInputOver.add(() => this.hoverOn(this.ui_painting2))
                 this.ui_painting2.events.onInputOut.add(() => this.hoverOut(this.ui_painting2))
@@ -66,7 +69,7 @@ module MyGame {
                 this.game.gameprogression = 2
             }
             
-            this.okButton = this.add.sprite(500, 300+215 , 'uiOkButton')
+            this.okButton = this.add.sprite(this.game.width/2, this.game.height/2+215 , 'uiOkButton')
 
             this.okButton.anchor.setTo(0.5, 0.5)
 
@@ -85,13 +88,13 @@ module MyGame {
 		selectPainting(el:Phaser.Sprite, n:number) {
             if(this.game.paused ==  false){
                 if (n == 1) {
-                    this.painting1 = this.add.sprite(500, 300 , 'daliMelt')
+                    this.painting1 = this.add.sprite(this.game.width/2, this.game.height/2, 'daliMelt')
                     this.painting1.anchor.setTo(0.5, 0.5)
                     this.selectedPainting = this.painting1
                     this.game.paused = true
                 }
                 if (n == 2) {
-                    this.painting2 = this.add.sprite(500, 300, 'daliSphere')
+                    this.painting2 = this.add.sprite(this.game.width/2, this.game.height/2, 'daliSphere')
                     this.painting2.anchor.setTo(0.5, 0.5)
                     this.selectedPainting = this.painting2
                     this.game.paused = true
@@ -136,13 +139,27 @@ module MyGame {
                     if(this.ui_painting2)this.ui_painting2.input.useHandCursor = true
 
                 }else{
-                    this.clickImage(this.selectedPainting)
+                    this.clickImage(this.selectedPainting, 1)
                 }
             }
         }
 
-        clickImage(el:Phaser.Sprite){
-            //Do something..
+        // TODO: dit moet nog werken
+        clickImage(el:Phaser.Sprite, n:number) {
+            if(this.game.paused ==  false) {
+                if (n == 1) {
+                    this.big_painting1 = this.add.sprite(this.game.width/2, this.game.height/2, 'bigDaliMelt')
+                    this.painting1.anchor.setTo(0.5, 0.5)
+                    this.selectedPainting = this.big_painting1
+                    this.game.paused = true
+                }
+                if (n == 2) {
+                    this.big_painting2 = this.add.sprite(this.game.width/2, this.game.height/2, 'bigDaliSphere')
+                    this.painting2.anchor.setTo(0.5, 0.5)
+                    this.selectedPainting = this.big_painting2
+                    this.game.paused = true
+                }
+            }
         }
 	}
 }

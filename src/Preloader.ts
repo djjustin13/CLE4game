@@ -29,7 +29,9 @@ module MyGame {
 			this.load.image('uiDaliSphere', 'assets/UI/Menu/gallery_ui_galatea-of-the-spheres.png')
 			this.load.image('daliMelt', 'assets/UI/Menu/dali_melting-watch.png')
 			this.load.image('daliSphere', 'assets/UI/Menu/dali_galatea-of-the-spheres.png')
-		
+			this.load.image('bigDaliMelt', 'assets/UI/Menu/bg_melting-watch.jpg')
+			this.load.image('bigDaliSphere', 'assets/UI/Menu/bg_galatea-of-the-spheres.jpg')
+
 			//Load Ingame UI
 			this.load.image('uiBase', 'assets/UI/Ingame/ui_base.png')
 			this.load.image('gamePause', 'assets/UI/Ingame/ui_pauseButton.png')
