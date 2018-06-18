@@ -101,7 +101,6 @@ module MyGame{
                     }
                     if (((eyeX-pieceX) < 10 && (eyeX-pieceX) > -10) && ((eyeY-pieceY) < 10 && (eyeY-pieceY) > -10)) {
                         this.enemyState = 0;
-                        console.log("eye arrived on location");
                     }
     
                 break;    
@@ -112,9 +111,6 @@ module MyGame{
                 this.enemyState = 1 
                 this.followX = x
                 this.followY = y
-                console.log("started following")
-            } else {
-                console.log("out of reach")
             }
         }
     }

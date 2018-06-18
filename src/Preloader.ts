@@ -11,6 +11,7 @@ module MyGame {
 			this.load.image('startBackground', 'assets/UI/Menu/startBackground.jpg')
 			this.load.image('startButton', 'assets/UI/Menu/startButton.png')
 			this.load.image('uiBackground', 'assets/UI/Menu/ui_background.jpg')
+			this.load.image('bgElephant', 'assets/UnusedAssets/elephant.png')
 			this.load.image('tree', 'assets/UnusedAssets/Boom.png')
 			this.load.image('clock', 'assets/UnusedAssets/clock.png')
 
@@ -79,7 +80,6 @@ module MyGame {
 		}
 
 		create() {
-			console.log("preload state..")
 			this.game.state.start('StartScreen');
 		}
 	}

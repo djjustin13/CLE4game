@@ -50,8 +50,6 @@ module MyGame {
 			this.kunstwerkenButton.events.onInputDown.add(() => this.showGallary())
 			this.kunstwerkenButton.events.onInputOver.add(() => this.hover(this.kunstwerkenButton))
 			this.kunstwerkenButton.events.onInputOut.add(() => this.hoverOut(this.kunstwerkenButton))
-
-			console.log("menu state")
 		}
 
 		hover(el:Phaser.Sprite){
@@ -104,19 +102,16 @@ module MyGame {
 				if (this.game.gameprogression <= 0)
 				{
 					this.game.state.start('Level1', true, false)
-					console.log('level one started')
 				}
 
 				if (this.game.gameprogression == 1)
 				{
 					this.game.state.start('Level2', true, false)
-					console.log('level two started')
 				}
 
 				if (this.game.gameprogression >= 2)
 				{
 					this.game.state.start('Level3', true, false)
-					console.log('level three started')
 				}
 			}
 		}

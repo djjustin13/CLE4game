@@ -81,8 +81,6 @@ module MyGame {
             this.okButton.events.onInputOut.add(() => this.hoverOut(this.okButton))
 
             this.game.input.onDown.add(this.unPause.bind(this), self)
-
-			console.log("gallery of galleries")
 		}
 
 		selectPainting(el:Phaser.Sprite, n:number) {
@@ -101,14 +99,6 @@ module MyGame {
                 }
                 if(this.ui_painting1)this.ui_painting1.input.useHandCursor = false
                 if(this.ui_painting2)this.ui_painting2.input.useHandCursor = false
-
-                if (Math.random() < 0.33) {
-                    console.log('such amazing art')
-                } else if (Math.random() > 0.33 && Math.random() < 0.66) {
-                    console.log('very wow') 
-                } else {
-                    console.log('so talented')
-                }
             }
         }
 

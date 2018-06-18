@@ -58,7 +58,6 @@ module MyGame {
 
         unPause(event:any){
             if(this.game.paused == true){
-                console.log("unpause")
                 let w = this.game.width
                 let h = this.game.height
                 var x1 = w/2 - 120, x2 = w/2 + 120,
@@ -74,7 +73,6 @@ module MyGame {
         }
 
         restartLevel(){
-            console.log("restart")
             this.game.paused = false
             this.level.resetLevel()
             

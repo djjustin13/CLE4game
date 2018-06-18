@@ -152,9 +152,6 @@ module MyGame {
 		completeLevelCheck(){
 			if (this.artPieceScore == 4) {
 				this.completeLevel()
-				console.log("level complete, such amaze")
-			} else {
-				console.log("needs more pieces")
 			}
 		}
 

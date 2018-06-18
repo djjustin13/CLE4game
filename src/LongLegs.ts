@@ -14,10 +14,15 @@ module MyGame{
             this.game.physics.arcade.enableBody(this)
             this.body.collideWorldBounds=true;
 
+            // TODO: make colliding with longlegs trigger a funtion that makes longlegs move
+            // making it immovable will make ur character stand on its back without the elephant
+            // moving away from underneath it
+            // this.body.immovable = true
+
             this.anchor.setTo(0.0, 0.0);
 
             this.facing = 1;
-            this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6], 10, true)
+            this.animations.add('walk', [0, 4, 6, 5], 6, true)
 
             this.startX = x;
             this.startY = y;
@@ -27,11 +32,11 @@ module MyGame{
 
         update(){
             this.body.bounce.y = 0.0;
-            this.body.gravity.y = 300;
+            this.body.gravity.y = 0.0; 
             this.scale.x = this.facing;
 
             if (this.moving){
-                this.body.velocity.x = this.facing * 100;
+                this.body.velocity.x = this.facing * 100
             }
         }
 

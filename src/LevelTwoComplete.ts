@@ -42,10 +42,10 @@ module MyGame {
 
 			// Loading icons
 			this.piece = this.add.sprite((this.game.width/2)-275, (this.game.height/2)+95, 'uiPiece')
-			this.artPieceScoreDisplay = this.game.add.text((this.game.width/2)-235, this.game.height/2+95, this.game.artpieces1 + '/4', style)
+			this.artPieceScoreDisplay = this.game.add.text((this.game.width/2)-235, this.game.height/2+95, this.game.artpieces2 + '/4', style)
 			
 			this.clock = this.add.sprite((this.game.width/2)-70, (this.game.height/2)+95, 'uiClock')
-			this.timerDisplay = this.game.add.text((this.game.width/2)-40, this.game.height/2+95, String(this.game.timer1), style)
+			this.timerDisplay = this.game.add.text((this.game.width/2)-40, this.game.height/2+95, String(this.game.timer2), style)
 
 			this.livesDisplay = this.game.add.text((this.game.width/2)+255, this.game.height/2+95, String(this.game.lives), style)
 			this.life = this.add.sprite((this.game.width/2)+215, (this.game.height/2)+105, 'uiLife')
@@ -53,9 +53,6 @@ module MyGame {
 			this.life.anchor.setTo(0.5, 0)
 			this.clock.anchor.setTo(0.5, 0)
 			this.piece.anchor.setTo(0.5, 0)
-
-
-			console.log("level two complete!")
 		}
 
 		hover(el:Phaser.Sprite, n:number) {

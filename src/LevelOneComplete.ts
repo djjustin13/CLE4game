@@ -53,9 +53,6 @@ module MyGame {
 			this.life.anchor.setTo(0.5, 0)
 			this.clock.anchor.setTo(0.5, 0)
 			this.piece.anchor.setTo(0.5, 0)
-
-
-			console.log("level one complete!")
 		}
 
 		hover(el:Phaser.Sprite, n:number) {

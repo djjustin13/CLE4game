@@ -4,9 +4,9 @@ module MyGame {
 
 		// Overall
 		public lives:number = 9
-		public levelProgression1:number = 0
-		public levelProgression2:number = 1
-		public gameprogression:number = 1
+		levelProgression1:number = 0
+		levelProgression2:number = 0
+		public gameprogression:number = 0
 
 		// Level 1
 		public artpieces1:number = 0
@@ -34,7 +34,6 @@ module MyGame {
 			this.state.add('TestLevel', TestLevel, false)
 			this.state.add('LevelOneComplete', LevelOneComplete, false);
 			this.state.add('LevelTwoComplete', LevelTwoComplete, false);
-			this.state.add('LevelThreeComplete', LevelThreeComplete, false);
 			this.state.add('GameOver', GameOver, false);
 
 			this.state.start('Boot');

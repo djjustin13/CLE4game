@@ -5,6 +5,7 @@ module MyGame {
 		trees: Phaser.Group
 		endTile: Phaser.Sprite
 		background: Phaser.TileSprite
+		bgElephant: Phaser.Group
 		ground: Phaser.TileSprite
 		ledge: Phaser.Group
 		player: MyGame.Player
@@ -31,6 +32,13 @@ module MyGame {
 			this.game.world.setBounds(0, 0, 9000, 600);
 			this.background = this.add.tileSprite(0, 0, this.world.width, 600, 'bgTile')
 
+			// TODO: make elephant not look shite
+			this.bgElephant = this.add.group()
+			for (let i =0; i < 2; i++)
+			{
+				this.bgElephant.add(new ElephantBackGround(this.game, 800 + i * (3500+Math.random()*3500), h))
+			}
+
 			// Creation of platforms: ground, platforms, ledges e.d.
 			this.platforms = this.add.group()
 			this.platforms.enableBody = true
@@ -42,11 +50,11 @@ module MyGame {
 			this.ground.body.immovable = true;
 			this.ground.body.allowGravity = false;
 
-			// Creation of scenery; which in this case means some dead trees
+			// Creation of scenery
 			this.trees = this.add.group()
 			for (let i = 0; i < 25; i++)
 			{
-				this.trees.add(new Tree(this.game, 750 + i * (500+Math.random()*350), h-this.ground.height))	
+				this.trees.add(new Tree(this.game, 1500 + i * (500+Math.random()*350), h-this.ground.height))	
 			}
 
 			// creation of tutorial-sign
@@ -147,7 +155,7 @@ module MyGame {
 
 			// Creation of Longlegs
 			this.longlegs1 = new LongLegs(this.game, 5800, 400);
-			this.longlegs2 = new LongLegs(this.game, 7500, 100);
+			this.longlegs2 = new LongLegs(this.game, 7500, 130);
 
 			// Creation on UI
 			let ui = new UI(this.game, this)

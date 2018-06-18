@@ -63,9 +63,6 @@ module MyGame {
 
 			this.clock.anchor.setTo(0.5, 0)
 			this.piece.anchor.setTo(0.5, 0)
-
-
-			console.log("GAME OVER ... :(")
 		}
 
 		hover(el:Phaser.Sprite, n:number) {
@@ -87,7 +84,6 @@ module MyGame {
 		}
 
 		restartGame() {
-			console.log('.. OR NOT!!!')
 			this.game.lives = 9
 			this.game.state.start('Level1', true, false);
 		}

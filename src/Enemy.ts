@@ -15,7 +15,7 @@ module MyGame{
 
             this.anchor.setTo(0.5, 0);
 
-            this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 15, true)
+            this.animations.add('walk', [2, 5, 2, 5, 2, 2, 5, 5], 5, true)
             this.animations.frame = 0
 
             game.add.existing(this);
@@ -28,7 +28,7 @@ module MyGame{
 
         update(){
             this.body.bounce.y = 0.0;
-            this.body.gravity.y = 300;
+            this.body.gravity.y = 1500;
             this.scale.x = this.facing;
 
             switch(this.enemyState){ //The state indicates different behaviors for the enemy
