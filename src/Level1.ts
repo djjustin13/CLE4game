@@ -122,8 +122,8 @@ module MyGame {
 			//this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			//this.player = new Player(this.game, 130, this.world.height-this.ground.height-25, this);
-			this.player = new Player(this.game, 7000, 100, this);
+			this.player = new Player(this.game, 130, this.world.height-this.ground.height-25, this);
+			//this.player = new Player(this.game, 7000, 100, this);
 			
 			this.game.camera.follow(this.player)
 
