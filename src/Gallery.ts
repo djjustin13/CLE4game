@@ -70,8 +70,14 @@ module MyGame {
             this.okButton.events.onInputOver.add(() => this.hoverOn(this.okButton, 3))
             this.okButton.events.onInputOut.add(() => this.hoverOut(this.okButton, 3))
 
+<<<<<<< HEAD:src/Gallery.ts
 			console.log("gallery of galleries")
 		}
+=======
+			console.log("gallary of gallaries")
+        }
+
+>>>>>>> 0ad5c80968bde41908b878f376dd735b22c1b855:src/Gallary.ts
 
 		selectPainting(el:Phaser.Sprite, n:number) {
 
