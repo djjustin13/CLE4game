@@ -119,8 +119,16 @@ module MyGame {
 
         // When collision between player and something deadly is detected, one life is deducted
         spawn() {
-            this.x = this.startX
-            this.y = this.startY
+            if (this.game.levelProgression1 == 0) {
+                this.x = this.startX
+                this.y = this.startY
+            } 
+            if (this.game.levelProgression1 == 1) {
+                this.x = 5700
+                this.y = 350
+                console.log('respawn location locator detected, respawn location relocated to relocator detection detected relocated respawn location by location relocated location locator function')
+            }
+
 
             this.game.lives--
             console.log(this.game.lives)

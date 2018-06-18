@@ -80,11 +80,6 @@ module MyGame {
 			this.ledge.add(new Platform(this.game, 8300, 500));
 			this.ledge.add(new Platform(this.game, 8800, 400));
 
-			// Creation of wall
-			for(let i = 0; i < 5; i++){
-				this.ledge.add(new Platform(this.game, 6500, 382 + i * 32));
-			}
-
 			// Creation of moving platforms
 			this.dynamicLedge = this.add.group()
 			this.dynamicLedge.add(new DynamicLedge(this.game, 80, 200, 3))
@@ -119,7 +114,8 @@ module MyGame {
 			// Creation of puzzle pieces
 			this.artPieces = this.add.group()
 			this.artPieces.add(new ArtPiece(this.game, 105, 140));
-			this.artPieces.add(new ArtPiece(this.game, 2600, 225));
+			this.artPieces.add(new ArtPiece(this.game, 1600, 100));
+			this.artPieces.add(new ArtPiece(this.game, 4100, 100));
 			this.artPieces.add(new ArtPiece(this.game, 6000, 250));
 			//end level
 
@@ -131,9 +127,8 @@ module MyGame {
 			//this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			// this.player = new Player(this.game, 100, this.world.height-this.ground.height-25, this);
-			this.player = new Player(this.game, 5600, 100, this);
-			
+			this.player = new Player(this.game, 100, this.world.height-this.ground.height-25, this);
+
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
@@ -207,6 +202,11 @@ module MyGame {
 			}
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.completeLevel()
+			}
+
+			// setting a respawn location if the player exceeds a certain milestone
+			if (this.player.position.x >= 0) {
+				this.game.levelProgression1 = 1
 			}
 		}
 

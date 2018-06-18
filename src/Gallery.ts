@@ -22,6 +22,8 @@ module MyGame {
 
                 this.ui_locked1.anchor.setTo(0.5, 0.5)
                 this.ui_locked2.anchor.setTo(0.5, 0.5)
+
+                this.game.gameprogression = 0
             }
             
             if (this.game.gameprogression == 1) {
@@ -37,6 +39,8 @@ module MyGame {
                 this.ui_painting1.events.onInputDown.add(() => this.selectPainting(this.ui_painting1, 1))
                 this.ui_painting1.events.onInputOver.add(() => this.hoverOn(this.ui_painting1, 1))    
                 this.ui_painting1.events.onInputOut.add(() => this.hoverOut(this.ui_painting1, 1))
+
+                this.game.gameprogression = 1
             }
 
             if (this.game.gameprogression >= 2) {
@@ -57,6 +61,8 @@ module MyGame {
                 this.ui_painting2.events.onInputDown.add(() => this.selectPainting(this.ui_painting2, 2))
                 this.ui_painting2.events.onInputOver.add(() => this.hoverOn(this.ui_painting2, 2))
                 this.ui_painting2.events.onInputOut.add(() => this.hoverOut(this.ui_painting2, 2))
+
+                this.game.gameprogression = 2
             }
             
             this.okButton = this.add.sprite(this.world.centerX, this.world.centerY+215 , 'uiOkButton')
@@ -70,14 +76,8 @@ module MyGame {
             this.okButton.events.onInputOver.add(() => this.hoverOn(this.okButton, 3))
             this.okButton.events.onInputOut.add(() => this.hoverOut(this.okButton, 3))
 
-<<<<<<< HEAD:src/Gallery.ts
 			console.log("gallery of galleries")
 		}
-=======
-			console.log("gallary of gallaries")
-        }
-
->>>>>>> 0ad5c80968bde41908b878f376dd735b22c1b855:src/Gallary.ts
 
 		selectPainting(el:Phaser.Sprite, n:number) {
 
