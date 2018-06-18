@@ -36,8 +36,8 @@ module MyGame {
 			this.load.image('bigDaliSphere', 'assets/UI/Menu/bg_galatea-of-the-spheres.jpg')
 
 			//Load Ingame UI
-			this.load.image('uiBase', 'assets/UI/Ingame/ui_base.png')
-			this.load.image('gamePause', 'assets/UI/Ingame/ui_pauseButton.png')
+			this.load.image('uiBase', 'assets/UI/Ingame/UI_base.png')
+			this.load.image('gamePause', 'assets/UI/Ingame/UI_pauseButton.png')
 			this.load.image('pauseBackground', 'assets/UI/Ingame/pause.png')
 			this.load.image('pauseRestart', 'assets/UI/Ingame/pause_restart.png')
 			this.load.image('pauseHome', 'assets/UI/Ingame/pause_home.png')
