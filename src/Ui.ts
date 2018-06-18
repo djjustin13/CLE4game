@@ -1,6 +1,6 @@
 module MyGame {
 
-    export class Ui{
+    export class UI {
         game: Phaser.Game
         level: any
         pauseButton:Phaser.Sprite
