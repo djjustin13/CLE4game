@@ -12,6 +12,7 @@ module MyGame {
 			this.load.image('startButton', 'assets/UI/Menu/startButton.png')
 			this.load.image('uiBackground', 'assets/UI/Menu/ui_background.jpg')
 			this.load.image('tree', 'assets/UnusedAssets/Boom.png')
+			this.load.image('clock', 'assets/UnusedAssets/clock.png')
 
 			//Load second menu screen
 			this.load.spritesheet('daliButton', 'assets/UI/Menu/ui_dali.png', 218, 368, 2)
