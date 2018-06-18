@@ -2,9 +2,6 @@ module MyGame {
 
 	export class MainMenu extends Phaser.State {
 
-		Level1: Level1
-		Level2: Level2
-		Level3: Level3
 		dali: Phaser.Sprite
 		rembrandt: Phaser.Sprite
 		picasso: Phaser.Sprite
@@ -66,8 +63,7 @@ module MyGame {
 				if(this.selectedLevel != 0)el.animations.frame = 2
 			}else{
 				el.animations.frame = 1
-			}
-			
+			}	
 		}
 
 		hoverOut(el:Phaser.Sprite){

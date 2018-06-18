@@ -2,7 +2,6 @@ module MyGame {
 
 	export class Gallary extends Phaser.State {
         game:Game
-
         ui_locked1: Phaser.Sprite
         ui_locked2: Phaser.Sprite
 		ui_painting1: Phaser.Sprite
@@ -17,7 +16,7 @@ module MyGame {
             this.add.sprite(0, 0, 'uiBackground')
             this.add.sprite(0, 0, 'gallaryBackground')
 
-            if (this.game.gameprogression == 0) {
+            if (this.game.gameprogression <= 0) {
                 this.ui_locked1 = this.add.sprite(this.world.centerX, this.world.centerY-50 , 'uiArtLocked')
                 this.ui_locked2 = this.add.sprite(this.world.centerX, this.world.centerY+80 , 'uiArtLocked')
 
