@@ -36,9 +36,6 @@ module MyGame {
 			this.state.add('GameOver', GameOver, false);
 
 			this.state.start('Boot');
-
 		}
-
 	}
-
 }

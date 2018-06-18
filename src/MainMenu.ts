@@ -2,35 +2,39 @@ module MyGame {
 
 	export class MainMenu extends Phaser.State {
 
-		level1: Phaser.Sprite
-		level2: Phaser.Sprite
-		level3: Phaser.Sprite
+		Level1: Level1
+		Level2: Level2
+		Level3: Level3
+		dali: Phaser.Sprite
+		rembrandt: Phaser.Sprite
+		picasso: Phaser.Sprite
 		goButton: Phaser.Sprite
 		kunstwerkenButton: Phaser.Sprite
 		selectedLevel:number = 0
+		game:Game
 
 		create() {
 			this.add.sprite(0, 0, 'uiBackground')
 
 			this.add.sprite(this.world.centerX, 45, 'menuTitle').anchor.setTo(0.5, 0.5)
 
-			this.level1 = this.add.sprite(this.world.centerX-245, this.world.centerY , 'daliButton')
-			this.level2 = this.add.sprite(this.world.centerX, this.world.centerY , 'locked1')
-			this.level3 = this.add.sprite(this.world.centerX+245, this.world.centerY , 'locked2')
+			this.dali = this.add.sprite(this.world.centerX-245, this.world.centerY , 'daliButton')
+			this.rembrandt = this.add.sprite(this.world.centerX, this.world.centerY , 'locked1')
+			this.picasso = this.add.sprite(this.world.centerX+245, this.world.centerY , 'locked2')
 
 			this.goButton = this.add.sprite(this.world.centerX+235, this.game.height-60 , 'menuGoButton')
 			this.kunstwerkenButton = this.add.sprite(this.world.centerX-245-107, this.game.height-60 , 'menuKunstwerkenButton')
 
-			this.level1.anchor.setTo(0.5, 0.5)
-			this.level2.anchor.setTo(0.5, 0.5)
-			this.level3.anchor.setTo(0.5, 0.5)
+			this.dali.anchor.setTo(0.5, 0.5)
+			this.rembrandt.anchor.setTo(0.5, 0.5)
+			this.picasso.anchor.setTo(0.5, 0.5)
 
 			this.goButton.anchor.setTo(0.5, 0.5)
 
 			this.kunstwerkenButton.anchor.setTo(0.0, 0.5)
 
-			this.level1.inputEnabled = true
-			this.level1.input.useHandCursor = true;
+			this.dali.inputEnabled = true
+			this.dali.input.useHandCursor = true;
 
 			this.goButton.inputEnabled = true
 			this.goButton.input.useHandCursor = true
@@ -38,9 +42,9 @@ module MyGame {
 			this.kunstwerkenButton.inputEnabled = true
 			this.kunstwerkenButton.input.useHandCursor = true;
 
-			this.level1.events.onInputDown.add(() => this.selectLevel(this.level1, 1))
-			this.level1.events.onInputOver.add(() => this.hover(this.level1))
-			this.level1.events.onInputOut.add(() => this.hoverOut(this.level1))
+			this.dali.events.onInputDown.add(() => this.selectLevel(this.dali, 1))
+			this.dali.events.onInputOver.add(() => this.hover(this.dali))
+			this.dali.events.onInputOut.add(() => this.hoverOut(this.dali))
 
 			this.goButton.events.onInputDown.add(() => this.startGame())
 			this.goButton.events.onInputOver.add(() => this.hover(this.goButton))
@@ -54,7 +58,7 @@ module MyGame {
 		}
 
 		hover(el:Phaser.Sprite){
-			if(el == this.level1){
+			if(el == this.dali){
 				el.scale.setTo(1.05, 1.05)
 			}
 			
@@ -97,7 +101,26 @@ module MyGame {
 		}
 
 		startGame() {
-			if(this.selectedLevel != 0)this.game.state.start('Level1', true, false);
+			// starting the correct level according to gameprogression
+			// WARNING: as of right now, level one starts below 0 and level 3 above 2 aswell, make sure to change
+			// when extending levels
+			if (this.game.gameprogression <= 0)
+			{
+				this.game.state.start('Level1', true, false)
+				console.log('level one started')
+			}
+
+			if (this.game.gameprogression == 1)
+			{
+				this.game.state.start('Level2', true, false)
+				console.log('level two started')
+			}
+
+			if (this.game.gameprogression >= 2)
+			{
+				this.game.state.start('Level3', true, false)
+				console.log('level three started')
+			}
 		}
 
 		showGallary() {
