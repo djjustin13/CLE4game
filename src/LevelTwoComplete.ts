@@ -85,7 +85,7 @@ module MyGame {
 		}
 
 		gallary() {
-			this.game.state.start('Gallary', true, false)		
+			this.game.state.start('Gallery', true, false)		
 		}
 	}
 }

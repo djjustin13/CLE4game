@@ -19,7 +19,7 @@ module MyGame {
 		timerDisplay3:any
 
 		create() {
-			this.background = this.add.sprite(0, 0, 'levelCompleteBackground');
+			this.background = this.add.sprite(0, 0, 'gameCompleteBackground');
 
 			// Next level button
 			this.button = this.add.sprite((this.game.width/1.5)+50, this.game.height/1.1, 'nextLevelButton')
@@ -39,7 +39,7 @@ module MyGame {
             this.galleryButton.inputEnabled = true
             this.galleryButton.input.useHandCursor = true
 
-            this.galleryButton.events.onInputDown.add(() => this.mainMenu())
+            this.galleryButton.events.onInputDown.add(() => this.showGallery())
             this.galleryButton.events.onInputOver.add(() => this.hover(this.galleryButton, 2))
             this.galleryButton.events.onInputOut.add(() => this.hoverOut(this.galleryButton, 2))
 
@@ -91,8 +91,8 @@ module MyGame {
 			this.game.state.start('Level1', true, false);
 		}
 
-		mainMenu() {
-			this.game.state.start('MainMenu', true, false)		
+		showGallery() {
+			this.game.state.start('Gallery', true, false)		
 		}
 	}
 }

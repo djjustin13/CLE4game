@@ -13,14 +13,14 @@ module MyGame {
 		create() {
 			this.add.sprite(0, 0, 'uiBackground')
 
-			this.add.sprite(this.world.centerX, 45, 'menuTitle').anchor.setTo(0.5, 0.5)
+			this.add.sprite(500, 45, 'menuTitle').anchor.setTo(0.5, 0.5)
 			// Character selection
-			this.dali = this.add.sprite(this.world.centerX-245, this.world.centerY , 'daliButton')
-			this.rembrandt = this.add.sprite(this.world.centerX, this.world.centerY , 'locked1')
-			this.picasso = this.add.sprite(this.world.centerX+245, this.world.centerY , 'locked2')
+			this.dali = this.add.sprite(500-245, 300, 'daliButton')
+			this.rembrandt = this.add.sprite(500, 300 , 'locked1')
+			this.picasso = this.add.sprite(500+245, 300 , 'locked2')
 			// Button sprites
-			this.goButton = this.add.sprite(this.world.centerX+235, this.game.height-60 , 'menuGoButton')
-			this.kunstwerkenButton = this.add.sprite(this.world.centerX-245-107, this.game.height-60 , 'menuKunstwerkenButton')
+			this.goButton = this.add.sprite(500+235, this.game.height-60 , 'menuGoButton')
+			this.kunstwerkenButton = this.add.sprite(500-245-107, this.game.height-60 , 'menuKunstwerkenButton')
 			// Character position
 			this.dali.anchor.setTo(0.5, 0.5)
 			this.rembrandt.anchor.setTo(0.5, 0.5)
@@ -120,7 +120,7 @@ module MyGame {
 		}
 
 		showGallary() {
-			this.game.state.start('Gallary', true, false);
+			this.game.state.start('Gallery', true, false);
 		}
 	}
 }
