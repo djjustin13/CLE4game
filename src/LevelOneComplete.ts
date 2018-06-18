@@ -40,16 +40,16 @@ module MyGame {
 
 			let style = { font: "bold 50px Assistant", fill: "#ffffff" };
 
-			this.artPieceScoreDisplay = this.game.add.text(this.game.width/2, this.game.height/2-70, this.game.artpieces1 + '/4', style)
+			this.artPieceScoreDisplay = this.game.add.text((this.game.width/2)-175, this.game.height/2+110, this.game.artpieces1 + '/4', style)
 
-			this.timerDisplay = this.game.add.text(this.game.width/2, this.game.height/2-20, String(this.game.timer1), style)
+			this.timerDisplay = this.game.add.text((this.game.width/2)-15, this.game.height/2+110, String(this.game.timer1), style)
 
-			this.livesDisplay = this.game.add.text(this.game.width/2, this.game.height/2+30, String(this.game.lives), style)
+			this.livesDisplay = this.game.add.text((this.game.width/2)+170, this.game.height/2+110, String(this.game.lives), style)
 
 			// Loading icons
-			this.life = this.add.sprite((this.game.width/2)+100, (this.game.height/2)+100, 'uiLife')
-			this.piece = this.add.sprite((this.game.width/2), (this.game.height/2)+100, 'uiClock')
-			this.clock = this.add.sprite((this.game.width/2)-100, (this.game.height/2)+100, 'uiPiece')
+			this.life = this.add.sprite((this.game.width/2)+140, (this.game.height/2)+117, 'uiLife')
+			this.piece = this.add.sprite((this.game.width/2)-60, (this.game.height/2)+100, 'uiClock')
+			this.clock = this.add.sprite((this.game.width/2)-215, (this.game.height/2)+112, 'uiPiece')
 
 			// this.life.anchor.setTo(0.5, 0.5)
 			// this.clock.anchor.setTo(0.5, 0.5)
