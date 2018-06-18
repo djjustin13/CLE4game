@@ -17,6 +17,7 @@ module MyGame {
 		timerSec:number = 0
 		timerMin:number = 0
 		dynamicLedge:any
+		trees: Phaser.Group
 
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
@@ -46,10 +47,13 @@ module MyGame {
 			for(let i = 0; i < 7; i++){
 				this.ledge.add(new Platform(this.game, 1970+157*i, h-460+41*i));
 			}
-			this.ledge.add(new Platform(this.game, 3000, h-100));
-			this.ledge.add(new Platform(this.game, 5000, h-460));
 
-
+			// Creation of scenery; which in this case means some dead trees
+			this.trees = this.add.group()
+			for (let i = 0; i < 25; i++)
+			{
+				this.trees.add(new Tree(this.game, 750 + i * (500+Math.random()*350), h-this.ground.height))	
+			}
 
 			// Creation of moving platforms
 			this.dynamicLedge = this.add.group()
@@ -65,11 +69,10 @@ module MyGame {
 
 			// Creation of singular spikes
 			this.spikes = this.add.group()
-			this.spikes.add(new Spikes(this.game, 1970+32+157, h-454));
-			this.spikes.add(new Spikes(this.game, 1970+32+157*3, h-454+41*2));
-			this.spikes.add(new Spikes(this.game, 1970+32+157*5, h-454+41*4));
-			this.spikes.add(new Spikes(this.game, 1970+32+157*6, h-454+41*5));
-
+			this.spikes.add(new Spikes(this.game, 1970+5+157, h-454));
+			this.spikes.add(new Spikes(this.game, 1970+5+157*3, h-454+41*2));
+			this.spikes.add(new Spikes(this.game, 1970-5-87+157*6, h-454+41*4));
+			this.spikes.add(new Spikes(this.game, 1970+5+157*6, h-454+41*5));
 
 			// Creation of spiked floor
 			for(let i = 0; i < 35; i++){
@@ -78,11 +81,11 @@ module MyGame {
 
 			// Creation of puzzle pieces
 			this.artPieces = this.add.group()
-			this.artPieces.add(new ArtPiece(this.game, 2500, h-460+41*4));
+			this.artPieces.add(new ArtPiece(this.game, 2500+24, h-460+41*4));
 
 			// Creation of Enemies
 			this.enemies = this.add.group()
-			this.enemies.add(new Enemy(this.game, 3300, h-100));
+			this.enemies.add(new Enemy(this.game, 3150, h-100));
 
 			// Creation of Eye
 			//this.eye = new EnemyEye(this.game, 4820, 350);
@@ -148,6 +151,11 @@ module MyGame {
 			}
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.completeLevel()
+			}
+
+			// setting a respawn location if the player exceeds a certain milestone
+			if (this.player.position.x >= 2000) {
+				this.game.levelProgression1 = 1
 			}
 		}
 

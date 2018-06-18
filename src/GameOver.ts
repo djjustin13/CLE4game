@@ -88,6 +88,7 @@ module MyGame {
 
 		restartGame() {
 			console.log('.. OR NOT!!!')
+			this.game.lives = 9
 			this.game.state.start('Level1', true, false);
 		}
 

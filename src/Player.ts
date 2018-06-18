@@ -43,6 +43,9 @@ module MyGame {
             this.body.bounce.y = 0.0
             this.body.gravity.y = 500
 
+            console.log(this.body.position.x)
+			console.log(this.body.position.y)
+
             // Player keyboard controls
             // Moving left
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.A) || this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) 
@@ -126,6 +129,16 @@ module MyGame {
             if (this.game.levelProgression1 == 1) {
                 this.x = 5700
                 this.y = 350
+                console.log('respawn location locator detected, respawn location relocated to relocator detection detected relocated respawn location by location relocated location locator function')
+            }
+
+            if (this.game.levelProgression2 == 0) {
+                this.x = this.startX
+                this.y = this.startY
+            } 
+            if (this.game.levelProgression2 == 1) {
+                this.x = 2000
+                this.y = 125
                 console.log('respawn location locator detected, respawn location relocated to relocator detection detected relocated respawn location by location relocated location locator function')
             }
 
