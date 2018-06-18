@@ -88,7 +88,7 @@ module MyGame {
 			// Creation of moving platforms
 			this.dynamicLedge = this.add.group()
 			this.dynamicLedge.add(new DynamicLedge(this.game, 80, 200, 3))
-			this.dynamicLedge.add(new DynamicLedge(this.game, 710, 150, 2))
+			this.dynamicLedge.add(new DynamicLedge(this.game, 710, 200, 2))
 			this.dynamicLedge.add(new DynamicLedge(this.game, 840, 200, 3))
 
 			// Creation of singular spikes
@@ -132,8 +132,8 @@ module MyGame {
 			//this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			//this.player = new Player(this.game, 130, this.world.height-this.ground.height-25, this);
-			this.player = new Player(this.game, 7000, 100, this);
+			this.player = new Player(this.game, 100, this.world.height-this.ground.height-25, this);
+			//this.player = new Player(this.game, 7000, 100, this);
 			
 			this.game.camera.follow(this.player)
 
