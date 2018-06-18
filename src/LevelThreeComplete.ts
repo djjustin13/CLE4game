@@ -40,21 +40,19 @@ module MyGame {
 
 			let style = { font: "bold 50px Assistant", fill: "#ffffff" };
 
-			this.artPieceScoreDisplay = this.game.add.text(this.game.width/2, this.game.height/2-70, this.game.artpieces3 + '/4', style)
-
-			this.timerDisplay = this.game.add.text(this.game.width/2, this.game.height/2-20, String(this.game.timer3), style)
-
-			this.livesDisplay = this.game.add.text(this.game.width/2, this.game.height/2+30, String(this.game.lives), style)
-
 			// Loading icons
-			this.life = this.add.sprite((this.game.width/2)-50, this.game.height/2+38, 'uiLife')
-			this.piece = this.add.sprite((this.game.width/2)-50, this.game.height/2-16, 'uiClock')
-			this.clock = this.add.sprite((this.game.width/2)-50, this.game.height/2-70, 'uiPiece')
+			this.piece = this.add.sprite((this.game.width/2)-275, (this.game.height/2)+95, 'uiPiece')
+			this.artPieceScoreDisplay = this.game.add.text((this.game.width/2)-235, this.game.height/2+95, this.game.artpieces1 + '/4', style)
+			
+			this.clock = this.add.sprite((this.game.width/2)-70, (this.game.height/2)+95, 'uiClock')
+			this.timerDisplay = this.game.add.text((this.game.width/2)-40, this.game.height/2+95, String(this.game.timer1), style)
+
+			this.livesDisplay = this.game.add.text((this.game.width/2)+255, this.game.height/2+95, String(this.game.lives), style)
+			this.life = this.add.sprite((this.game.width/2)+215, (this.game.height/2)+105, 'uiLife')
 
 			this.life.anchor.setTo(0.5, 0)
 			this.clock.anchor.setTo(0.5, 0)
 			this.piece.anchor.setTo(0.5, 0)
-
 
 			console.log("level one complete!")
 		}
