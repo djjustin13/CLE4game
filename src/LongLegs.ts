@@ -1,6 +1,6 @@
 module MyGame{
 
-    export class LongLegs extends Phaser.Sprite{
+    export class LongLegs extends Phaser.Sprite {
 
         facing: number
         moving: boolean = false
