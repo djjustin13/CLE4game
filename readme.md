@@ -1,7 +1,7 @@
 # Artistieke **Kat**astrophe
 ### CLE4 educatieve game
 
-(Speel online)[http://justinderuiter.nl/katastrofe/]
+[Speel online](http://justinderuiter.nl/katastrofe/)
 
 ## Omschrijving: 
 Platformer met collectables
