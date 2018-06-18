@@ -81,6 +81,7 @@ module MyGame {
 		}
 
 		nextLevel() {
+			this.game.levelProgression1 = 0
 			this.game.state.start('Level2', true, false)
 		}
 
