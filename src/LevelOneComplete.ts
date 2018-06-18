@@ -14,10 +14,10 @@ module MyGame {
 		livesDisplay:any
 
 		create() {
-			this.background = this.add.sprite(0, 0, 'levelCompleteBackground');
+			this.background = this.add.sprite(0, 0, 'level1Complete');
 
 			// Next level button
-			this.button = this.add.sprite((this.game.width/1.5)+50, this.game.height/1.1, 'nextLevelButton')
+			this.button = this.add.sprite((this.game.width/1.5)+50, this.game.height/1.1, 'uiOkButton')
 			this.button.anchor.setTo(0.5, 0.5)
 
 			this.button.inputEnabled = true
@@ -34,7 +34,7 @@ module MyGame {
             this.galleryButton.inputEnabled = true
             this.galleryButton.input.useHandCursor = true
 
-            this.galleryButton.events.onInputDown.add(() => this.mainMenu())
+            this.galleryButton.events.onInputDown.add(() => this.gallary())
             this.galleryButton.events.onInputOver.add(() => this.hover(this.galleryButton, 2))
             this.galleryButton.events.onInputOut.add(() => this.hoverOut(this.galleryButton, 2))
 
@@ -84,8 +84,8 @@ module MyGame {
 			this.game.state.start('Level2', true, false)
 		}
 
-		mainMenu() {
-			this.game.state.start('MainMenu', true, false)		
+		gallary() {
+			this.game.state.start('Gallary', true, false)		
 		}
 	}
 }

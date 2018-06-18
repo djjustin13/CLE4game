@@ -72,7 +72,8 @@ module MyGame {
             this.okButton.events.onInputOut.add(() => this.hoverOut(this.okButton, 3))
 
 			console.log("gallary of gallaries")
-		}
+        }
+
 
 		selectPainting(el:Phaser.Sprite, n:number) {
 

@@ -64,7 +64,8 @@ module MyGame {
 			this.load.spritesheet('dude', 'assets/Misc/playerSheet.png', 64, 64, 16);
 
 			// Load level completion
-			this.load.image('levelCompleteBackground', 'assets/UI/Menu/startBackground.jpg')
+			this.load.image('level1Complete', 'assets/UI/Menu/Levelcomplete1.png')
+			this.load.image('level2Complete', 'assets/UI/Menu/UI_Levelcomplete2.png')
 			this.load.image('nextLevelButton', 'assets/UI/Menu/startButton.png')
 
 			// Load gameover screen

@@ -17,18 +17,18 @@ module MyGame {
 			this.add.sprite(0, 0, 'uiBackground')
 
 			this.add.sprite(this.world.centerX, 45, 'menuTitle').anchor.setTo(0.5, 0.5)
-
+			// Character selection
 			this.dali = this.add.sprite(this.world.centerX-245, this.world.centerY , 'daliButton')
 			this.rembrandt = this.add.sprite(this.world.centerX, this.world.centerY , 'locked1')
 			this.picasso = this.add.sprite(this.world.centerX+245, this.world.centerY , 'locked2')
-
+			// Button sprites
 			this.goButton = this.add.sprite(this.world.centerX+235, this.game.height-60 , 'menuGoButton')
 			this.kunstwerkenButton = this.add.sprite(this.world.centerX-245-107, this.game.height-60 , 'menuKunstwerkenButton')
-
+			// Character position
 			this.dali.anchor.setTo(0.5, 0.5)
 			this.rembrandt.anchor.setTo(0.5, 0.5)
 			this.picasso.anchor.setTo(0.5, 0.5)
-
+			// Button position
 			this.goButton.anchor.setTo(0.5, 0.5)
 
 			this.kunstwerkenButton.anchor.setTo(0.0, 0.5)
@@ -41,7 +41,7 @@ module MyGame {
 
 			this.kunstwerkenButton.inputEnabled = true
 			this.kunstwerkenButton.input.useHandCursor = true;
-
+			// Button inputs
 			this.dali.events.onInputDown.add(() => this.selectLevel(this.dali, 1))
 			this.dali.events.onInputOver.add(() => this.hover(this.dali))
 			this.dali.events.onInputOut.add(() => this.hoverOut(this.dali))
