@@ -85,7 +85,7 @@ module MyGame {
 		}
 
 		showGallery() {
-			this.game.state.start('Gallery', true, false);
+			this.game.state.start('GalleryLevel', true, false);
 		}
 	}
 }

@@ -69,6 +69,7 @@ module MyGame {
 			this.load.image('nextLevelButton', 'assets/UI/Menu/startButton.png')
 
 			// Load gameover screen
+			this.load.image('gameCompleteBackground', 'assets/UI/Menu/startBackground.jpg')
 			this.load.image('gameOverBackground', 'assets/UI/Menu/startBackground.jpg')
 			this.load.image('restartLevelButton', 'assets/UI/Menu/startButton.png')
 		}
