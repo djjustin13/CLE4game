@@ -14,7 +14,7 @@ module MyGame {
 			this.button.inputEnabled = true
 			this.button.input.useHandCursor = true;
 
-			this.button.events.onInputDown.add(() => this.startGame())
+			this.button.events.onInputDown.add(() => this.mainMenu())
 			this.button.events.onInputOver.add(() => this.hover())
 			this.button.events.onInputOut.add(() => this.hoverOut())
 
@@ -29,7 +29,7 @@ module MyGame {
 			this.button.scale.setTo(1, 1)
 		}
 
-		startGame() {
+		mainMenu() {
 			this.game.state.start('MainMenu', true, false);
 		}
 

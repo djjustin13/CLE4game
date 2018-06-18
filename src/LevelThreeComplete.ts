@@ -34,7 +34,7 @@ module MyGame {
             this.galleryButton.inputEnabled = true
             this.galleryButton.input.useHandCursor = true
 
-            this.galleryButton.events.onInputDown.add(() => this.mainMenu())
+            this.galleryButton.events.onInputDown.add(() => this.showGallery())
             this.galleryButton.events.onInputOver.add(() => this.hover(this.galleryButton, 2))
             this.galleryButton.events.onInputOut.add(() => this.hoverOut(this.galleryButton, 2))
 
@@ -81,8 +81,8 @@ module MyGame {
 			this.game.state.start('GameOver', true, false)
 		}
 
-		mainMenu() {
-			this.game.state.start('MainMenu', true, false)		
+		showGallery() {
+			this.game.state.start('Gallary', true, false);
 		}
 	}
 }

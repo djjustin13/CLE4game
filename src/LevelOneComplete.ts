@@ -17,7 +17,7 @@ module MyGame {
 			this.background = this.add.sprite(0, 0, 'level1Complete');
 
 			// Next level button
-			this.button = this.add.sprite((this.game.width/1.5)+50, this.game.height/1.1, 'uiOkButton')
+			this.button = this.add.sprite((this.game.width/1.5)+85, (this.game.height/1.1)-25, 'uiOkButton')
 			this.button.anchor.setTo(0.5, 0.5)
 
 			this.button.inputEnabled = true
@@ -28,7 +28,7 @@ module MyGame {
 			this.button.events.onInputOut.add(() => this.hoverOut(this.button, 1))
 
 			// Back to menu button
-			this.galleryButton = this.add.sprite((this.game.width/3.5)+50, this.game.height/1.1, 'menuKunstwerkenButton')
+			this.galleryButton = this.add.sprite((this.game.width/3.5)+85, (this.game.height/1.1)-25, 'menuKunstwerkenButton')
             this.galleryButton.anchor.setTo(0.5, 0.5)
 
             this.galleryButton.inputEnabled = true
@@ -47,9 +47,9 @@ module MyGame {
 			this.livesDisplay = this.game.add.text(this.game.width/2, this.game.height/2+30, String(this.game.lives), style)
 
 			// Loading icons
-			this.life = this.add.sprite((this.game.width/2)-50, this.game.height/2+38, 'uiLife')
-			this.piece = this.add.sprite((this.game.width/2)-50, this.game.height/2-16, 'uiClock')
-			this.clock = this.add.sprite((this.game.width/2)-50, this.game.height/2-70, 'uiPiece')
+			this.life = this.add.sprite((this.game.width/2)+100, (this.game.height/2)+100, 'uiLife')
+			this.piece = this.add.sprite((this.game.width/2), (this.game.height/2)+100, 'uiClock')
+			this.clock = this.add.sprite((this.game.width/2)-100, (this.game.height/2)+100, 'uiPiece')
 
 			// this.life.anchor.setTo(0.5, 0.5)
 			// this.clock.anchor.setTo(0.5, 0.5)
