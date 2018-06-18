@@ -100,22 +100,24 @@ module MyGame {
 			// starting the correct level according to gameprogression
 			// WARNING: as of right now, level one starts below 0 and level 3 above 2 aswell, make sure to change
 			// when extending levels
-			if (this.game.gameprogression <= 0)
-			{
-				this.game.state.start('Level1', true, false)
-				console.log('level one started')
-			}
+			if (this.selectedLevel != 0){
+				if (this.game.gameprogression <= 0)
+				{
+					this.game.state.start('Level1', true, false)
+					console.log('level one started')
+				}
 
-			if (this.game.gameprogression == 1)
-			{
-				this.game.state.start('Level2', true, false)
-				console.log('level two started')
-			}
+				if (this.game.gameprogression == 1)
+				{
+					this.game.state.start('Level2', true, false)
+					console.log('level two started')
+				}
 
-			if (this.game.gameprogression >= 2)
-			{
-				this.game.state.start('Level3', true, false)
-				console.log('level three started')
+				if (this.game.gameprogression >= 2)
+				{
+					this.game.state.start('Level3', true, false)
+					console.log('level three started')
+				}
 			}
 		}
 
