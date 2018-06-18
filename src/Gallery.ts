@@ -17,8 +17,8 @@ module MyGame {
             this.add.sprite(0, 0, 'galleryBackground')
 
             if (this.game.gameprogression <= 0) {
-                this.ui_locked1 = this.add.sprite(this.world.centerX, this.world.centerY-50 , 'uiArtLocked')
-                this.ui_locked2 = this.add.sprite(this.world.centerX, this.world.centerY+80 , 'uiArtLocked')
+                this.ui_locked1 = this.add.sprite(500, 300-50 , 'uiArtLocked')
+                this.ui_locked2 = this.add.sprite(500, 300+80 , 'uiArtLocked')
 
                 this.ui_locked1.anchor.setTo(0.5, 0.5)
                 this.ui_locked2.anchor.setTo(0.5, 0.5)
@@ -27,8 +27,8 @@ module MyGame {
             }
             
             if (this.game.gameprogression == 1) {
-                this.ui_painting1 = this.add.sprite(this.world.centerX-75.5, this.world.centerY-50 , 'uiDaliMelt')
-                this.ui_locked2 = this.add.sprite(this.world.centerX, this.world.centerY+80 , 'uiArtLocked')
+                this.ui_painting1 = this.add.sprite(500-75.5, 300-50 , 'uiDaliMelt')
+                this.ui_locked2 = this.add.sprite(500, 300+80 , 'uiArtLocked')
 
                 this.ui_painting1.anchor.setTo(0.5, 0.5)
                 this.ui_locked2.anchor.setTo(0.5, 0.5)
@@ -44,8 +44,8 @@ module MyGame {
             }
 
             if (this.game.gameprogression >= 2) {
-                this.ui_painting1 = this.add.sprite(this.world.centerX-56.5, this.world.centerY-50 , 'uiDaliMelt')
-                this.ui_painting2 = this.add.sprite(this.world.centerX, this.world.centerY+80 , 'uiDaliSphere')
+                this.ui_painting1 = this.add.sprite(500-56.5, 300-50 , 'uiDaliMelt')
+                this.ui_painting2 = this.add.sprite(500, 300+80 , 'uiDaliSphere')
 
                 this.ui_painting1.anchor.setTo(0.5, 0.5)
                 this.ui_painting2.anchor.setTo(0.5, 0.5)
@@ -65,7 +65,7 @@ module MyGame {
                 this.game.gameprogression = 2
             }
             
-            this.okButton = this.add.sprite(this.world.centerX, this.world.centerY+215 , 'uiOkButton')
+            this.okButton = this.add.sprite(500, 300+215 , 'uiOkButton')
 
             this.okButton.anchor.setTo(0.5, 0.5)
 
@@ -82,11 +82,11 @@ module MyGame {
 		selectPainting(el:Phaser.Sprite, n:number) {
 
             if (n == 1) {
-                this.painting1 = this.add.sprite(this.world.centerX, this.world.centerY , 'daliMelt')
+                this.painting1 = this.add.sprite(500, 300 , 'daliMelt')
                 this.painting1.anchor.setTo(0.5, 0.5)
             }
             if (n == 2) {
-                this.painting2 = this.add.sprite(this.world.centerX, this.world.centerY , 'daliSphere')
+                this.painting2 = this.add.sprite(500, 300, 'daliSphere')
                 this.painting2.anchor.setTo(0.5, 0.5)
             }
 
