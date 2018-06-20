@@ -21,6 +21,7 @@ module MyGame {
 		timerSec:number = 0
 		timerMin:number = 0
 		dynamicLedge:any
+		ui: UI
 
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
@@ -158,7 +159,7 @@ module MyGame {
 			this.longlegs2 = new LongLegs(this.game, 7500, 130);
 
 			// Creation on UI
-			let ui = new UI(this.game, this)
+			this.ui = new UI(this.game, this)
 
 			// Creation of text
 			let style = { font: "bold 20px Assistant", fill: "#ffffff" };
@@ -210,7 +211,7 @@ module MyGame {
 			this.livesDisplay.text = String(this.game.lives)
 
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
-				this.resetLevel()
+				this.ui.pauseLevel()
 			}
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.completeLevel()
