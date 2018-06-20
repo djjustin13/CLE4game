@@ -20,6 +20,7 @@ module MyGame {
 		timerMin:number = 0
 		dynamicLedge:any
 		trees: Phaser.Group
+		ui:UI
 
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
@@ -158,7 +159,7 @@ module MyGame {
 			this.longlegs1 = new LongLegs(this.game, 5700, h-this.ground.height-164);
 
 			// Creation on UI
-			let ui = new UI(this.game, this)
+			this.ui = new UI(this.game, this)
 
 			// Creation of text
 			let style = { font: "bold 20px Assistant", fill: "#ffffff" };
@@ -206,7 +207,7 @@ module MyGame {
 			this.livesDisplay.text = String(this.game.lives)
 
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
-				this.resetLevel()
+				this.ui.pauseLevel()
 			}
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.completeLevel()
