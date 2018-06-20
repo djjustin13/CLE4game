@@ -5,7 +5,6 @@ module MyGame {
         private startX:number
         private startY:number
         private timer: number = 0
-        private enemyState: number
         private jumpPressed:boolean
         private speed: number = 250;
         private jumpheight: number = 275;
@@ -128,7 +127,6 @@ module MyGame {
                 this.startX = 2000
                 this.startY = 125
             }
-
 
             this.game.lives--
             this.level.respawnElements();

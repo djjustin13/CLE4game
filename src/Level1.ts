@@ -221,6 +221,8 @@ module MyGame {
 			if (this.player.position.x >= 100) {
 				this.game.levelProgression1 = 1
 			}
+
+			console.log(this.player.position.x)
 		}
 
 		updateTimer(){
