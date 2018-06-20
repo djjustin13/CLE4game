@@ -54,6 +54,7 @@ module MyGame {
             this.homeButton.input.useHandCursor = true;
             this.homeButton.anchor.setTo(0.5, 0.5)
             this.homeButton.events.onInputDown.add(() => this.gotoHome())
+            
         }
 
         unPause(event:any){
@@ -69,6 +70,7 @@ module MyGame {
                     this.restartButton.kill()
                     this.homeButton.kill()
                 }
+
             }
         }
 
