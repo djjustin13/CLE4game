@@ -35,7 +35,7 @@ module MyGame {
 			this.bgElephant = this.add.group()
 			for (let i =0; i < 2; i++)
 			{
-				this.bgElephant.add(new ElephantBackGround(this.game, 800 + i * (2000+Math.random()*6000), h))
+				this.bgElephant.add(new ElephantBackGround(this.game,  2000 * Math.random() + i * (2000+Math.random()*6000), h))
 			}
 
 
@@ -267,6 +267,7 @@ module MyGame {
 		}
 
 		respawnElements(){
+			this.longlegs1.respawn();
 		}
 	}
 } 
