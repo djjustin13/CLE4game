@@ -71,6 +71,7 @@ module MyGame {
                     this.restartButton.kill()
                     this.homeButton.kill()
                 }
+
             }
         }
 

@@ -37,7 +37,7 @@ module MyGame {
 			this.bgElephant = this.add.group()
 			for (let i = 0; i < 2; i++)
 			{
-				this.bgElephant.add(new ElephantBackGround(this.game, 2000 * Math.random() + i * (2000+Math.random()*6000), h))
+				// this.bgElephant.add(new ElephantBackGround(this.game, 2000 * Math.random() + i * (2000+Math.random()*6000), h))
 			}
 
 			// Creation of platforms: ground, platforms, ledges e.d.
@@ -213,13 +213,16 @@ module MyGame {
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
 				// this.ui.pauseLevel()
 			}
-			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
-				this.completeLevel()
-			}
+			// if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
+			// 	this.completeLevel()
+			// }
 
 			// setting a respawn location if the player exceeds a certain milestone
-			if (this.player.position.x >= 5500) {
+			if (this.player.position.x >= 2700 && this.player.position.x < 5500) {
 				this.game.levelProgression1 = 1
+			}
+			if (this.player.position.x >= 5500) {
+				this.game.levelProgression1 = 2
 			}
 		}
 
