@@ -111,7 +111,7 @@ module MyGame {
 
 				if (this.game.gameprogression >= 2)
 				{
-					this.game.state.start('Level3', true, false)
+					this.game.state.start('GameOver', true, false)
 				}
 			}
 		}
