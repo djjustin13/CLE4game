@@ -80,7 +80,6 @@ module MyGame {
             this.okButton.events.onInputOver.add(() => this.hoverOn(this.okButton))
             this.okButton.events.onInputOut.add(() => this.hoverOut(this.okButton))
 
-			console.log("gallery of galleries")
             this.game.input.onDown.add(this.unPause.bind(this), self)
 		}
 

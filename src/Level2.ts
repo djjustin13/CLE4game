@@ -243,6 +243,7 @@ module MyGame {
 		}
 		
 		resetLevel(){
+			this.game.artpieces2 = 0
 			this.game.state.start('Level2', true, false);
 		}
 
