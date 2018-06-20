@@ -211,7 +211,7 @@ module MyGame {
 			this.livesDisplay.text = String(this.game.lives)
 
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
-				this.ui.pauseLevel()
+				// this.ui.pauseLevel()
 			}
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.completeLevel()

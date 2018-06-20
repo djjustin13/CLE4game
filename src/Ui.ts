@@ -37,6 +37,7 @@ module MyGame {
         }
 
         pauseLevel(){
+            console.log(this.game.camera.x)
             this.game.paused = true
             this.pauseBackground = this.game.add.sprite(this.game.camera.x, this.game.camera.y, 'pauseBackground');
             this.pauseBackground.fixedToCamera = true
@@ -54,9 +55,10 @@ module MyGame {
             this.homeButton.input.useHandCursor = true;
             this.homeButton.anchor.setTo(0.5, 0.5)
             this.homeButton.events.onInputDown.add(() => this.gotoHome())
+            
         }
 
-        unPause(event:any){
+        unPause(event:any = null){
             if(this.game.paused == true){
                 let w = this.game.width
                 let h = this.game.height
