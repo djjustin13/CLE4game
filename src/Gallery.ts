@@ -80,11 +80,7 @@ module MyGame {
             this.okButton.events.onInputOver.add(() => this.hoverOn(this.okButton))
             this.okButton.events.onInputOut.add(() => this.hoverOut(this.okButton))
 
-<<<<<<< HEAD
 			console.log("gallery of galleries")
-=======
-            this.game.input.onDown.add(this.unPause.bind(this), self)
->>>>>>> 825a3554bdf660bcff6882132126c7dd932b90d1
 		}
 
 		selectPainting(el:Phaser.Sprite, n:number) {
