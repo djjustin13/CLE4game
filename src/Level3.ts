@@ -99,9 +99,6 @@ module MyGame {
 			this.livesDisplay.fixedToCamera = true;
 
 			this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
-
-			// Console level has started
-			console.log("LEVEL THREE STARTED - GOGOGO!")
 		}
 
 		update(){
@@ -166,14 +163,11 @@ module MyGame {
 		completeLevelCheck(){
 			if (this.game.artpieces3 == 4) {
 				this.completeLevel()
-				console.log("level complete, such amaze")
-			} else {
-				console.log("needs more pieces")
 			}
 		}
 
 		completeLevel(){
-			this.game.state.start('LevelThreeComplete', true, false);
+			this.game.state.start('GameOver', true, false);
 			this.game.gameprogression = 3
 		}
 	

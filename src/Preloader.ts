@@ -11,6 +11,9 @@ module MyGame {
 			this.load.image('startBackground', 'assets/UI/Menu/startBackground.jpg')
 			this.load.image('startButton', 'assets/UI/Menu/startButton.png')
 			this.load.image('uiBackground', 'assets/UI/Menu/ui_background.jpg')
+			this.load.image('bgElephant', 'assets/UnusedAssets/elephant.png')
+			this.load.image('tree', 'assets/UnusedAssets/Boom.png')
+			this.load.image('clock', 'assets/UnusedAssets/clock.png')
 
 			//Load second menu screen
 			this.load.spritesheet('daliButton', 'assets/UI/Menu/ui_dali.png', 218, 368, 2)
@@ -29,10 +32,12 @@ module MyGame {
 			this.load.image('uiDaliSphere', 'assets/UI/Menu/gallery_ui_galatea-of-the-spheres.png')
 			this.load.image('daliMelt', 'assets/UI/Menu/dali_melting-watch.png')
 			this.load.image('daliSphere', 'assets/UI/Menu/dali_galatea-of-the-spheres.png')
-		
+			this.load.image('bigDaliMelt', 'assets/UI/Menu/bg_melting-watch.jpg')
+			this.load.image('bigDaliSphere', 'assets/UI/Menu/bg_galatea-of-the-spheres.jpg')
+
 			//Load Ingame UI
-			this.load.image('uiBase', 'assets/UI/Ingame/ui_base.png')
-			this.load.image('gamePause', 'assets/UI/Ingame/ui_pauseButton.png')
+			this.load.image('uiBase', 'assets/UI/Ingame/UI_base.png')
+			this.load.image('gamePause', 'assets/UI/Ingame/UI_pauseButton.png')
 			this.load.image('pauseBackground', 'assets/UI/Ingame/pause.png')
 			this.load.image('pauseRestart', 'assets/UI/Ingame/pause_restart.png')
 			this.load.image('pauseHome', 'assets/UI/Ingame/pause_home.png')
@@ -69,12 +74,12 @@ module MyGame {
 			this.load.image('nextLevelButton', 'assets/UI/Menu/startButton.png')
 
 			// Load gameover screen
+			this.load.image('gameCompleteBackground', 'assets/UI/Menu/startBackground.jpg')
 			this.load.image('gameOverBackground', 'assets/UI/Menu/startBackground.jpg')
 			this.load.image('restartLevelButton', 'assets/UI/Menu/startButton.png')
 		}
 
 		create() {
-			console.log("preload state..")
 			this.game.state.start('StartScreen');
 		}
 	}

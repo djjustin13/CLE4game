@@ -17,8 +17,6 @@ module MyGame {
 			this.button.events.onInputDown.add(() => this.mainMenu())
 			this.button.events.onInputOver.add(() => this.hover())
 			this.button.events.onInputOut.add(() => this.hoverOut())
-
-			console.log("start screen state")
 		}
 
 		hover(){

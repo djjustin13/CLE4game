@@ -13,14 +13,14 @@ module MyGame {
 		create() {
 			this.add.sprite(0, 0, 'uiBackground')
 
-			this.add.sprite(this.world.centerX, 45, 'menuTitle').anchor.setTo(0.5, 0.5)
+			this.add.sprite(500, 45, 'menuTitle').anchor.setTo(0.5, 0.5)
 			// Character selection
-			this.dali = this.add.sprite(this.world.centerX-245, this.world.centerY , 'daliButton')
-			this.rembrandt = this.add.sprite(this.world.centerX, this.world.centerY , 'locked1')
-			this.picasso = this.add.sprite(this.world.centerX+245, this.world.centerY , 'locked2')
+			this.dali = this.add.sprite(500-245, 300, 'daliButton')
+			this.rembrandt = this.add.sprite(500, 300 , 'locked1')
+			this.picasso = this.add.sprite(500+245, 300 , 'locked2')
 			// Button sprites
-			this.goButton = this.add.sprite(this.world.centerX+235, this.game.height-60 , 'menuGoButton')
-			this.kunstwerkenButton = this.add.sprite(this.world.centerX-245-107, this.game.height-60 , 'menuKunstwerkenButton')
+			this.goButton = this.add.sprite(500+235, this.game.height-60 , 'menuGoButton')
+			this.kunstwerkenButton = this.add.sprite(500-245-107, this.game.height-60 , 'menuKunstwerkenButton')
 			// Character position
 			this.dali.anchor.setTo(0.5, 0.5)
 			this.rembrandt.anchor.setTo(0.5, 0.5)
@@ -50,8 +50,6 @@ module MyGame {
 			this.kunstwerkenButton.events.onInputDown.add(() => this.showGallary())
 			this.kunstwerkenButton.events.onInputOver.add(() => this.hover(this.kunstwerkenButton))
 			this.kunstwerkenButton.events.onInputOut.add(() => this.hoverOut(this.kunstwerkenButton))
-
-			console.log("menu state")
 		}
 
 		hover(el:Phaser.Sprite){
@@ -100,22 +98,21 @@ module MyGame {
 			// starting the correct level according to gameprogression
 			// WARNING: as of right now, level one starts below 0 and level 3 above 2 aswell, make sure to change
 			// when extending levels
-			if (this.game.gameprogression <= 0)
-			{
-				this.game.state.start('Level1', true, false)
-				console.log('level one started')
-			}
+			if (this.selectedLevel != 0){
+				if (this.game.gameprogression <= 0)
+				{
+					this.game.state.start('Level1', true, false)
+				}
 
-			if (this.game.gameprogression == 1)
-			{
-				this.game.state.start('Level2', true, false)
-				console.log('level two started')
-			}
+				if (this.game.gameprogression == 1)
+				{
+					this.game.state.start('Level2', true, false)
+				}
 
-			if (this.game.gameprogression >= 2)
-			{
-				this.game.state.start('Level3', true, false)
-				console.log('level three started')
+				if (this.game.gameprogression >= 2)
+				{
+					this.game.state.start('Level3', true, false)
+				}
 			}
 		}
 

@@ -2,7 +2,10 @@ module MyGame {
 
 	export class Level1 extends Phaser.State {
 		game:Game
+		trees: Phaser.Group
+		endTile: Phaser.Sprite
 		background: Phaser.TileSprite
+		bgElephant: Phaser.Group
 		ground: Phaser.TileSprite
 		ledge: Phaser.Group
 		player: MyGame.Player
@@ -10,7 +13,6 @@ module MyGame {
 		artPieces: Phaser.Group
 		enemies: Phaser.Group
 		eye: MyGame.EnemyEye
-		endTile: Phaser.Sprite
 		elephant1: any
 		elephant2: any
 		longlegs1: LongLegs
@@ -30,10 +32,17 @@ module MyGame {
 			this.game.world.setBounds(0, 0, 9000, 600);
 			this.background = this.add.tileSprite(0, 0, this.world.width, 600, 'bgTile')
 
+			// TODO: make elephant not look shite
+			this.bgElephant = this.add.group()
+			for (let i =0; i < 2; i++)
+			{
+				this.bgElephant.add(new ElephantBackGround(this.game, 800 + i * (3500+Math.random()*3500), h))
+			}
+
 			// Creation of platforms: ground, platforms, ledges e.d.
 			this.platforms = this.add.group()
 			this.platforms.enableBody = true
-			
+
 			//start level
 			this.ground = this.add.tileSprite(0, h-32, this.world.width, 32, 'platformTile')
 			this.game.physics.arcade.enableBody(this.ground)
@@ -41,27 +50,37 @@ module MyGame {
 			this.ground.body.immovable = true;
 			this.ground.body.allowGravity = false;
 
-			let tutSign = this.game.add.sprite(0 ,h-282 , 'tutorialSign')
+			// Creation of scenery
+			this.trees = this.add.group()
+			for (let i = 0; i < 25; i++)
+			{
+				this.trees.add(new Tree(this.game, 1500 + i * (500+Math.random()*350), h-this.ground.height))	
+			}
+
+			// creation of tutorial-sign
+			let tutSign = this.game.add.sprite(250-170/2, h-213-this.ground.height, 'tutorialSign')
+
+			// Creation of End-tile
+			this.endTile = new EndTile(this.game, 8888, 357);
 
 			this.ledge = this.add.group()
 			this.ledge.add(new Platform(this.game, 400, h-64));
 			this.ledge.add(new Platform(this.game, 800, h-64));
-			this.ledge.add(new Platform(this.game, 800, h-96));
-			this.ledge.add(new Platform(this.game, 800, h-98));
+			this.ledge.add(new Platform(this.game, 800, h-91));
 			this.ledge.add(new Platform(this.game, 1050, h-64));
-			this.ledge.add(new Platform(this.game, 1050, h-96));
-			this.ledge.add(new Platform(this.game, 1050, h-128));
+			this.ledge.add(new Platform(this.game, 1050, h-91));
+			this.ledge.add(new Platform(this.game, 1050, h-118));
 			this.ledge.add(new Platform(this.game, 1600, 400));
 			this.ledge.add(new Platform(this.game, 1900, 360));
 			this.ledge.add(new Platform(this.game, 2300, 360));
 			this.ledge.add(new Platform(this.game, 2705, h-64));
-			this.ledge.add(new Platform(this.game, 2705, h-96));
+			this.ledge.add(new Platform(this.game, 2705, h-91));
 			this.ledge.add(new Platform(this.game, 3105, h-64));
-			this.ledge.add(new Platform(this.game, 3105, h-96));
+			this.ledge.add(new Platform(this.game, 3105, h-91));
 			this.ledge.add(new Platform(this.game, 3523, h-64));
-			this.ledge.add(new Platform(this.game, 3523, h-96));
+			this.ledge.add(new Platform(this.game, 3523, h-91));
+			this.ledge.add(new Platform(this.game, 3523, h-118));
 			this.ledge.add(new Platform(this.game, 4325, h-96));
-			this.ledge.add(new Platform(this.game, 3523, h-128));
 			this.ledge.add(new Platform(this.game, 4482, h-96));
 			this.ledge.add(new Platform(this.game, 4639, h-96));
 			this.ledge.add(new Platform(this.game, 5000, 500));
@@ -79,11 +98,6 @@ module MyGame {
 			this.ledge.add(new Platform(this.game, 8100, 450));
 			this.ledge.add(new Platform(this.game, 8300, 500));
 			this.ledge.add(new Platform(this.game, 8800, 400));
-
-			// Creation of wall
-			for(let i = 0; i < 5; i++){
-				this.ledge.add(new Platform(this.game, 6500, 382 + i * 32));
-			}
 
 			// Creation of moving platforms
 			this.dynamicLedge = this.add.group()
@@ -118,10 +132,10 @@ module MyGame {
 
 			// Creation of puzzle pieces
 			this.artPieces = this.add.group()
-			this.artPieces.add(new ArtPiece(this.game, 105, 140));
-			this.artPieces.add(new ArtPiece(this.game, 2600, 225));
+			this.artPieces.add(new ArtPiece(this.game, 260, 90));
+			this.artPieces.add(new ArtPiece(this.game, 1600, 100));
+			this.artPieces.add(new ArtPiece(this.game, 4050, 90));
 			this.artPieces.add(new ArtPiece(this.game, 6000, 250));
-			//end level
 
 			// Creation of Enemies
 			this.enemies = this.add.group()
@@ -131,9 +145,8 @@ module MyGame {
 			//this.eye = new EnemyEye(this.game, 4820, 350);
 
 			// Creation of the Player
-			// this.player = new Player(this.game, 100, this.world.height-this.ground.height-25, this);
-			this.player = new Player(this.game, 5600, 100, this);
-			
+			this.player = new Player(this.game, 100, this.world.height-this.ground.height-25, this);
+
 			this.game.camera.follow(this.player)
 
 			// Creation of Elephant
@@ -142,10 +155,7 @@ module MyGame {
 
 			// Creation of Longlegs
 			this.longlegs1 = new LongLegs(this.game, 5800, 400);
-			this.longlegs2 = new LongLegs(this.game, 7500, 100);
-
-			// Creation of End-tile
-			this.endTile = new EndTile(this.game, 8888, 357);
+			this.longlegs2 = new LongLegs(this.game, 7500, 130);
 
 			// Creation on UI
 			let ui = new UI(this.game, this)
@@ -163,9 +173,6 @@ module MyGame {
 			this.livesDisplay.fixedToCamera = true;
 
 			this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
-
-			// Console level has started
-			console.log("LEVEL ONE STARTED - GOGOGO!")
 		}
 
 		update(){
@@ -208,6 +215,11 @@ module MyGame {
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.completeLevel()
 			}
+
+			// setting a respawn location if the player exceeds a certain milestone
+			if (this.player.position.x >= 5500) {
+				this.game.levelProgression1 = 1
+			}
 		}
 
 		updateTimer(){
@@ -241,9 +253,6 @@ module MyGame {
 		completeLevelCheck(){
 			if (this.game.artpieces1 == 4) {
 				this.completeLevel()
-				console.log("level complete, such amaze")
-			} else {
-				console.log("needs more pieces")
 			}
 		}
 

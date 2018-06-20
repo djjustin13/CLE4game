@@ -58,7 +58,6 @@ module MyGame {
 
         unPause(event:any){
             if(this.game.paused == true){
-                console.log("unpause")
                 let w = this.game.width
                 let h = this.game.height
                 var x1 = w/2 - 120, x2 = w/2 + 120,
@@ -66,19 +65,22 @@ module MyGame {
 
                 if((event.x < x1 || event.x > x2) || (event.y < y1 || event.y > y2)){
                     this.game.paused = false
+                    this.pauseBackground.kill()
+                    this.restartButton.kill()
+                    this.homeButton.kill()
                 }
             }
         }
 
         restartLevel(){
-            console.log("restart")
             this.game.paused = false
             this.level.resetLevel()
             
         }
 
         gotoHome(){
-
+            this.game.paused = false
+            this.game.state.start('MainMenu', true, false);
         }
     }
 }
