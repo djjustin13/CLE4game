@@ -212,7 +212,7 @@ module MyGame {
 			// if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
 			// 	this.completeLevel()
 			// }
-			
+
 			// setting a respawn location if the player exceeds a certain milestone
 			if (this.player.position.x >= 2000 && this.player.position.x < 5250) {
 				this.game.levelProgression2 = 1

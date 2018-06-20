@@ -91,6 +91,10 @@ module MyGame {
 
 		restartGame() {
 			this.game.lives = 9
+			this.game.artpieces1 = 0
+			this.game.artpieces2 = 0
+			this.game.timer1 = "00:00"
+			this.game.timer2 = "00:00"
 			this.game.state.start('Level1', true, false);
 		}
 

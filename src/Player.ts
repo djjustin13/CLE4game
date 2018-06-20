@@ -54,7 +54,7 @@ module MyGame {
             }
 
             // Moving right
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.D) || this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) && this.body.velocity.y == 0)
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.D) || this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
             {
                 this.body.velocity.x = this.speed;
 
