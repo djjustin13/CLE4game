@@ -37,7 +37,6 @@ module MyGame {
         }
 
         pauseLevel(){
-            console.log(this.game.camera.x)
             this.game.paused = true
             this.pauseBackground = this.game.add.sprite(this.game.camera.x, this.game.camera.y, 'pauseBackground');
             this.pauseBackground.fixedToCamera = true
