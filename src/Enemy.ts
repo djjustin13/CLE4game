@@ -15,7 +15,7 @@ module MyGame{
 
             this.anchor.setTo(0.5, 0);
 
-            this.animations.add('walk', [2, 5, 2, 5, 2, 2, 5, 5], 5, true)
+            this.animations.add('walk', [2, 3, 4, 5, 6], 10, true)
             this.animations.frame = 0
 
             game.add.existing(this);

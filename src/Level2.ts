@@ -20,6 +20,7 @@ module MyGame {
 		timerMin:number = 0
 		dynamicLedge:any
 		trees: Phaser.Group
+		ui:UI
 
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
@@ -35,7 +36,7 @@ module MyGame {
 			this.bgElephant = this.add.group()
 			for (let i =0; i < 2; i++)
 			{
-				this.bgElephant.add(new ElephantBackGround(this.game, 800 + i * (2000+Math.random()*6000), h))
+				this.bgElephant.add(new ElephantBackGround(this.game,  2000 * Math.random() + i * (2000+Math.random()*6000), h))
 			}
 
 
@@ -158,7 +159,7 @@ module MyGame {
 			this.longlegs1 = new LongLegs(this.game, 5700, h-this.ground.height-164);
 
 			// Creation on UI
-			let ui = new UI(this.game, this)
+			this.ui = new UI(this.game, this)
 
 			// Creation of text
 			let style = { font: "bold 20px Assistant", fill: "#ffffff" };
@@ -206,7 +207,7 @@ module MyGame {
 			this.livesDisplay.text = String(this.game.lives)
 
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
-				this.resetLevel()
+				this.ui.pauseLevel()
 			}
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.completeLevel()
@@ -243,6 +244,7 @@ module MyGame {
 		}
 		
 		resetLevel(){
+			this.game.artpieces2 = 0
 			this.game.state.start('Level2', true, false);
 		}
 
@@ -267,6 +269,7 @@ module MyGame {
 		}
 
 		respawnElements(){
+			this.longlegs1.respawn();
 		}
 	}
 } 

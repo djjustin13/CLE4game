@@ -21,6 +21,7 @@ module MyGame {
 		timerSec:number = 0
 		timerMin:number = 0
 		dynamicLedge:any
+		ui: UI
 
 		artPieceScore: number = 0
 		artPieceScoreDisplay: any
@@ -34,9 +35,9 @@ module MyGame {
 
 			// TODO: make elephant not look shite
 			this.bgElephant = this.add.group()
-			for (let i =0; i < 2; i++)
+			for (let i = 0; i < 2; i++)
 			{
-				this.bgElephant.add(new ElephantBackGround(this.game, 800 + i * (3500+Math.random()*3500), h))
+				this.bgElephant.add(new ElephantBackGround(this.game, 2000 * Math.random() + i * (2000+Math.random()*6000), h))
 			}
 
 			// Creation of platforms: ground, platforms, ledges e.d.
@@ -158,7 +159,7 @@ module MyGame {
 			this.longlegs2 = new LongLegs(this.game, 7500, 130);
 
 			// Creation on UI
-			let ui = new UI(this.game, this)
+			this.ui = new UI(this.game, this)
 
 			// Creation of text
 			let style = { font: "bold 20px Assistant", fill: "#ffffff" };
@@ -210,7 +211,7 @@ module MyGame {
 			this.livesDisplay.text = String(this.game.lives)
 
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
-				this.resetLevel()
+				this.ui.pauseLevel()
 			}
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.completeLevel()
@@ -247,6 +248,7 @@ module MyGame {
 		}
 		
 		resetLevel(){
+			this.game.artpieces1 = 0
 			this.game.state.start('Level1', true, false);
 		}
 
