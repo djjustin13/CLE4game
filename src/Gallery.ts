@@ -120,35 +120,42 @@ module MyGame {
 
         unPause(event:any){
             if(this.selectedPainting){
-                var x1 = 320, x2 = 666,
-                y1 = 20, y2 = 300
-                if((event.x < x1 || event.x > x2) || (event.y < y1 || event.y > y2)){
-                    this.game.paused = false
+                if(this.selectedPainting == this.painting1 || this.selectedPainting == this.painting2){
+                    var x1 = 320, x2 = 666,
+                    y1 = 20, y2 = 300
+                    if((event.x < x1 || event.x > x2) || (event.y < y1 || event.y > y2)){
+                        this.game.paused = false
+                        this.selectedPainting.kill()
+                        if(this.ui_painting1)this.ui_painting1.input.useHandCursor = true
+                        if(this.ui_painting2)this.ui_painting2.input.useHandCursor = true
+    
+                    }else{
+                        this.clickImage(this.selectedPainting)
+                    }
+                }else if(this.selectedPainting == this.big_painting1){
                     this.selectedPainting.kill()
-                    if(this.ui_painting1)this.ui_painting1.input.useHandCursor = true
-                    if(this.ui_painting2)this.ui_painting2.input.useHandCursor = true
-
-                }else{
-                    this.clickImage(this.selectedPainting, 1)
+                    this.selectedPainting = this.painting1
+                }else if(this.selectedPainting == this.big_painting2){
+                    this.selectedPainting.kill()
+                    this.selectedPainting = this.painting2
                 }
             }
+            
         }
 
         // TODO: dit moet nog werken
-        clickImage(el:Phaser.Sprite, n:number) {
-            if(this.game.paused ==  false) {
-                if (n == 1) {
-                    this.big_painting1 = this.add.sprite(this.game.width/2, this.game.height/2, 'bigDaliMelt')
-                    this.painting1.anchor.setTo(0.5, 0.5)
+        clickImage(el:Phaser.Sprite) {
+            if(this.game.paused ==  true) {
+                if(this.selectedPainting == this.painting1){
+                    this.big_painting1 = this.add.sprite(510, 300, 'bigDaliMelt')
+                    this.big_painting1.anchor.setTo(0.5, 0.5)
                     this.selectedPainting = this.big_painting1
-                    this.game.paused = true
-                }
-                if (n == 2) {
-                    this.big_painting2 = this.add.sprite(this.game.width/2, this.game.height/2, 'bigDaliSphere')
-                    this.painting2.anchor.setTo(0.5, 0.5)
+                }else if(this.selectedPainting == this.painting2){
+                    this.big_painting2 = this.add.sprite(510, 300, 'bigDaliSphere')
+                    this.big_painting2.anchor.setTo(0.5, 0.5)
                     this.selectedPainting = this.big_painting2
-                    this.game.paused = true
                 }
+                
             }
         }
 	}
