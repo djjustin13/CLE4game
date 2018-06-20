@@ -217,7 +217,7 @@ module MyGame {
 			}
 
 			// setting a respawn location if the player exceeds a certain milestone
-			if (this.player.position.x >= 5500) {
+			if (this.player.position.x >= 100) {
 				this.game.levelProgression1 = 1
 			}
 		}

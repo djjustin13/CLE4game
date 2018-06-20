@@ -119,22 +119,14 @@ module MyGame {
 
         // When collision between player and something deadly is detected, one life is deducted
         spawn() {
-            if (this.game.levelProgression1 == 0) {
-                this.x = this.startX
-                this.y = this.startY
-            } 
             if (this.game.levelProgression1 == 1) {
-                this.x = 5650
-                this.y = 350
+                this.startX = 5650
+                this.startY = 350
             }
 
-            if (this.game.levelProgression2 == 0) {
-                this.x = this.startX
-                this.y = this.startY
-            } 
             if (this.game.levelProgression2 == 1) {
-                this.x = 2000
-                this.y = 125
+                this.startX = 2000
+                this.startY = 125
             }
 
 
