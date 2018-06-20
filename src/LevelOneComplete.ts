@@ -34,7 +34,7 @@ module MyGame {
             this.galleryButton.inputEnabled = true
             this.galleryButton.input.useHandCursor = true
 
-            this.galleryButton.events.onInputDown.add(() => this.gallary())
+            this.galleryButton.events.onInputDown.add(() => this.showGallery())
             this.galleryButton.events.onInputOver.add(() => this.hover(this.galleryButton, 2))
             this.galleryButton.events.onInputOut.add(() => this.hoverOut(this.galleryButton, 2))
 
@@ -84,13 +84,8 @@ module MyGame {
 			this.game.state.start('Level2', true, false)
 		}
 
-<<<<<<< HEAD
 		showGallery() {
 			this.game.state.start('Gallery', true, false);
-=======
-		gallary() {
-			this.game.state.start('Gallary', true, false)		
->>>>>>> 0ad5c80968bde41908b878f376dd735b22c1b855
 		}
 	}
 }
