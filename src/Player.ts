@@ -120,13 +120,18 @@ module MyGame {
         spawn() {
             console.log(this.game.levelProgression1)
             if (this.game.levelProgression1 == 1) {
-                console.log("spawn new")
+                this.x = 2770
+                this.y = 500
+            } else if (this.game.levelProgression1 == 2) {
                 this.x = 5650
                 this.y = 350
-            }else if(this.game.levelProgression2 == 1){
+            } else if(this.game.levelProgression2 == 1) {
                 this.x = 2000
                 this.y = 125
-            }else{
+            } else if(this.game.levelProgression2 == 2) {
+                this.x = 5260
+                this.y = 500
+            } else {
                 this.x = this.startX
                 this.y = this.startY
             }

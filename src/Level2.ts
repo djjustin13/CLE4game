@@ -36,7 +36,7 @@ module MyGame {
 			this.bgElephant = this.add.group()
 			for (let i =0; i < 2; i++)
 			{
-				this.bgElephant.add(new ElephantBackGround(this.game,  2000 * Math.random() + i * (2000+Math.random()*6000), h))
+				// this.bgElephant.add(new ElephantBackGround(this.game,  2000 * Math.random() + i * (2000+Math.random()*6000), h))
 			}
 
 
@@ -70,8 +70,8 @@ module MyGame {
 				this.ledge.add(new Platform(this.game, 1970+157*i, h-460+41*i));
 			}
 			this.ledge.add(new Platform(this.game, 3114, h-this.ground.height*2-6));
-			this.ledge.add(new Platform(this.game, 5300, h-this.ground.height*2-6));
-			this.ledge.add(new Platform(this.game, 7325, h-this.ground.height-30));
+			this.ledge.add(new Platform(this.game, 5260, h-this.ground.height*2));
+			this.ledge.add(new Platform(this.game, 7400, h-this.ground.height-30));
 			for(let i = 0; i < 5; i++){
 				this.ledge.add(new Platform(this.game, 7588 + i * (87+157), h-this.ground.height-30));
 			}
@@ -209,13 +209,16 @@ module MyGame {
 			if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
 				this.ui.pauseLevel()
 			}
-			if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
-				this.completeLevel()
-			}
-
+			// if (this.game.input.keyboard.isDown(Phaser.Keyboard.C)){
+			// 	this.completeLevel()
+			// }
+			
 			// setting a respawn location if the player exceeds a certain milestone
-			if (this.player.position.x >= 2000) {
-				this.game.levelProgression1 = 1
+			if (this.player.position.x >= 2000 && this.player.position.x < 5250) {
+				this.game.levelProgression2 = 1
+			}
+			if (this.player.position.x >= 5250) {
+				this.game.levelProgression2 = 2
 			}
 		}
 
