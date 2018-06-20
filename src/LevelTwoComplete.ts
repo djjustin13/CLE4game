@@ -23,7 +23,7 @@ module MyGame {
 			this.button.inputEnabled = true
 			this.button.input.useHandCursor = true
 
-			this.button.events.onInputDown.add(() => this.nextLevel())
+			this.button.events.onInputDown.add(() => this.gameComplete())
 			this.button.events.onInputOver.add(() => this.hover(this.button, 1))
 			this.button.events.onInputOut.add(() => this.hoverOut(this.button, 1))
 
@@ -73,8 +73,8 @@ module MyGame {
 			}		
 		}
 
-		nextLevel() {
-			this.game.state.start('Level3', true, false)
+		gameComplete() {
+			this.game.state.start('GameOver', true, false)
 		}
 
 		gallary() {
